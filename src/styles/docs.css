@@ -1,0 +1,115 @@
+:root {
+  --sl-color-accent-low: #ffd8cc;
+  --sl-color-accent: #c72c08;
+  --sl-color-accent-high: #421006;
+  --sl-color-white: #171814;
+  --sl-color-gray-1: #272823;
+  --sl-color-gray-2: #42433e;
+  --sl-color-gray-3: #686963;
+  --sl-color-gray-4: #a2a39c;
+  --sl-color-gray-5: #d8d6cd;
+  --sl-color-gray-6: #e8e6de;
+  --sl-color-black: #f0eee6;
+  --sl-font: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --sl-font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --sl-content-width: 72rem;
+  --sl-text-5xl: clamp(3.6rem, 8vw, 7.8rem);
+}
+
+:root[data-theme='dark'] {
+  --sl-color-accent-low: #421006;
+  --sl-color-accent: #ff6a42;
+  --sl-color-accent-high: #ffd8cc;
+  --sl-color-white: #faf9f4;
+  --sl-color-gray-1: #e8e6de;
+  --sl-color-gray-2: #c4c3bc;
+  --sl-color-gray-3: #91928b;
+  --sl-color-gray-4: #5c5d57;
+  --sl-color-gray-5: #30312d;
+  --sl-color-gray-6: #22231f;
+  --sl-color-black: #171814;
+}
+
+body {
+  background:
+    linear-gradient(90deg, rgb(23 24 20 / 4%) 1px, transparent 1px) 0 0 / 24px 24px,
+    var(--sl-color-black);
+}
+
+header.header {
+  border-bottom: 2px solid var(--sl-color-white);
+  background: color-mix(in srgb, var(--sl-color-black) 92%, transparent);
+  backdrop-filter: blur(12px);
+}
+
+.site-title {
+  font-weight: 850;
+  letter-spacing: -0.035em;
+}
+
+.hero {
+  padding-block: clamp(4rem, 9vw, 9rem) !important;
+}
+
+.hero .sl-flex {
+  align-items: flex-start;
+}
+
+.hero h1 {
+  max-width: 15ch;
+  font-weight: 850;
+  line-height: 0.88;
+  letter-spacing: -0.065em;
+}
+
+.hero .tagline {
+  max-width: 44rem;
+  font-size: clamp(1.2rem, 2.2vw, 1.8rem);
+  line-height: 1.35;
+  letter-spacing: -0.025em;
+}
+
+.hero .actions a,
+.sl-link-button {
+  border: 2px solid currentColor;
+  border-radius: 2px;
+  box-shadow: none;
+  font-weight: 750;
+}
+
+.card-grid > article,
+.card {
+  border: 2px solid var(--sl-color-gray-3);
+  border-radius: 2px;
+  background: color-mix(in srgb, var(--sl-color-black) 86%, transparent);
+  box-shadow: none;
+}
+
+.card .title {
+  font-size: 1.3rem;
+  letter-spacing: -0.025em;
+}
+
+.starlight-aside {
+  border: 0;
+  border-left: 5px solid var(--sl-color-accent);
+  border-radius: 0;
+}
+
+nav.sidebar {
+  border-right: 2px solid var(--sl-color-gray-5);
+}
+
+.sidebar-content a[aria-current='page'] {
+  color: var(--sl-color-black);
+  background: var(--sl-color-white);
+  font-weight: 750;
+}
+
+@media (max-width: 50rem) {
+  .hero h1 {
+    overflow-wrap: anywhere;
+    font-size: clamp(2.75rem, 12vw, 4.8rem);
+    letter-spacing: -0.045em;
+  }
+}
