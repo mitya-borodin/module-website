@@ -7,6 +7,8 @@
 | --- | --- | --- |
 | Назначение и текущая стадия сайта | [`../README.md`](../README.md) | Для общего обзора, границ прототипа и штатных команд |
 | Главная страница и публичные формулировки | [`../src/pages/index.astro`](../src/pages/index.astro) | При изменении секций, навигации, CTA или продуктового текста |
+| Возможности ПО Module | [`../src/pages/software.astro`](../src/pages/software.astro) | При изменении `/software/`, каталога макросов и границ совместимости |
+| Общая оболочка коммерческих страниц | [`../src/layouts/site-layout.astro`](../src/layouts/site-layout.astro) | Для metadata, навигации, footer и мобильного меню |
 | Глобальные стили и design tokens | [`../src/styles/global.css`](../src/styles/global.css) | При изменении визуального языка, доступности или адаптивности главной |
 | Публичная документация | [`../src/content/docs/ru/docs/index.mdx`](../src/content/docs/ru/docs/index.mdx) | При изменении `/ru/docs/` и его содержательных обещаний |
 | Стили документации | [`../src/styles/docs.css`](../src/styles/docs.css) | При изменении внешнего вида Starlight |

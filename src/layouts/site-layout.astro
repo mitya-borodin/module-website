@@ -1,0 +1,91 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+const isSoftwarePage = Astro.url.pathname === '/software/';
+const navigation = [
+  { href: '/#result', label: 'Что вы получаете' },
+  { href: '/#solutions', label: 'Автоматизации' },
+  { href: '/#process', label: 'Как работаем' },
+  { href: '/software/', label: 'ПО Module' },
+];
+---
+
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="robots" content="noindex,nofollow" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Перейти к содержанию</a>
+    <header class="site-header">
+      <div class="shell header-inner">
+        <a class="brand" href="/" aria-label="Module — главная">
+          <span class="brand-mark" aria-hidden="true">M</span>
+          <span>MODULE</span>
+        </a>
+        <nav class="desktop-nav" aria-label="Основная навигация">
+          {navigation.map(({ href, label }) => (
+            <a href={href} aria-current={href === '/software/' && isSoftwarePage ? 'page' : undefined}>
+              {label}
+            </a>
+          ))}
+        </nav>
+        <a class="header-cta" href="/#first-object">Обсудить проект <span aria-hidden="true">↗</span></a>
+        <details class="mobile-nav">
+          <summary>Меню</summary>
+          <nav aria-label="Мобильная навигация">
+            {navigation.map(({ href, label }) => (
+              <a href={href} aria-current={href === '/software/' && isSoftwarePage ? 'page' : undefined}>
+                {label}
+              </a>
+            ))}
+            <a href="/ru/docs/">Документация</a>
+            <a href="/#first-object">Обсудить проект ↗</a>
+          </nav>
+        </details>
+      </div>
+    </header>
+
+    <main id="main" tabindex="-1"><slot /></main>
+
+    <footer class="site-footer">
+      <div class="shell footer-grid">
+        <a class="brand brand--footer" href="/"><span class="brand-mark" aria-hidden="true">M</span>MODULE</a>
+        <p>Проект · Щит · ПО и сценарии · Документация</p>
+        <nav aria-label="Навигация в подвале">
+          <a href="/software/">ПО Module</a>
+          <a href="/ru/docs/">Документация</a>
+        </nav>
+        <small>Непубличная версия сайта · 29.09.2026</small>
+      </div>
+    </footer>
+
+    <script>
+      document.querySelectorAll<HTMLDetailsElement>('.mobile-nav').forEach((menu) => {
+        menu.querySelectorAll<HTMLAnchorElement>('a').forEach((link) => {
+          link.addEventListener('click', () => {
+            menu.open = false;
+          });
+        });
+
+        menu.addEventListener('keydown', (event) => {
+          if (event.key === 'Escape') {
+            menu.open = false;
+            menu.querySelector('summary')?.focus();
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

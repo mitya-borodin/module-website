@@ -5,6 +5,9 @@ template: splash
 hero:
   tagline: Здесь будут точные ответы о том, как устроена система, что делает электрик, чем управляет владелец и как проверяется результат.
   actions:
+    - text: Возможности ПО Module
+      link: /software/
+      icon: right-arrow
     - text: Вернуться на главную
       link: /
       icon: left-arrow
@@ -25,7 +28,7 @@ import { Card, CardGrid } from '@astrojs/starlight/components';
 ## Для кого будет эта документация
 
 <CardGrid>
-  <Card title="Владельцу дома" icon="open-book">
+  <Card title="Владельцу объекта" icon="open-book">
     Что установлено, как это работает каждый день, чем можно управлять самостоятельно и куда обращаться за изменением.
   </Card>
   <Card title="Электрику" icon="setting">

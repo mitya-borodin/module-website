@@ -29,7 +29,10 @@ export default defineConfig({
         },
         {
           label: 'Сайт',
-          items: [{ label: 'Вернуться на главную', link: '/' }],
+          items: [
+            { label: 'ПО Module', link: '/software/' },
+            { label: 'Вернуться на главную', link: '/' },
+          ],
         },
       ],
     }),

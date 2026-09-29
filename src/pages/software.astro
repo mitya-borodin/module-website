@@ -1,0 +1,396 @@
+---
+import SiteLayout from '../layouts/site-layout.astro';
+
+const groups = [
+  {
+    id: 'lighting',
+    title: 'Освещение',
+    description: 'От отдельной группы света до нескольких зон с разными условиями работы.',
+    macros: [
+      { name: 'Освещение', text: 'Управляет релейным светом и RGBW-лентами. Использует кнопки, датчики и условия времени для выбора действия.', setup: 'Группы света, способы ручного управления, датчики и правила включения.' },
+    ],
+  },
+  {
+    id: 'heating',
+    title: 'Температура и тепловые контуры',
+    description: 'Несколько специализированных функций связывают запрос на тепло с работой оборудования.',
+    macros: [
+      { name: 'Термостат', text: 'Поддерживает заданную температуру по показаниям датчика и управляет подключённым исполнительным устройством.', setup: 'Датчик, целевая температура, способ регулирования и исполнительное устройство.' },
+      { name: 'Генератор тепла', text: 'Управляет источниками тепла и согласует их работу с запросами термостатов и узлами отопления.', setup: 'Источники тепла, температурные датчики и связанные контуры.' },
+      { name: 'Гидравлический смеситель', text: 'Управляет смесительным клапаном для регулирования температуры смеси подачи и обратки.', setup: 'Датчики температуры, привод клапана и параметры регулирования.' },
+      { name: 'Транспортировка теплоносителя', text: 'Управляет насосами, перемещающими теплоноситель между частями системы.', setup: 'Насосы, запросы на работу и время выбега.' },
+      { name: 'Термостатический сервопривод', text: 'Включает и отключает питание бинарных термостатических приводов по запросам термостатов. Учитывает нормально открытый или нормально закрытый тип.', setup: 'Приводы NO/NC и термостаты. Это бинарное управление, а не установка произвольного положения.' },
+    ],
+  },
+  {
+    id: 'leaks',
+    title: 'Защита от протечек',
+    description: 'Связывает обнаружение протечки с управлением подачей воды.',
+    macros: [
+      { name: 'Протечка', text: 'Получает сигналы датчиков и передаёт связанному приводу команду перекрыть подачу. Учитывает условия повторного открытия.', setup: 'Датчики, управляемый кран и его привод. Физическое закрытие проверяется на конкретном оборудовании.' },
+    ],
+  },
+  {
+    id: 'recirculation',
+    title: 'Рециркуляция горячей воды',
+    description: 'Управление насосом по потребности вместо постоянной циркуляции.',
+    macros: [
+      { name: 'Рециркуляция ГВС', text: 'Запускает насос по активности выключателя или датчика движения, останавливает по времени и блокирует повторный запуск на заданный интервал.', setup: 'Насос, источники активности, длительность работы и пауза между включениями.' },
+    ],
+  },
+  {
+    id: 'drives',
+    title: 'Шторы и позиционные приводы',
+    description: 'Логика солнцезащиты и управление движением — отдельные связанные функции.',
+    macros: [
+      { name: 'Штора', text: 'Задаёт положение шторы по ручным командам, датчикам, времени и условиям солнца. Передаёт команды позиционному приводу.', setup: 'Ручное управление, датчики, условия движения и связанный привод.' },
+      { name: 'Позиционный привод', text: 'Управляет открытием, закрытием и промежуточным положением совместимых приводов штор, ворот, кранов и заслонок.', setup: 'Интерфейс привода, время движения или обратная связь. Возможности и точность положения зависят от оборудования.' },
+    ],
+  },
+  {
+    id: 'metering',
+    title: 'Учёт ресурсов',
+    description: 'Показатели счётчика становятся данными для наблюдения и других автоматизаций.',
+    macros: [
+      { name: 'Импульсный счётчик', text: 'Считает импульсы и определяет суммарный объём, текущий расход и факт потребления ресурса.', setup: 'Импульсный выход счётчика, цена импульса и исходное показание.' },
+    ],
+  },
+];
+---
+
+<SiteLayout
+  title="ПО Module — автоматизации света, тепла, воды и приводов"
+  description="Программная основа систем Module: готовые макросы освещения, отопления, защиты от протечек, рециркуляции, штор, приводов и учёта ресурсов."
+>
+  <section class="section software-hero" aria-labelledby="software-title">
+    <div class="shell">
+      <a class="back-link" href="/">← Проект, щит и готовый комплект</a>
+      <div class="software-intro">
+        <div>
+          <p class="eyebrow">ПО Module</p>
+          <h1 id="software-title">Готовые автоматизации для инженерных систем.</h1>
+          <p class="lede">Module получает показания датчиков, применяет настроенные правила и передаёт команды оборудованию. Свет, тепло, вода и приводы работают по заданной логике.</p>
+          <div class="actions">
+            <a class="button" href="#automations">Посмотреть автоматизации ↓</a>
+            <a class="button button--secondary" href="/#first-object">Обсудить применение</a>
+          </div>
+        </div>
+        <aside class="software-note" aria-label="Роль ПО в решении">
+          <span class="item-number">Программная часть комплекта</span>
+          <h2>Один объект.<br />Связанные функции.</h2>
+          <p>Макрос — готовая логика для конкретной задачи. При настройке указываем, какие устройства он использует и как должен действовать.</p>
+          <p>ПО входит в предлагаемый комплект автоматизации. Оборудование, монтаж и ввод в работу — отдельные части проекта.</p>
+          <a class="text-link" href="/#result">Что входит в общий результат ↗</a>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="section dark-section" aria-labelledby="operation-title">
+    <div class="shell">
+      <p class="eyebrow">Как устроена работа</p>
+      <h2 class="section-title" id="operation-title">От показания датчика — к действию.</h2>
+      <ol class="operation-steps">
+        <li><span class="item-number">01 / Вход</span><h3>Устройства</h3><p>Датчики, кнопки и счётчики передают значения и события.</p></li>
+        <li><span class="item-number">02 / Логика</span><h3>Автоматизации</h3><p>Макросы учитывают настройки и состояние связанных устройств.</p></li>
+        <li><span class="item-number">03 / Выход</span><h3>Оборудование</h3><p>Реле, насосы и приводы получают управляющие команды.</p></li>
+      </ol>
+      <p class="operation-note">Например: термостат запрашивает тепло, а связанные функции управляют источником, переносом теплоносителя и приводами. Состав связей определяется схемой отопления.</p>
+    </div>
+  </section>
+
+  <section class="section" id="automations" aria-labelledby="automations-title">
+    <div class="shell">
+      <p class="eyebrow">Библиотека автоматизаций</p>
+      <h2 class="section-title" id="automations-title">Выбираем функции под задачу.</h2>
+      <p class="lede">Автоматизации Module применяем на практике уже три года. Ниже — их назначение и то, что нужно учесть при подборе под конкретный проект.</p>
+      <nav class="catalog-nav" aria-label="Разделы автоматизаций">
+        {groups.map((group) => <a href={`#${group.id}`}>{group.title}</a>)}
+      </nav>
+      <div class="catalog">
+        {groups.map((group, index) => (
+          <section class="catalog-group" id={group.id} aria-labelledby={`${group.id}-title`}>
+            <div class="group-heading">
+              <span class="item-number">0{index + 1}</span>
+              <h3 id={`${group.id}-title`}>{group.title}</h3>
+              <p>{group.description}</p>
+            </div>
+            <div class="macro-list">
+              {group.macros.map((macro) => (
+                <article>
+                  <h4>{macro.name}</h4>
+                  <p>{macro.text}</p>
+                  <details>
+                    <summary>Что задаём в проекте</summary>
+                    <p>{macro.setup}</p>
+                  </details>
+                </article>
+              ))}
+            </div>
+          </section>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section interface-section" aria-labelledby="interface-title">
+    <div class="shell information-grid">
+      <div>
+        <p class="eyebrow">Веб-интерфейс</p>
+        <h2 class="section-title" id="interface-title">Устройства, настройки и состояния.</h2>
+      </div>
+      <div class="information-copy">
+        <p>В интерфейсе Module есть устройства, список автоматизаций и витрина макросов. Из витрины выбирают функцию, затем задают связанные устройства и параметры.</p>
+        <p>Настройки и доступные состояния зависят от выбранного макроса. Так освещение, термостат и привод получают собственные формы, а не один общий набор полей.</p>
+        <a class="text-link" href="/ru/docs/">К документации Module ↗</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="compatibility-title">
+    <div class="shell information-grid">
+      <div>
+        <p class="eyebrow">Подбор и совместимость</p>
+        <h2 class="section-title" id="compatibility-title">Начинаем со схемы и оборудования.</h2>
+      </div>
+      <div class="information-copy">
+        <p>Наличие подходящего макроса не означает совместимость с каждым устройством. До включения функции в проект уточняем интерфейсы, сигналы, обратную связь и ограничения оборудования.</p>
+        <ul>
+          <li>Как датчики и исполнительные устройства связаны с контроллером.</li>
+          <li>Какие значения и команды доступны программной части.</li>
+          <li>Как устроены ручное управление и аппаратные защиты.</li>
+          <li>Как проверить согласованный результат на объекте.</li>
+        </ul>
+        <p>Для ворот, дверей и других механизмов требования безопасности рассматриваются отдельно. Управление приводом само по себе не заменяет систему контроля доступа или аппаратную защиту.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section dark-section" aria-labelledby="package-title">
+    <div class="shell information-grid">
+      <div>
+        <p class="eyebrow">От программных функций к комплекту</p>
+        <h2 class="section-title" id="package-title">ПО — часть готового решения.</h2>
+      </div>
+      <div class="information-copy">
+        <p>Спроектируем автоматизацию, подберём и закупим оборудование, соберём щит, подготовим сценарии и документацию, доставим комплект заказчику.</p>
+        <p>Если интересует ПО отдельно, укажите это при обсуждении. Состав поставки, условия использования и стоимость согласуются отдельно; публичные тарифы пока не опубликованы.</p>
+        <div class="actions"><a class="button button--light" href="/#first-object">Обсудить проект ↗</a><a class="text-link" href="/#result">Посмотреть состав комплекта</a></div>
+      </div>
+    </div>
+  </section>
+</SiteLayout>
+
+<style>
+  .back-link {
+    display: inline-block;
+    margin-bottom: 44px;
+    font-size: 13px;
+  }
+
+  .software-intro {
+    display: grid;
+    align-items: start;
+    grid-template-columns: minmax(0, 1.4fr) minmax(0, 0.8fr);
+    gap: clamp(32px, 6vw, 90px);
+  }
+
+  .software-intro h1 {
+    margin: 0;
+    font-size: clamp(38px, 5vw, 72px);
+    font-weight: 850;
+    line-height: 1.04;
+    letter-spacing: -0.055em;
+  }
+
+  .software-note {
+    padding: clamp(22px, 3vw, 40px);
+    border: 2px solid var(--ink);
+    background: var(--signal);
+    box-shadow: 8px 8px 0 var(--ink);
+  }
+
+  .software-note h2 {
+    margin: 32px 0 24px;
+    font-size: clamp(28px, 3vw, 40px);
+    line-height: 1.1;
+    letter-spacing: -0.04em;
+  }
+
+  .software-note p,
+  .software-note a {
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  .operation-steps {
+    display: grid;
+    margin: 48px 0 32px;
+    padding: 0;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 32px;
+    list-style: none;
+  }
+
+  .operation-steps li {
+    padding-top: 18px;
+    border-top: 1px solid var(--paper-strong);
+  }
+
+  .operation-steps span {
+    color: var(--signal);
+  }
+
+  .operation-steps h3 {
+    margin: 28px 0 16px;
+    font-size: 30px;
+    letter-spacing: -0.035em;
+  }
+
+  .operation-steps p,
+  .operation-note {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  .operation-note {
+    max-width: 850px;
+    color: #c9cac4;
+  }
+
+  .catalog-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 32px;
+  }
+
+  .catalog-nav a {
+    padding: 12px 16px;
+    border: 1px solid var(--ink);
+    background: var(--paper-strong);
+    font-size: 13px;
+    line-height: 1.5;
+    text-decoration: none;
+  }
+
+  .catalog-nav a:hover {
+    background: var(--signal);
+  }
+
+  .catalog {
+    margin-top: 48px;
+    border-top: 2px solid var(--ink);
+  }
+
+  .catalog-group {
+    display: grid;
+    padding-block: 40px;
+    border-bottom: 1px solid var(--ink);
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.3fr);
+    gap: clamp(28px, 6vw, 90px);
+  }
+
+  .group-heading h3 {
+    max-width: 440px;
+    margin: 18px 0;
+    font-size: clamp(25px, 3vw, 40px);
+    line-height: 1.1;
+    letter-spacing: -0.04em;
+  }
+
+  .group-heading p {
+    max-width: 440px;
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  .macro-list article {
+    padding: 24px;
+    border: 1px solid var(--ink);
+    background: var(--paper-strong);
+  }
+
+  .macro-list article + article {
+    margin-top: 16px;
+  }
+
+  .macro-list h4 {
+    margin: 0;
+    font-size: 23px;
+    line-height: 1.25;
+    letter-spacing: -0.035em;
+  }
+
+  .macro-list p {
+    margin: 16px 0 0;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  .macro-list details {
+    margin-top: 22px;
+    padding-top: 16px;
+    border-top: 1px solid #d1d1c9;
+  }
+
+  .macro-list summary {
+    padding-block: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 700;
+  }
+
+  .macro-list details p {
+    color: var(--muted);
+    font-size: 14px;
+  }
+
+  .information-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(32px, 7vw, 100px);
+  }
+
+  .information-copy p,
+  .information-copy ul {
+    margin: 0 0 24px;
+    font-size: 18px;
+    line-height: 1.6;
+  }
+
+  .information-copy ul {
+    padding-left: 22px;
+  }
+
+  .information-copy li + li {
+    margin-top: 12px;
+  }
+
+  .interface-section {
+    background: var(--signal);
+  }
+
+  @media (max-width: 1000px) {
+    .software-intro {
+      grid-template-columns: 1fr;
+    }
+
+    .software-note {
+      max-width: 720px;
+    }
+  }
+
+  @media (max-width: 700px) {
+    .operation-steps,
+    .catalog-group,
+    .information-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .macro-list article {
+      padding: 20px;
+    }
+  }
+</style>
