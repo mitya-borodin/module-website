@@ -1,0 +1,57 @@
+---
+interface Props {
+  label: string;
+  emailSubject?: string;
+}
+
+const { label, emailSubject } = Astro.props;
+const contactChannels = [
+  { label: 'Email', value: 'dmitriy@borodin.site', href: `mailto:dmitriy@borodin.site${emailSubject ? `?subject=${encodeURIComponent(emailSubject)}` : ''}` },
+  { label: 'Telegram', value: '@MityaBorodin', href: 'https://t.me/MityaBorodin' },
+  { label: 'Телефон', value: '+7 904 676-20-07', href: 'tel:+79046762007' },
+  { label: 'WhatsApp', value: '+7 904 676-20-07', href: 'https://wa.me/79046762007' },
+  { label: 'MAX', value: '+7 904 676-20-07', href: 'https://max.ru/u/f9LHodD0cOK4szY89ehyNlXkcQy3Y1BN66JWx3XACt4VXLCXqtUrxE1DcdM' },
+];
+---
+
+<address class="contact-channels" aria-label={label}>
+  {contactChannels.map((channel) => (
+    <a href={channel.href}>
+      <span>{channel.label} <span aria-hidden="true">↗</span></span>
+      <strong>{channel.value}</strong>
+    </a>
+  ))}
+</address>
+
+<style>
+  .contact-channels {
+    display: grid;
+    gap: 12px;
+    margin-top: 24px;
+    font-size: 14px;
+    font-style: normal;
+  }
+
+  .contact-channels a {
+    display: grid;
+    padding: 16px;
+    border: 1px solid currentColor;
+    gap: 8px;
+    overflow-wrap: anywhere;
+    text-decoration: none;
+  }
+
+  .contact-channels a:hover {
+    color: var(--ink);
+    background: var(--paper-strong);
+  }
+
+  .contact-channels a > span {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .contact-channels strong {
+    font-size: 16px;
+  }
+</style>

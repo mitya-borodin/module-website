@@ -8,12 +8,21 @@ interface Props {
 
 const { title, description } = Astro.props;
 const isSoftwarePage = Astro.url.pathname === '/software/';
-const navigation = [
+const navigation = isSoftwarePage ? [
+  { href: '#automations', label: 'Автоматизации' },
+  { href: '#operation', label: 'Как работает' },
+  { href: '#management', label: 'Управление' },
+  { href: '#purchase', label: 'Как приобрести' },
+  { href: '#software-contact', label: 'Контакты' },
+] : [
   { href: '/#result', label: 'Что вы получаете' },
   { href: '/#solutions', label: 'Автоматизации' },
   { href: '/#process', label: 'Как работаем' },
   { href: '/software/', label: 'ПО Module' },
+  { href: '/#contacts', label: 'Контакты' },
 ];
+const contactHref = isSoftwarePage ? '#software-contact' : '/#contacts';
+const contactLabel = isSoftwarePage ? 'Обсудить ПО' : 'Обсудить проект';
 ---
 
 <!doctype html>
@@ -40,8 +49,9 @@ const navigation = [
               {label}
             </a>
           ))}
+          <a href="/ru/docs/">Документация</a>
         </nav>
-        <a class="header-cta" href="/#first-object">Обсудить проект <span aria-hidden="true">↗</span></a>
+        <a class="header-cta" href={contactHref}>{contactLabel} <span aria-hidden="true">↗</span></a>
         <details class="mobile-nav">
           <summary>Меню</summary>
           <nav aria-label="Мобильная навигация">
@@ -51,7 +61,8 @@ const navigation = [
               </a>
             ))}
             <a href="/ru/docs/">Документация</a>
-            <a href="/#first-object">Обсудить проект ↗</a>
+            {isSoftwarePage && <a href="/#result">Проектирование и сборка щита ↗</a>}
+            <a href={contactHref}>{contactLabel} ↗</a>
           </nav>
         </details>
       </div>
