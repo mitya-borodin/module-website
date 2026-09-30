@@ -1,6 +1,7 @@
 ---
 import SiteLayout from '../layouts/site-layout.astro';
 import ContactChannels from '../components/contact-channels.astro';
+import SoftwareApproaches from '../components/software-approaches.astro';
 
 const groups = [
   {
@@ -122,6 +123,8 @@ const macroTitles: Record<string, string> = {
       </div>
     </div>
   </section>
+
+  <SoftwareApproaches audience="software" />
 
   <section class="section dark-section" id="operation" aria-labelledby="operation-title">
     <div class="shell">

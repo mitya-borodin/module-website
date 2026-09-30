@@ -1,0 +1,163 @@
+---
+interface Props {
+  audience: 'service' | 'software';
+}
+
+const { audience } = Astro.props;
+const isSoftware = audience === 'software';
+
+const approaches = [
+  {
+    title: 'Разработка под заказ',
+    text: 'Программист пишет, как система должна работать в конкретном проекте. Такой подход нужен, когда готовые решения не покрывают задачу. Изменение самой логики потребует работы с кодом и повторной проверки.',
+    difference: 'Создают программную логику под задачу.',
+  },
+  {
+    title: 'Код из другого проекта',
+    text: 'Берут существующий код и правят его под другие датчики, оборудование и условия. Если каждую копию дорабатывают отдельно, получаются разные варианты программы. Исправление в одном не переносится в остальные само по себе.',
+    difference: 'Копируют и дорабатывают код.',
+  },
+  {
+    title: 'Готовое ПО Module',
+    text: 'Выбираем нужную автоматизацию, указываем подключённые устройства и задаём условия работы. Для предусмотренных настроек не нужно переписывать готовую логику — её повторно используем в разных зонах и проектах.',
+    difference: 'Используют готовую логику, меняют настройки.',
+  },
+];
+---
+
+<section class="section approaches-section" id="software-approaches" aria-labelledby="software-approaches-title">
+  <div class="shell">
+    <p class="eyebrow">Разработка или готовое ПО</p>
+    <h2 class="section-title" id="software-approaches-title">
+      {isSoftware ? 'Готовое ПО — не копия кода с другого объекта.' : 'Не пишем типовую логику заново.'}
+    </h2>
+    <p class="lede approaches-intro">
+      {isSoftware
+        ? 'Готовое ПО тоже написано на коде. Разница в том, нужно ли править этот код для каждого объекта или достаточно выбрать устройства и задать предусмотренные настройки.'
+        : 'Проект и оборудование подбираем под ваш объект. Для управления используем готовое ПО Module: функции освещения, отопления и других систем уже разработаны. Вот чем это отличается от написания или переноса кода.'}
+    </p>
+    <div class="approaches-grid">
+      {approaches.map((approach, index) => (
+        <article class:list={['approach-card', { 'approach-card-module': index === 2 }]}>
+          <span class="approach-number" aria-hidden="true">0{index + 1}</span>
+          <h3>{approach.title}</h3>
+          <p>{approach.text}</p>
+          <p class="approach-difference">{approach.difference}</p>
+        </article>
+      ))}
+    </div>
+    <div class="approaches-takeaway">
+      <h3>{isSoftware ? 'Настройка и разработка — разные работы.' : 'Что остаётся индивидуальным.'}</h3>
+      <div>
+        {isSoftware ? (
+          <>
+            <p>
+              Например, для коридора и гаража создаём два макроса освещения. У каждого — свои
+              датчики, светильники и задержка выключения. Программная логика одна, настройки разные.
+              Чтобы изменить предусмотренную задержку, код переписывать не нужно.
+            </p>
+            <p>
+              Если для ваших задач не хватает готовой логики, мы разрабатываем её за свой счёт.
+              Цена автоматизации при этом не увеличивается. Совместимость оборудования и работу настроенной системы всё равно
+              нужно проверить.
+            </p>
+          </>
+        ) : (
+          <p>
+            Подбираем оборудование и настройки под ваши задачи, собираем щит и проверяем
+            согласованные сценарии в лаборатории. Повторно разрабатывать уже готовые функции
+            не требуется. Если для ваших задач не хватает готовой логики, мы разрабатываем её
+            за свой счёт. Цена автоматизации при этом не увеличивается.
+          </p>
+        )}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .approaches-section {
+    border-top: 1px solid var(--line);
+  }
+
+  .approaches-intro {
+    max-width: 1040px;
+  }
+
+  .approaches-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+    margin-top: 40px;
+  }
+
+  .approach-card {
+    display: flex;
+    flex-direction: column;
+    padding: clamp(20px, 2.2vw, 32px);
+    border: 1px solid var(--line);
+    background: var(--paper-strong);
+  }
+
+  .approach-card-module {
+    background: var(--signal);
+  }
+
+  .approach-number {
+    font-family: var(--mono);
+    font-size: 12px;
+    font-weight: 700;
+  }
+
+  .approach-card h3,
+  .approaches-takeaway h3 {
+    font-size: clamp(22px, 2.1vw, 28px);
+    line-height: 1.15;
+    letter-spacing: -0.035em;
+    overflow-wrap: anywhere;
+  }
+
+  .approach-card h3 {
+    margin: 24px 0 16px;
+  }
+
+  .approach-card p,
+  .approaches-takeaway p {
+    margin: 0 0 20px;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  .approach-card .approach-difference {
+    margin: auto 0 0;
+    padding-top: 20px;
+    border-top: 1px solid var(--line);
+    font-weight: 700;
+  }
+
+  .approaches-takeaway {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+    gap: 32px;
+    margin-top: 40px;
+  }
+
+  .approaches-takeaway h3 {
+    margin: 0;
+  }
+
+  .approaches-takeaway p:last-child {
+    margin-bottom: 0;
+  }
+
+  @media (max-width: 900px) {
+    .approaches-grid,
+    .approaches-takeaway {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .approaches-takeaway {
+      gap: 16px;
+    }
+  }
+</style>

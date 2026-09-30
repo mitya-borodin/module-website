@@ -1,6 +1,7 @@
 ---
 import SiteLayout from '../layouts/site-layout.astro';
 import ContactChannels from '../components/contact-channels.astro';
+import SoftwareApproaches from '../components/software-approaches.astro';
 
 const deliverables = [
   { title: 'Проект', text: 'Сбор требований, подбор оборудования, смета и чертёж щита под задачи вашего объекта.' },
@@ -235,6 +236,8 @@ const objectGroups = [
       </div>
     </div>
   </section>
+
+  <SoftwareApproaches audience="service" />
 
   <section class="section contact-section" id="first-object" aria-labelledby="contacts">
     <div class="shell contact-grid">
