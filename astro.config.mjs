@@ -46,6 +46,8 @@ export default defineConfig({
             { label: 'Кондиционирование', link: '/ru/docs/automations/air-conditioning/' },
             { label: 'Защита от протечек воды', link: '/ru/docs/automations/leaks/' },
             { label: 'Защита от утечки газа', link: '/ru/docs/automations/gas-leaks/' },
+            { label: 'Позиционный привод', link: '/ru/docs/automations/positional-drive/' },
+            { label: 'Учёт ресурсов', link: '/ru/docs/automations/resource-metering/' },
           ],
         },
         {

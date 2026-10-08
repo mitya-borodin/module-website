@@ -17,6 +17,8 @@
 | Кондиционирование | [air-conditioning-functional-description.md](air-conditioning-functional-description.md) | Поддержание температуры через термостаты, выбор охлаждения/обогрева по погоде, ручное управление и границы оборудования |
 | Защита от протечек воды | [leaks-functional-description.md](leaks-functional-description.md) | Результат, источники поведения, границы восстановления, иллюстрации и проверки |
 | Защита от утечки газа | [gas-leaks-functional-description.md](gas-leaks-functional-description.md) | Обнаружение, команда перекрытия, границы газовой безопасности, иллюстрации и проверки |
+| Позиционный привод | [positional-drive-functional-description.md](positional-drive-functional-description.md) | Краны, полив, ворота, бассейн, окна, рольставни, жалюзи и сетки; способы движения и границы ручного управления |
+| Учёт ресурсов | [resource-metering-functional-description.md](resource-metering-functional-description.md) | Холодная/горячая вода, электричество, газ и тепло; накопление, расчётная скорость и пределы импульсного учёта |
 | Изображения всех автоматизаций | [Общий визуальный стандарт](../../module-market-intelligence/internet-promotion/spec/automation-illustration-style.md) | Принятый стиль, эталоны, палитра сайта, общий промпт и визуальная приёмка |
 | История инструкций освещения | [`lighting-documentation-pilot.md`](lighting-documentation-pilot.md) и [архив](archive/2026-10-08-documentation/README.md) | Только для прежнего evidence и будущего восстановления уровня настройки |
 | Инструкции со скриншотами | [`illustrated-documentation-workflow.md`](illustrated-documentation-workflow.md) | Раскадровка, безопасная съёмка двух размеров, вставка и проверка; образец настройки сохранён в архиве |

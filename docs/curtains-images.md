@@ -1,6 +1,6 @@
 # Иллюстрации штор
 
-Статус: восемь статических изображений, созданных 8 октября 2026 года встроенным image_gen.
+Статус: десять статических изображений, созданных 8 октября 2026 года встроенным image_gen.
 Страница — [Шторы](../src/content/docs/ru/docs/automations/curtains/index.mdx).
 Владелец стиля — [общий стандарт](../../module-market-intelligence/internet-promotion/spec/automation-illustration-style.md).
 Сцены кино показывают желаемое совместное поведение с явной границей текущей готовности в тексте.
@@ -12,6 +12,8 @@
 | --- | --- |
 | Шторы | [curtains-concept-v1.png](../src/assets/docs/curtains/curtains-concept-v1.png) |
 | Шторы закрываются от яркого солнца | [sunlight-v1.png](../src/assets/docs/curtains/sections/sunlight-v1.png) |
+| Шторы впускают солнце, даже когда дома никого нет | [insolation-v1.png](../src/assets/docs/curtains/sections/insolation-v1.png) |
+| Шторы не закрывают вид на закат | [sunset-view-v1.png](../src/assets/docs/curtains/sections/sunset-view-v1.png) |
 | Кино начинается днём | [cinema-day-v1.png](../src/assets/docs/curtains/sections/cinema-day-v1.png) |
 | Кино ночью и после просмотра | [cinema-night-v1.png](../src/assets/docs/curtains/sections/cinema-night-v1.png) |
 | Вечером дом закрывается от посторонних взглядов | [evening-v1.png](../src/assets/docs/curtains/sections/evening-v1.png) |
@@ -115,4 +117,36 @@ Use case: precise-object-edit. Preserve this two-panel axonometric miniature roo
 суток, не показывают монтажную схему затемнения. Сцена проветривания иллюстрирует зазор, а возможность
 его безопасно оставить зависит от геометрии конкретного окна и привода.
 Проверки размещения принадлежат [владельцу страницы](curtains-functional-description.md).
+
+
+## Вид на закат
+
+Добавлено 8 октября 2026 года встроенным image_gen (навык imagegen), без CLI/API fallback.
+Входной стиль-референс: [обложка штор](../src/assets/docs/curtains/curtains-concept-v1.png).
+Финальный файл: [sunset-view-v1.png](../src/assets/docs/curtains/sections/sunset-view-v1.png).
+Исходник генерации: `/Users/borodin/.codex/generated_images/01a11a0c-97d8-7373-9c79-afd65841a762/exec-acaa6acd-bf33-495c-b5a9-652bcebd811c.png`.
+
+```text
+Use case: stylized-concept. Asset type: new illustration for Module curtain automation documentation. Use the attached approved curtain cover ONLY as style reference: same refined matte architectural cutaway, warm limestone/plaster, natural oak, quiet textiles, realistic ordinary adults, soft contact shadows, graphite window frames and muted terracotta accents. Wide landscape approximately 2:1, opaque warm off-white backdrop, generous margins, all key objects in central 85 percent, axonometric cutaway slightly from above. Scenario: a peaceful living room at sunset. One large closed-glass panoramic window with a clear uninterrupted view of the orange sun low above distant hills and a soft city silhouette. Motorized full-length curtains are visibly gathered entirely at BOTH outer sides of the window; the central glass stays completely unobstructed. A small neutral round illuminance sensor on an interior side-wall is visibly caught in a patch of low natural golden sunlight. Despite that bright sunlight, curtains remain OPEN so residents can enjoy the sunset. Two adults, anatomically natural and comfortably seated on a sofa angled toward the window, view the sunset together, eyes/gaze directed toward the landscape. Show them mostly from back/three-quarter back so the viewer also sees the sunset. Both feet with plausible orientation and contact. No TV playing, no phone, no wall switches being pressed, no heating/cooling device, no unrelated actions. Window remains closed, curtains are not blown by wind. No glow emitted from sensor, no surveillance rays, no lock icon or arrows. Keep sunset colors luminous but restrained; avoid saturated neon red, sci-fi, glossy toy aesthetics. No text, labels, numerals, UI, logos, diagram, watermark. This shows the retained open state, not curtains automatically opening; causal explanation belongs in the page caption.
+```
+
+Изображение просмотрено: открытые шторы сохраняют вид, солнце освещает нейтральный датчик,
+люди смотрят в окно, нет движения ткани или действия, обещающего автоматическое открытие.
+Закрытое стекло и положение штор читаются отдельно. Статическая сцена не закрывает задачу анимации.
+
+
+## Инсоляция без присутствия
+
+Добавлено 8 октября 2026 года встроенным image_gen (навык imagegen), без CLI/API fallback.
+Стиль-референс: [обложка штор](../src/assets/docs/curtains/curtains-concept-v1.png).
+Финальный файл: [insolation-v1.png](../src/assets/docs/curtains/sections/insolation-v1.png).
+Исходник генерации: `/Users/borodin/.codex/generated_images/01a11a0c-97d8-7373-9c79-afd65841a762/exec-8eeef8ff-3f73-47bd-a6a5-3b0980efd633.png`.
+
+```text
+Use case: stylized-concept. Asset type: new Module curtain automation documentation illustration. Use the approved curtain cover as visual style reference only. Create two matched side-by-side axonometric cutaway views of the SAME modest contemporary living room on a warm opaque off-white background. Same room, camera, scale, wood furniture, sofa, plants, closed glass panoramic window, and daytime light conditions in both views. No people in either view: the home is temporarily empty. Left: full-length matte taupe motorized curtains completely cover the window, interior has subdued daytime indirect light. Right: the exact same curtains are fully gathered at both outer sides, central glass unobstructed, revealing a bright daytime garden and blue sky. Real direct sunlight through the closed window forms a clear natural patch across the floor and part of the sofa; room is welcoming, not overexposed. This illustrates scheduled curtain opening to admit sunlight while residents are away, followed by keeping curtains open for a selected duration. No implied person-presence trigger. No wall lights changing, no window opening, no other automation, no clocks or timer UI, no arrows or symbols. Refined architectural editorial illustration matching Module: matte limestone/plaster, natural oak, quiet linen, restrained graphite details and muted terracotta accents, plausible volume/contact shadows, soft natural textures, not photorealistic luxury real-estate photo or glossy plastic toy. Wide landscape roughly 2:1, generous margins, key objects within central 85 percent, readable at small mobile size. No text, labels, numerals, logos, watermark, interface, diagrams, sensor beams. Do not depict outdoor weather changing between the views. Caption on webpage will describe the timing and limits.
+```
+
+Просмотрены оба состояния: одна пустая комната, одинаковые предметы и закрытое стекло;
+отличаются положение штор и допуск солнечного света. Нет человека как триггера и вымышленного GUI.
+Изображение не доказывает длительность удержания или фактическую инсоляцию конкретного объекта.
 
