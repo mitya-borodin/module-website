@@ -13,6 +13,8 @@
 | Публичная документация | [`../src/content/docs/ru/docs/index.mdx`](../src/content/docs/ru/docs/index.mdx) | При изменении `/ru/docs/` и его содержательных обещаний |
 | Правило создания пользовательской документации | [Контентная стратегия](../../module-market-intelligence/internet-promotion/spec/content-strategy.md#постоянное-правило-пользовательской-документации) | Перед созданием, изменением или ревью инструкций: ценность и поведение → выбор результата → настройка |
 | Функциональное описание освещения | [`lighting-functional-description.md`](lighting-functional-description.md) | Текущая редакция, источники поведения, удаление прежних инструкций и проверки |
+| Шторы | [curtains-functional-description.md](curtains-functional-description.md) | Солнцезащита, приватность, кино днём и ночью, ручное управление, окно и границы готовности |
+| Кондиционирование | [air-conditioning-functional-description.md](air-conditioning-functional-description.md) | Поддержание температуры через термостаты, выбор охлаждения/обогрева по погоде, ручное управление и границы оборудования |
 | Защита от протечек воды | [leaks-functional-description.md](leaks-functional-description.md) | Результат, источники поведения, границы восстановления, иллюстрации и проверки |
 | Защита от утечки газа | [gas-leaks-functional-description.md](gas-leaks-functional-description.md) | Обнаружение, команда перекрытия, границы газовой безопасности, иллюстрации и проверки |
 | Изображения всех автоматизаций | [Общий визуальный стандарт](../../module-market-intelligence/internet-promotion/spec/automation-illustration-style.md) | Принятый стиль, эталоны, палитра сайта, общий промпт и визуальная приёмка |

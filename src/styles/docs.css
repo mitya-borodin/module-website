@@ -115,6 +115,10 @@ nav.sidebar {
 }
 
 @media (max-width: 50rem) {
+  h1#_top:not([data-page-title]) {
+    font-size: min(2.125rem, 9vw);
+  }
+
   .hero h1 {
     overflow-wrap: anywhere;
     font-size: clamp(2.75rem, 12vw, 4.8rem);

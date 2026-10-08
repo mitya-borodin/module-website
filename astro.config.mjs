@@ -42,6 +42,8 @@ export default defineConfig({
           items: [
             { label: 'Начало', link: '/ru/docs/' },
             { label: 'Освещение', link: '/ru/docs/automations/lighting/' },
+            { label: 'Шторы', link: '/ru/docs/automations/curtains/' },
+            { label: 'Кондиционирование', link: '/ru/docs/automations/air-conditioning/' },
             { label: 'Защита от протечек воды', link: '/ru/docs/automations/leaks/' },
             { label: 'Защита от утечки газа', link: '/ru/docs/automations/gas-leaks/' },
           ],
