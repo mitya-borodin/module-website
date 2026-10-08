@@ -15,6 +15,7 @@
 | Функциональное описание освещения | [`lighting-functional-description.md`](lighting-functional-description.md) | Текущая редакция, источники поведения, удаление прежних инструкций и проверки |
 | Шторы | [curtains-functional-description.md](curtains-functional-description.md) | Солнцезащита, приватность, кино днём и ночью, ручное управление, окно и границы готовности |
 | Кондиционирование | [air-conditioning-functional-description.md](air-conditioning-functional-description.md) | Поддержание температуры через термостаты, выбор охлаждения/обогрева по погоде, ручное управление и границы оборудования |
+| Отопление | [heating-functional-description.md](heating-functional-description.md) | Совместная работа термостатов, приводов, насосов, смесителей и источников; водяные/электрические приборы, бассейн, гараж, снеготаяние |
 | Защита от протечек воды | [leaks-functional-description.md](leaks-functional-description.md) | Результат, источники поведения, границы восстановления, иллюстрации и проверки |
 | Защита от утечки газа | [gas-leaks-functional-description.md](gas-leaks-functional-description.md) | Обнаружение, команда перекрытия, границы газовой безопасности, иллюстрации и проверки |
 | Позиционный привод | [positional-drive-functional-description.md](positional-drive-functional-description.md) | Краны, полив, ворота, бассейн, окна, рольставни, жалюзи и сетки; способы движения и границы ручного управления |
