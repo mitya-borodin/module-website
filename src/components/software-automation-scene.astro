@@ -1,0 +1,95 @@
+---
+import AutomationScene from './automation-scene.astro';
+import softwareHouse from '../assets/site/software-house-concept-v1.png';
+
+const scenarios = [
+  {
+    title: 'Свет там, где он нужен',
+    detail: 'По движению и вашим условиям',
+    href: '/ru/docs/automations/lighting/',
+    icon: 'lighting',
+    position: { left: 0, top: 72 },
+  },
+  {
+    title: 'Шторы учитывают солнце',
+    detail: 'Свет и солнечные фазы',
+    href: '/ru/docs/automations/curtains/',
+    icon: 'curtains',
+    position: { left: 0, top: 0 },
+  },
+  {
+    title: 'Температура поддерживается',
+    detail: 'Отопление и охлаждение',
+    href: '/ru/docs/automations/heating/',
+    icon: 'climate',
+    position: { right: 0, top: 82 },
+  },
+  {
+    title: 'Защита от протечек',
+    detail: 'Команда перекрыть воду по сигналу',
+    href: '/ru/docs/automations/leaks/',
+    icon: 'water',
+    position: { right: 0, top: 2 },
+  },
+] as const;
+---
+
+<AutomationScene image={softwareHouse}
+  alt="Планировка дома с автоматизациями: свет в гостиной и прихожей, шторы у окон, поддержание температуры в спальне и защита от протечек в технической зоне."
+  caption="Датчики передают показания. Module управляет системами дома."
+  legendLabel="Автоматизации на планировке" operationHref="#operation" scenarios={scenarios}>
+  <svg slot="effects" class="spatial-effects" viewBox="0 0 1536 1024" fill="none" aria-hidden="true">
+    <defs>
+      <linearGradient id="software-light-field" x1="216" y1="574" x2="216" y2="685" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#ffe8b5" stop-opacity=".3" />
+        <stop offset="1" stop-color="#ffe8b5" stop-opacity="0" />
+      </linearGradient>
+      <linearGradient id="software-hall-field" x1="920" y1="379" x2="920" y2="510" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#ffe8b5" stop-opacity=".3" />
+        <stop offset="1" stop-color="#ffe8b5" stop-opacity="0" />
+      </linearGradient>
+    </defs>
+    <g>
+      <path d="M198 574 154 660Q224 691 300 659L235 574Z" fill="url(#software-light-field)" />
+      <ellipse class="activity-wave" cx="223" cy="655" rx="76" ry="21" transform="rotate(14 223 655)" />
+      <path d="M912 381 867 482Q912 528 967 489L930 383Z" fill="url(#software-hall-field)" />
+      <ellipse class="activity-wave" cx="920" cy="480" rx="51" ry="21" transform="rotate(13 920 480)" />
+    </g>
+    <g>
+      <path class="spatial-outline" d="M290 122 315 101v175l-24 5Z" />
+      <path class="spatial-outline" d="m168 326 39-43v151l-39 40Z" />
+      <path class="curtain-flow" d="m302 180-58 76m3-19-3 19 19-8" />
+      <path class="curtain-flow curtain-flow--second" d="m190 365-46 51m1-19-1 19 18-6" />
+    </g>
+    <g style="--scene-glow: #d4eee6;">
+      <path class="spatial-outline" d="m1269 383 91 16v26l-91-17Z" />
+      <path class="heat-flow" d="M1291 427q-24 23-12 46m40-39q-24 23-12 46m40-39q-24 23-12 46" />
+    </g>
+    <g>
+      <path class="spatial-outline" d="m1381 594 57 45v50l-57-57Z" />
+      <path class="heat-flow" d="M1396 625c-14-17 12-26 0-44m25 61c-14-17 12-26 0-44" />
+    </g>
+    <g style="--scene-glow: #d4eee6;">
+      <path class="spatial-outline" d="M1230 242v76h99v-73" />
+      <path class="sensor-wave" d="M1258 339q29-12 58 7m-70 2q35-13 80 10" />
+    </g>
+    <g class="spatial-leaders">
+      <path d="M216 574v124l-32 40" />
+      <path d="M302 181V112h-69" />
+      <path d="M1410 647v142h-63" />
+      <path d="M1283 294V139h57" />
+    </g>
+    <g class="spatial-nodes">
+      <circle cx="216" cy="574" r="13" />
+      <circle cx="302" cy="181" r="13" />
+      <circle cx="1410" cy="647" r="13" />
+      <circle cx="1283" cy="294" r="13" />
+    </g>
+    <g class="spatial-node-cores">
+      <circle cx="216" cy="574" r="4" />
+      <circle cx="302" cy="181" r="4" />
+      <circle cx="1410" cy="647" r="4" />
+      <circle cx="1283" cy="294" r="4" />
+    </g>
+  </svg>
+</AutomationScene>

@@ -1,0 +1,38 @@
+---
+import { automationGroups } from '../data/automation-catalog';
+
+interface Props {
+  group: string;
+}
+
+const { group } = Astro.props;
+const automations = automationGroups.find((item) => item.id === group)?.automations ?? [];
+---
+
+<ul class="automation-docs-links" aria-label="Возможности и сценарии в документации">
+  {automations.map((link) => (
+    <li>
+      <a href={`/ru/docs/automations/${link.slug}/`}>
+        {link.title}<span aria-hidden="true"> →</span>
+      </a>
+    </li>
+  ))}
+</ul>
+
+<style>
+  .automation-docs-links {
+    display: grid;
+    margin: 16px 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .automation-docs-links a {
+    display: inline-block;
+    min-height: 44px;
+    padding-block: 10px;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.5;
+  }
+</style>

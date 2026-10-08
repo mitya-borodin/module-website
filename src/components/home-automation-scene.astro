@@ -1,0 +1,77 @@
+---
+import AutomationScene from './automation-scene.astro';
+import homeConcept from '../assets/site/automation-home-concept-v1.png';
+
+const scenarios = [
+  {
+    title: 'Свет встречает вас',
+    detail: 'Реагирует на движение',
+    href: '/ru/docs/automations/lighting/',
+    icon: 'lighting',
+    position: { left: 1, top: 0 },
+  },
+  {
+    title: 'Шторы учитывают солнце',
+    detail: 'Свет и солнечные фазы',
+    href: '/ru/docs/automations/curtains/',
+    icon: 'curtains',
+    position: { right: 1, top: 8 },
+  },
+  {
+    title: 'Температура поддерживается',
+    detail: 'Тепло по запросу',
+    href: '/ru/docs/automations/heating/',
+    icon: 'climate',
+    position: { right: 15, top: 76 },
+  },
+] as const;
+---
+
+<AutomationScene image={homeConcept}
+  alt="Автоматизации дома: свет включается при движении в прихожей, радиатор поддерживает температуру, штора защищает от солнца."
+  caption="Дом реагирует на движение, температуру и солнце."
+  legendLabel="Автоматизации на иллюстрации" operationHref="/software/#operation" scenarios={scenarios}>
+  <svg slot="effects" class="spatial-effects" viewBox="0 0 1536 1024" fill="none" aria-hidden="true">
+    <defs>
+      <linearGradient id="home-light-field" x1="278" y1="160" x2="278" y2="660" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#ffe8b5" stop-opacity=".35" />
+        <stop offset="1" stop-color="#ffe8b5" stop-opacity="0" />
+      </linearGradient>
+      <linearGradient id="home-heat-field" x1="1210" y1="670" x2="1210" y2="450" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#ffd9a4" stop-opacity=".22" />
+        <stop offset="1" stop-color="#ffd9a4" stop-opacity="0" />
+      </linearGradient>
+    </defs>
+    <g class="light-field">
+      <path d="M253 162 117 613Q270 708 444 638L302 165Z" fill="url(#home-light-field)" />
+      <ellipse class="activity-wave" cx="295" cy="620" rx="112" ry="34" transform="rotate(13 295 620)" />
+      <ellipse class="activity-wave activity-wave--outer" cx="295" cy="620" rx="145" ry="44" transform="rotate(13 295 620)" />
+      <path class="sensor-wave" d="M146 350q35 21 4 47m7-60q62 34 7 78" />
+    </g>
+    <g class="curtain-field">
+      <path class="spatial-outline" d="m977 200 246 42v286l-246-47Z" />
+      <path class="curtain-flow" d="m1037 268 139 24m-17-14 17 14-19 8" />
+      <path class="curtain-flow curtain-flow--second" d="m1037 323 139 24m-17-14 17 14-19 8" />
+    </g>
+    <g class="heat-field">
+      <path d="m1139 443 217 47v198l-217-57Z" fill="url(#home-heat-field)" />
+      <path class="spatial-outline" d="m1139 535 217 46v106l-217-55Z" />
+      <path class="heat-flow" d="M1181 574c-28-32 22-40 0-75m62 90c-28-32 22-40 0-75m62 90c-28-32 22-40 0-75" />
+    </g>
+    <g class="spatial-leaders">
+      <path d="M278 164V116h-43" />
+      <path d="M1180 225v-76h73" />
+      <path d="m1265 650-76 92h-90" />
+    </g>
+    <g class="spatial-nodes">
+      <circle cx="278" cy="164" r="13" />
+      <circle cx="1180" cy="225" r="13" />
+      <circle cx="1265" cy="650" r="13" />
+    </g>
+    <g class="spatial-node-cores">
+      <circle cx="278" cy="164" r="4" />
+      <circle cx="1180" cy="225" r="4" />
+      <circle cx="1265" cy="650" r="4" />
+    </g>
+  </svg>
+</AutomationScene>
