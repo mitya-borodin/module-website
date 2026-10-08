@@ -42,7 +42,8 @@ export default defineConfig({
           items: [
             { label: 'Начало', link: '/ru/docs/' },
             { label: 'Освещение', link: '/ru/docs/automations/lighting/' },
-            { label: 'Защита от протечек', link: '/ru/docs/automations/leaks/' },
+            { label: 'Защита от протечек воды', link: '/ru/docs/automations/leaks/' },
+            { label: 'Защита от утечки газа', link: '/ru/docs/automations/gas-leaks/' },
           ],
         },
         {
