@@ -1,0 +1,25 @@
+---
+import MobileMenuToggle from '@astrojs/starlight/components/MobileMenuToggle.astro';
+---
+
+<MobileMenuToggle />
+
+<script>
+  /**
+   * Starlight 0.41.7 меняет состояние контейнера, но оставляет aria-expanded кнопки равным false.
+   * Согласуем объявляемое состояние с открытием, Escape и изменением ширины штатного меню.
+   */
+  const menu = document.querySelector('starlight-menu-button');
+  const button = menu?.querySelector('button');
+
+  if (menu && button) {
+    const syncExpanded = () => {
+      button.setAttribute('aria-expanded', String(menu.getAttribute('aria-expanded') === 'true'));
+    };
+
+    syncExpanded();
+
+    const observer = new MutationObserver(syncExpanded);
+    observer.observe(menu, { attributes: true, attributeFilter: ['aria-expanded'] });
+  }
+</script>

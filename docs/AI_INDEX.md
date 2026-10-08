@@ -11,6 +11,12 @@
 | Общая оболочка коммерческих страниц | [`../src/layouts/site-layout.astro`](../src/layouts/site-layout.astro) | Для metadata, навигации, footer и мобильного меню |
 | Глобальные стили и design tokens | [`../src/styles/global.css`](../src/styles/global.css) | При изменении визуального языка, доступности или адаптивности главной |
 | Публичная документация | [`../src/content/docs/ru/docs/index.mdx`](../src/content/docs/ru/docs/index.mdx) | При изменении `/ru/docs/` и его содержательных обещаний |
+| Правило создания пользовательской документации | [Контентная стратегия](../../module-market-intelligence/internet-promotion/spec/content-strategy.md#постоянное-правило-пользовательской-документации) | Перед созданием, изменением или ревью инструкций: ценность и поведение → выбор результата → настройка |
+| Функциональное описание освещения | [`lighting-functional-description.md`](lighting-functional-description.md) | Текущая редакция, источники поведения, удаление прежних инструкций и проверки |
+| Защита от протечек | [leaks-functional-description.md](leaks-functional-description.md) | Результат, источники поведения, границы восстановления, иллюстрации и проверки |
+| Изображения всех автоматизаций | [Общий визуальный стандарт](../../module-market-intelligence/internet-promotion/spec/automation-illustration-style.md) | Принятый стиль, эталоны, палитра сайта, общий промпт и визуальная приёмка |
+| История инструкций освещения | [`lighting-documentation-pilot.md`](lighting-documentation-pilot.md) и [архив](archive/2026-10-08-documentation/README.md) | Только для прежнего evidence и будущего восстановления уровня настройки |
+| Инструкции со скриншотами | [`illustrated-documentation-workflow.md`](illustrated-documentation-workflow.md) | Раскадровка, безопасная съёмка двух размеров, вставка и проверка; образец настройки сохранён в архиве |
 | Стили документации | [`../src/styles/docs.css`](../src/styles/docs.css) | При изменении внешнего вида Starlight |
 | Astro, Starlight, маршруты и release metadata | [`../astro.config.mjs`](../astro.config.mjs) | При изменении сборки, локалей, sidebar, favicon или indexing boundary |
 | Команды, зависимости и toolchain | [`../package.json`](../package.json) | Перед запуском checks или изменением dependencies/scripts |

@@ -69,6 +69,14 @@ header.header {
   letter-spacing: -0.025em;
 }
 
+/* Заголовки справочника не наследуют плакатный размер вводного экрана. */
+h1#_top:not([data-page-title]) {
+  font-size: clamp(2.125rem, 4vw, 3.5rem);
+  line-height: 1.1;
+  letter-spacing: -0.035em;
+  overflow-wrap: anywhere;
+}
+
 .hero .actions a,
 .sl-link-button {
   border: 2px solid currentColor;

@@ -1,0 +1,54 @@
+---
+title: Документация Module
+description: Как настроить автоматизации Module, выбрать сценарий и проверить работу оборудования.
+template: splash
+hero:
+  tagline: Настройте свет, который включается по движению и гаснет после ухода. Сначала найдём и подпишем устройства, затем свяжем их в автоматизацию и проверим результат.
+  actions:
+    - text: Настроить свет по движению
+      link: /ru/docs/automations/lighting/prepare/
+      icon: right-arrow
+    - text: Выбрать сценарий
+      link: /ru/docs/automations/lighting/recipes/
+      icon: right-arrow
+      variant: secondary
+head:
+  - tag: meta
+    attrs:
+      name: robots
+      content: noindex,nofollow
+---
+
+import { LinkCard, CardGrid } from '@astrojs/starlight/components';
+
+## Получить первый результат
+
+<CardGrid>
+  <LinkCard title="Включать свет по движению" description="Начните с понятных подписей устройства света и показания движения. Затем выберите их в автоматизации, задайте время выключения и проверьте свет." href="/ru/docs/automations/lighting/prepare/" />
+  <LinkCard title="Выбрать другой сценарий" description="Свет только в темноте, включение кнопкой, задержка с учётом шума и другие задачи. В каждом примере — нужные устройства, настройки и проверка." href="/ru/docs/automations/lighting/recipes/" />
+</CardGrid>
+
+## Настроить несколько зон
+
+<LinkCard title="Задать свои правила для каждой зоны" description="Настройте свет в проходе, на рабочем месте и на территории по-разному. Или используйте один датчик для двух групп света с разными задержками выключения." href="/ru/docs/automations/lighting/recipes/several-zones/" />
+
+## Если свет работает не так, как нужно
+
+[Узнать, что проверить](/ru/docs/automations/lighting/diagnostics/), если свет не включается, гаснет раньше времени или остаётся включённым.
+
+## Разобраться подробнее
+
+Эти материалы помогут, когда понадобится уточнить отдельную настройку или изменить выбранный сценарий.
+
+<details>
+<summary>Возможности, устройства и настройки освещения</summary>
+
+<CardGrid>
+  <LinkCard title="Возможности освещения" description="Что можно автоматизировать и как сохранить привычное управление кнопками." href="/ru/docs/automations/lighting/" />
+  <LinkCard title="Светильники, кнопки и датчики" description="Какие устройства выбрать для своей задачи и что учесть при подключении к автоматизации." href="/ru/docs/automations/lighting/devices/" />
+  <LinkCard title="Справочник настроек" description="Что меняет каждая настройка, какие значения можно задать и как условия работают вместе." href="/ru/docs/automations/lighting/settings/" />
+</CardGrid>
+
+</details>
+
+Остальные автоматизации пока описаны на [странице ПО Module](/software/#automations). Их подробные инструкции будут добавляться отдельно.
