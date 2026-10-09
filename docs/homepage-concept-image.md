@@ -1,5 +1,11 @@
 # Обзорная иллюстрация главной Module
 
+Статус после итерации **9 октября 2026 года**: сцена используется вторым кадром
+[карусели услуги](service-overview-concept-image.md). Первый кадр — щит крупным планом.
+Комната сохраняет пространственный слой, подписи выведены компактно под изображением;
+ниже описаны происхождение исходника и решения 8 октября.
+
+
 Дата: 8 октября 2026 года. Создана встроенным ImageGen для реализации
 [визуального ревью](../../module-market-intelligence/internet-promotion/spec/homepage-software-visual-review-2026-10.md).
 Стиль — [общий стандарт иллюстраций](../../module-market-intelligence/internet-promotion/spec/automation-illustration-style.md).

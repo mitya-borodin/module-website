@@ -2,9 +2,16 @@
 import AutomationScene from './automation-scene.astro';
 import homeConcept from '../assets/site/automation-home-concept-v1.png';
 
+type Props = {
+  compact?: boolean;
+};
+
+const { compact = false } = Astro.props;
+
 const scenarios = [
   {
     title: 'Свет встречает вас',
+    shortTitle: 'Свет',
     detail: 'Реагирует на движение',
     href: '/ru/docs/automations/lighting/',
     icon: 'lighting',
@@ -12,6 +19,7 @@ const scenarios = [
   },
   {
     title: 'Шторы учитывают солнце',
+    shortTitle: 'Шторы',
     detail: 'Свет и солнечные фазы',
     href: '/ru/docs/automations/curtains/',
     icon: 'curtains',
@@ -19,6 +27,7 @@ const scenarios = [
   },
   {
     title: 'Температура поддерживается',
+    shortTitle: 'Тепло',
     detail: 'Тепло по запросу',
     href: '/ru/docs/automations/heating/',
     icon: 'climate',
@@ -27,10 +36,11 @@ const scenarios = [
 ] as const;
 ---
 
-<AutomationScene image={homeConcept}
+<AutomationScene image={homeConcept} compact={compact} eager={!compact}
+  sizes={compact ? '(max-width: 540px) 90vw, 480px' : undefined}
   alt="Автоматизации дома: свет включается при движении в прихожей, радиатор поддерживает температуру, штора защищает от солнца."
   caption="Дом реагирует на движение, температуру и солнце."
-  legendLabel="Автоматизации на иллюстрации" operationHref="/software/#operation" scenarios={scenarios}>
+  legendLabel="Автоматизации на иллюстрации" operationHref="/software/#operation" scenarios={compact ? [] : scenarios}>
   <svg slot="effects" class="spatial-effects" viewBox="0 0 1536 1024" fill="none" aria-hidden="true">
     <defs>
       <linearGradient id="home-light-field" x1="278" y1="160" x2="278" y2="660" gradientUnits="userSpaceOnUse">

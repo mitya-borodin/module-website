@@ -7,8 +7,8 @@
 | --- | --- | --- |
 | Назначение и текущая стадия сайта | [`../README.md`](../README.md) | Для общего обзора, границ прототипа и штатных команд |
 | Главная страница и публичные формулировки | [`../src/pages/index.astro`](../src/pages/index.astro) | При изменении секций, навигации, CTA или продуктового текста |
-| Возможности ПО Module | [`../src/pages/software.astro`](../src/pages/software.astro) | При изменении `/software/`, каталога макросов и границ совместимости |
-| Реализация визуальной подачи главной и ПО | [commercial-pages-visual-refresh.md](commercial-pages-visual-refresh.md) | Порядок результата, общий каталог, изображения, проверки и оставшиеся реальные кадры |
+| Возможности ПО Ritmod | [`../src/pages/software.astro`](../src/pages/software.astro) | При изменении `/software/`, каталога макросов и границ совместимости |
+| Реализация визуальной подачи главной и ПО | [commercial-pages-visual-refresh.md](commercial-pages-visual-refresh.md) | Различие услуги и ПО, обложки, каталог, пять GUI-аспектов и проверки |
 | Общая оболочка коммерческих страниц | [`../src/layouts/site-layout.astro`](../src/layouts/site-layout.astro) | Для metadata, навигации, footer и мобильного меню |
 | Глобальные стили и design tokens | [`../src/styles/global.css`](../src/styles/global.css) | При изменении визуального языка, доступности или адаптивности главной |
 | Публичная документация | [`../src/content/docs/ru/docs/index.mdx`](../src/content/docs/ru/docs/index.mdx) | При изменении `/ru/docs/` и его содержательных обещаний |
@@ -28,10 +28,14 @@
 | Инструкции со скриншотами | [`illustrated-documentation-workflow.md`](illustrated-documentation-workflow.md) | Раскадровка, безопасная съёмка двух размеров, вставка и проверка; образец настройки сохранён в архиве |
 | Стили документации | [`../src/styles/docs.css`](../src/styles/docs.css) | При изменении внешнего вида Starlight |
 | Astro, Starlight, маршруты и release metadata | [`../astro.config.mjs`](../astro.config.mjs) | При изменении сборки, локалей, sidebar, favicon или indexing boundary |
+| Docker, CI и подключение ritmod.ru | [deployment.md](deployment.md) | Для image, Compose, ingress contract, secrets и порядка первого запуска |
 | Команды, зависимости и toolchain | [`../package.json`](../package.json) | Перед запуском checks или изменением dependencies/scripts |
 | Code style, структура Astro/TypeScript и CSS | [`code-style.md`](code-style.md) | При создании или изменении code, styles, components, helpers и public signatures |
 | Тесты, проверки и visual evidence | [`testing.md`](testing.md) | При планировании проверки изменения и перед завершением implementation task |
 | Происхождение и обновление общих правил | [`rules-sync.md`](rules-sync.md) | Только при аудите или синхронизации правил из других `module-*` |
+
+Публичное имя — **Ritmod**; техническое имя репозитория — `module-website`.
+[Применение бренда и границы исторических материалов](commercial-pages-visual-refresh.md#название-бренда-ritmod).
 
 ## Правила Маршрутизации
 

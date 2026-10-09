@@ -252,3 +252,18 @@
     transition: none;
   }
 }
+
+/* В карусели рамка и ссылки принадлежат контейнеру кадра. */
+.spatial-scene.spatial-scene--compact {
+  grid-area: auto;
+  width: 100%;
+  margin: 0;
+}
+
+.spatial-scene--compact .spatial-frame > img {
+  border-radius: 0;
+}
+
+.spatial-scene--compact .spatial-leaders {
+  display: none;
+}

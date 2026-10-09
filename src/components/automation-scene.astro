@@ -12,6 +12,7 @@ const icons = {
 
 type SceneScenario = {
   title: string;
+  shortTitle?: string;
   detail: string;
   href: string;
   icon: keyof typeof icons;
@@ -22,6 +23,9 @@ type SceneScenario = {
 type Props = {
   image: ImageMetadata;
   alt: string;
+  sizes?: string;
+  compact?: boolean;
+  eager?: boolean;
   caption: string;
   legendLabel: string;
   operationHref: string;
@@ -29,30 +33,31 @@ type Props = {
   scenarios: readonly SceneScenario[];
 };
 
-const { image, alt, caption, legendLabel, operationHref, scenarios } = Astro.props;
+const { image, alt, sizes = '(max-width: 850px) 94vw, 58vw', compact = false, eager = true,
+  caption, legendLabel, operationHref, scenarios } = Astro.props;
 ---
 
-<figure class="overview-visual spatial-scene">
+<figure class:list={['overview-visual spatial-scene', { 'spatial-scene--compact': compact }]}>
   <div class="spatial-frame">
     <Image src={image} alt={alt} widths={[480, 768, 1024, 1536]}
-      sizes="(max-width: 850px) 94vw, 58vw" format="webp" loading="eager" fetchpriority="high" />
+      sizes={sizes} format="webp" loading={eager ? 'eager' : 'lazy'} fetchpriority={eager ? 'high' : 'auto'} />
     <slot name="effects" />
-    <nav class="spatial-callouts" aria-label={legendLabel}>
+    {scenarios.length > 0 && <nav class="spatial-callouts" aria-label={legendLabel}>
       {scenarios.map((scenario) => (
-        <a class="spatial-callout" href={scenario.href}
+        <a class="spatial-callout" href={scenario.href} aria-label={compact ? scenario.title : undefined}
           style={`--callout-left: ${scenario.position.left === undefined ? 'auto' : `${scenario.position.left}%`}; --callout-right: ${scenario.position.right === undefined ? 'auto' : `${scenario.position.right}%`}; --callout-top: ${scenario.position.top}%;`}>
           <svg class="callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
             stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d={icons[scenario.icon]} />
           </svg>
-          <span><strong>{scenario.title}</strong><small>{scenario.detail}</small></span>
-          <span class="callout-arrow" aria-hidden="true">↗</span>
+          <span><strong>{compact ? scenario.shortTitle ?? scenario.title : scenario.title}</strong>{!compact && <small>{scenario.detail}</small>}</span>
+          {!compact && <span class="callout-arrow" aria-hidden="true">↗</span>}
         </a>
       ))}
-    </nav>
+    </nav>}
   </div>
-  <figcaption>
-    <a class="spatial-signature" href={operationHref}><span aria-hidden="true">M</span> Автоматизации Module <span aria-hidden="true">↗</span></a>
+  {!compact && <figcaption>
+    <a class="spatial-signature" href={operationHref}><span aria-hidden="true">R</span> Автоматизации Ritmod <span aria-hidden="true">↗</span></a>
     <span class="spatial-caption">{caption}</span>
-  </figcaption>
+  </figcaption>}
 </figure>

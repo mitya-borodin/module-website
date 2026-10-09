@@ -1,42 +1,52 @@
-# Иллюстрация управления системой из браузера
+# Иллюстрации и места для будущих экранов Module
 
-Дата: 8 октября 2026 года. Решение автора: пока использовать иллюстрацию, после готовности
-дашборда показать реальный GUI. Изображение создано встроенным ImageGen в принятом стиле Module.
-
-Исходник: [browser-control-concept-v1.png](../src/assets/site/browser-control-concept-v1.png).
-Референс: [обзорная сцена главной](../src/assets/site/automation-home-concept-v1.png).
-Размещение: `/software/#management`, первая из трёх позиций будущих экранов; явная пометка
-«Иллюстрация» и подпись «Здесь появится реальный экран обзора дома».
-Это сцена использования компьютера и телефона. На экранах условные цветовые блоки;
-композиция не является скриншотом или спецификацией будущего интерфейса.
+Текущая редакция: **9 октября 2026 года**. По решению автора реальные экраны добавляются
+по готовности; сейчас каждый из пяти аспектов представлен одной иллюстрацией. Это не
+скриншоты и не спецификация будущего GUI. Роль блока после каталога возможностей — у
+[владельца позиционирования](../../module-market-intelligence/internet-promotion/spec/homepage-audience-routing-brief.md#как-объяснять-по).
 
 ## Места для реального GUI
 
-По следующему поручению автора от 8 октября для реальных экранов выделены три места.
-Контент и исходники заданы в `guiPreviewSlots` внутри [software.astro](../src/pages/software.astro).
+Размещение — `/software/#management`. Контент хранится в `guiPreviewSlots` внутри
+[software.astro](../src/pages/software.astro). Каждый элемент содержит свой список `slides`.
 
-| Место | Что показать после готовности | Текущая иллюстрация |
+| Аспект и якорь | Что показать после готовности | Текущая иллюстрация |
 | --- | --- | --- |
-| `/software/#gui-overview`, `data-gui-slot="overview"` | Обзор состояний систем и показаний устройств | [Управление из браузера](../src/assets/site/browser-control-concept-v1.png) |
-| `/software/#gui-room`, `data-gui-slot="room"` | Показания и реально доступные действия выбранной комнаты | [Комната со светом, радиатором и шторами](../src/assets/site/automation-home-concept-v1.png) |
-| `/software/#gui-resources`, `data-gui-slot="resources"` | Показания совместимых счётчиков и расчётная скорость расхода | [Учёт ресурсов](../src/assets/docs/resource-metering/resource-metering-concept-v1.png) |
+| Дашборд, `#gui-overview` | Состояния систем, температуры, показания и расход ресурсов | [Человек за ноутбуком и телефоном](../src/assets/site/browser-control-concept-v1.png) |
+| Ручное управление сценариями, `#gui-room` | Реальные действия пользователя, выбор сценария и режима | [Выбор освещения для занятия](../src/assets/docs/lighting/sections/manual-choice-v1.png) |
+| Разметка устройств, `#gui-devices` | Имена, помещения и назначения устройств | [Щит и помещение](../src/assets/site/service-cabinet-room-v1.png) |
+| Создание автоматизаций, `#gui-automations` | Путь создания освещения: устройства, условия, включение | [Обсуждение результата](../src/assets/docs/lighting/sections/choose-result-v1.png) |
+| Уведомления и интерактив, `#gui-notifications` | Проверенные сообщения системы и доступные ответы пользователя | [Условное сообщение на телефоне](../src/assets/site/notifications-concept-v1.png) |
 
-Это план демонстрации GUI, а не свидетельство готовности конкретного дашборда или экранов.
-Новые иллюстрации для трёх позиций не генерировались: переиспользованы принятые исходники.
-У каждой позиции есть рамка, название, пометка «Иллюстрация» и подпись будущего реального экрана.
-Перед блоком прямо сказано, что реальные экраны появятся после готовности дашборда.
+Для уведомлений создан один новый концептуальный кадр; для остальных аспектов переиспользованы
+имеющиеся изображения, в том числе новая обложка услуги. У каждого места есть название,
+пометка «Иллюстрация» и пояснение будущего кадра. Общая заметка прямо называет текущие изображения
+иллюстрациями. Не считать названия аспектов свидетельством готовности конкретного интерфейса.
 
-Основная позиция занимает полную строку, две дополнительные — по половине; на узком экране
-все три выстраиваются последовательно. Область изображения — 16:10, `object-fit: contain`,
-чтобы иллюстрация или будущий скриншот не обрезались.
+Дашборд занимает полную строку, остальные четыре аспекта — две колонки; на телефоне все идут
+последовательно. Кадры целиком помещаются в область 16:10. При добавлении нескольких `slides`
+используется горизонтальная прокрутка с привязкой к кадру и ссылками выбора экрана;
+автопрокрутки нет. При одном кадре счётчик и переключатели не выводятся. Текущая проверка
+выполнена для согласованного состояния с одним кадром на аспект; будущую серию проверять отдельно.
 
 При замене: снять реальный проверенный экран без персональных данных и секретов, заменить
-`image` и `alt` соответствующей позиции, сверить текст с наблюдаемыми действиями. После замены
-убрать пометку и обещание будущего кадра **только у заменённой позиции**; общую заметку
-снять, когда заменены все три. Сохранить якоря и повторить адаптивную проверку. Не добавлять
-вместо показаний выдуманные графики истории или действия, отсутствующие в действующем GUI.
+`slides[].image` и `alt`, сверить текст с наблюдаемыми действиями. Убрать пометку и описание
+будущего кадра только у заменённого аспекта; общую заметку снять после замены всех пяти.
+Сохранить якоря и повторить адаптивную проверку. Если серия включает и концепт, и реальный GUI,
+пометки задавать каждому кадру отдельно. Не добавлять выдуманные показания и неподтверждённые действия.
 
-## Финальный промпт
+## Исходные изображения
+
+[Сцена с браузером](../src/assets/site/browser-control-concept-v1.png) создана 8 октября
+встроенным ImageGen по [стилистическому референсу главной](../src/assets/site/automation-home-concept-v1.png).
+На столе стоят ноутбук и телефон с условными цветными блоками; это иллюстрация использования.
+[Обложка услуги и её промпт](service-overview-concept-image.md) имеют отдельного владельца.
+
+[Уведомления](../src/assets/site/notifications-concept-v1.png) созданы 9 октября встроенным
+ImageGen как новая сцена без входного изображения. На телефоне условное сообщение и два
+нейтральных элемента ответа. Нет читаемого текста, показаний Module или аварийного обещания.
+
+## Финальный промпт сцены с браузером, 8 октября
 
 ```text
 Use case: stylized-concept.
@@ -50,12 +60,19 @@ Avoid: text, labels, numerals, arrows, logos, watermarks, floating technology sy
 
 ```
 
+## Финальный промпт уведомлений, 9 октября
+
+```text
+Use case: stylized-concept.
+Asset type: one conceptual illustration for a future "Notifications and interaction" software screen slot on the Module automation website.
+A calm, premium warm architectural 3D illustration: a realistic adult homeowner seated in an oak and limestone living room is looking at and touching a smartphone. Show the phone clearly in the foreground with a simple abstract notification card and two short neutral button-shaped areas, a small speech-bubble symbol, NO legible text, NO logos, NO invented real app interface. The person's hands and fingers must be anatomically natural, holding the phone realistically. In the background an uncluttered room contains a warmly lit floor lamp, curtains and a radiator, softly out of focus. A small simple abstract message bubble is permitted above the phone to express receiving a message and responding; no alarm, no emergency, no red warning, no claims of remote control.
+Wide 16:9 composition, warm opaque off-white backdrop, matte materials, muted beige, oak, graphite and subtle terracotta, soft amber illumination from a real lamp. Consistent with an elegant miniature architectural illustration rather than a photograph or cartoon. Composition breathes, full phone and hands in frame, no floating or impossible equipment. This represents the topic of notifications and responses, not an actual screenshot. No captions, no text, no watermarks.
+```
+
 ## Проверка
 
-Просмотрен результат: естественная поза человека, компьютер и телефон стоят на столе,
-окружающее оборудование прикреплено к конструкциям, нет читаемых значений или выдуманных
-экранов Module. После выделения трёх мест выполнены `yarn build` (0 errors, warnings, hints),
-проверка 84 внутренних ссылок главной и ПО, наличие alt и размеров изображений. Три позиции
-проверены в браузере при 1280×900 и 320×740: изображения загружаются, подписи присутствуют,
-горизонтального переполнения нет. Адаптивный вывод и сборка проверены с коммерческой страницей;
-[владелец реализации](commercial-pages-visual-refresh.md).
+Просмотрены исходники и размещение: устройства опираются на поверхности, позы естественные,
+условные экраны не выдаются за Module GUI. В браузере при ширине 1280px и 320px у всех пяти
+аспектов по одному кадру, пометки присутствуют, переключатели отсутствуют, горизонтального
+переполнения страницы нет. Сборка и переходы — у
+[владельца реализации](commercial-pages-visual-refresh.md).

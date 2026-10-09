@@ -1,0 +1,20 @@
+name: module-website
+
+networks:
+  module-cloud:
+    name: module_cloud_network
+    external: true
+
+services:
+  module_website:
+    container_name: module_website
+    image: ghcr.io/mitya-borodin/module-website:${GITHUB_SHA:?Set GITHUB_SHA to the image commit SHA}
+    restart: unless-stopped
+    networks:
+      - module-cloud
+    healthcheck:
+      test: ['CMD', 'wget', '--spider', '--quiet', '--tries=1', 'http://127.0.0.1:3000/']
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s

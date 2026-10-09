@@ -7,6 +7,7 @@ interface Props {
 }
 
 const { title, description } = Astro.props;
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
 const isSoftwarePage = Astro.url.pathname === '/software/';
 const navigation = isSoftwarePage ? [
   { href: '#automations', label: 'Автоматизации' },
@@ -15,10 +16,10 @@ const navigation = isSoftwarePage ? [
   { href: '#purchase', label: 'Как приобрести' },
   { href: '#software-contact', label: 'Контакты' },
 ] : [
-  { href: '/#solutions', label: 'Автоматизации' },
-  { href: '/#result', label: 'Что вы получаете' },
+  { href: '/#result', label: 'Состав комплекта' },
   { href: '/#process', label: 'Как работаем' },
-  { href: '/software/', label: 'ПО Module' },
+  { href: '/#solutions', label: 'Задачи объекта' },
+  { href: '/software/', label: 'ПО Ritmod' },
   { href: '/#contacts', label: 'Контакты' },
 ];
 const contactHref = isSoftwarePage ? '#software-contact' : '/#contacts';
@@ -32,16 +33,18 @@ const contactLabel = isSoftwarePage ? 'Обсудить ПО' : 'Обсудит�
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
     <meta name="robots" content="noindex,nofollow" />
+    <link rel="canonical" href={canonicalUrl} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title}</title>
   </head>
   <body>
     <a class="skip-link" href="#main">Перейти к содержанию</a>
-    <header class="site-header">
+    <header class:list={['site-header', { 'site-header--software': isSoftwarePage }]}>
       <div class="shell header-inner">
-        <a class="brand" href="/" aria-label="Module — главная">
-          <span class="brand-mark" aria-hidden="true">M</span>
-          <span>MODULE</span>
+        <a class="brand" href="/" aria-label="Ritmod — главная">
+          <span class="brand-mark" aria-hidden="true">R</span>
+          <span>Ritmod</span>
+          {isSoftwarePage && <span class="brand-product">ПО</span>}
         </a>
         <nav class="desktop-nav" aria-label="Основная навигация">
           {navigation.map(({ href, label }) => (
@@ -72,10 +75,10 @@ const contactLabel = isSoftwarePage ? 'Обсудить ПО' : 'Обсудит�
 
     <footer class="site-footer">
       <div class="shell footer-grid">
-        <a class="brand brand--footer" href="/"><span class="brand-mark" aria-hidden="true">M</span>MODULE</a>
-        <p>Проект · Щит · ПО и сценарии · Документация</p>
+        <a class="brand brand--footer" href="/"><span class="brand-mark" aria-hidden="true">R</span>Ritmod</a>
+        <p>{isSoftwarePage ? 'ПО Ritmod · Готовые автоматизации · Управление из браузера' : 'Проект · Собранный щит · Подготовленные автоматизации · Документация'}</p>
         <nav aria-label="Навигация в подвале">
-          <a href="/software/">ПО Module</a>
+          <a href={isSoftwarePage ? '/#result' : '/software/'}>{isSoftwarePage ? 'Проектирование и сборка' : 'ПО Ritmod'}</a>
           <a href="/ru/docs/">Документация</a>
         </nav>
         <small>Непубличная версия сайта · 29.09.2026</small>
@@ -100,3 +103,37 @@ const contactLabel = isSoftwarePage ? 'Обсудить ПО' : 'Обсудит�
     </script>
   </body>
 </html>
+
+<style>
+  .site-header--software {
+    --paper: #171814;
+    --line: #ffffff29;
+    --accent-dark: var(--signal);
+    color: var(--paper-strong);
+  }
+
+  .site-header--software .brand-mark {
+    color: var(--ink);
+    background: var(--signal);
+  }
+
+  .brand-product {
+    padding: 5px 7px;
+    border: 1px solid #d9f99d4d;
+    border-radius: 5px;
+    color: var(--signal);
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: .04em;
+  }
+
+  .site-header--software .mobile-nav[open] nav {
+    background: var(--paper);
+    box-shadow: 0 12px 30px #00000040;
+  }
+
+  .site-header--software .mobile-nav nav a:last-child {
+    color: var(--ink);
+    background: var(--signal);
+  }
+</style>

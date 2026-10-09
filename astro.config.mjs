@@ -2,6 +2,7 @@ import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 
 export default defineConfig({
+  site: 'https://ritmod.ru',
   output: 'static',
   trailingSlash: 'always',
   redirects: {
@@ -16,8 +17,8 @@ export default defineConfig({
   },
   integrations: [
     starlight({
-      title: 'MODULE / ДОКУМЕНТАЦИЯ',
-      description: 'Возможности автоматизации Module: результат, поведение и условия применения.',
+      title: 'Ritmod / Документация',
+      description: 'Возможности автоматизации Ritmod: результат, поведение и условия применения.',
       favicon: '/favicon.svg',
       customCss: ['./src/styles/docs.css'],
       components: {
@@ -38,7 +39,7 @@ export default defineConfig({
       ],
       sidebar: [
         {
-          label: 'Возможности Module',
+          label: 'Возможности Ritmod',
           items: [
             { label: 'Начало', link: '/ru/docs/' },
             { label: 'Освещение', link: '/ru/docs/automations/lighting/' },
@@ -56,7 +57,7 @@ export default defineConfig({
         {
           label: 'Сайт',
           items: [
-            { label: 'ПО Module', link: '/software/' },
+            { label: 'ПО Ritmod', link: '/software/' },
             { label: 'Вернуться на главную', link: '/' },
           ],
         },

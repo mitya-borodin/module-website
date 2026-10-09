@@ -1,0 +1,504 @@
+---
+import { Image } from 'astro:assets';
+import HomeAutomationScene from './home-automation-scene.astro';
+import cabinet from '../assets/site/service-cabinet-wiren-board-v2.png';
+import evening from '../assets/site/service-evening-scene-v1.png';
+import climate from '../assets/site/service-climate-scene-v1.png';
+
+const icons = {
+  lighting: 'M9 18h6M10 21h4M8.5 14.5a6 6 0 1 1 7 0L15 18H9l-.5-3.5Z',
+  curtains: 'M3 3h18M4 3v18h16V3M9 3v9l-5 3M15 3v9l5 3M9 12v9M15 12v9',
+  heating: 'M5 4v16M10 4v16M15 4v16M20 4v16M3 7h19M3 17h19',
+  cooling: 'M12 2v20M3.3 7l17.4 10M3.3 17 20.7 7M8 4l4 3 4-3M8 20l4-3 4 3',
+};
+
+const slides = [
+  {
+    title: 'Собранный щит под задачи объекта',
+    image: cabinet,
+    scene: 'cabinet',
+    annotations: [],
+    alt: 'Щит автоматизации с открытой дверцей: контроллер и релейные модули Wiren Board, защитные устройства, клеммы и аккуратно проложенные провода.',
+    link: 'ПО Ritmod управляет оборудованием ↗',
+    href: '/software/',
+    menu: [],
+  },
+  {
+    title: 'Дом встречает вас и подстраивается под день',
+    image: null,
+    scene: 'home',
+    annotations: [
+      { text: 'Движение → свет', left: 4, top: 4 },
+      { text: 'Солнце → шторы', left: 57, top: 4 },
+    ],
+    alt: '',
+    link: 'Возможности ПО Ritmod ↗',
+    href: '/software/',
+    menu: [
+      { title: 'Освещение', detail: 'Свет по движению', icon: 'lighting', href: '/ru/docs/automations/lighting/' },
+      { title: 'Шторы', detail: 'С учётом солнца', icon: 'curtains', href: '/ru/docs/automations/curtains/' },
+    ],
+  },
+  {
+    title: 'Открытый вид на закат и свет для настроения',
+    image: evening,
+    scene: 'evening',
+    annotations: [
+      { text: 'Закат → шторы открыты', left: 54, top: 20 },
+      { text: 'Цвет и яркость по времени', left: 7, top: 73 },
+    ],
+    alt: 'Закат за открытыми шторами: мягкая розово-фиолетовая подсветка дополняет тёплый свет гостиной.',
+    link: 'Все автоматизации Ritmod ↗',
+    href: '/software/#automations',
+    menu: [
+      { title: 'Шторы на закате', detail: 'Сохранить вид из окна', icon: 'curtains', href: '/ru/docs/automations/curtains/#шторы-не-закрывают-вид-на-закат' },
+      { title: 'Цветной свет', detail: 'Цвет и яркость по времени', icon: 'lighting', href: '/ru/docs/automations/lighting/' },
+    ],
+  },
+  {
+    title: 'Комфортная температура круглый год',
+    image: climate,
+    scene: 'climate',
+    annotations: [
+      { text: 'Температура → охлаждение', left: 8, top: 27 },
+      { text: 'Запрос тепла → обогрев', left: 55, top: 77 },
+    ],
+    alt: 'Уютная гостиная с радиатором, настенным кондиционером и датчиком температуры: оборудование для обогрева и охлаждения.',
+    link: 'Все автоматизации Ritmod ↗',
+    href: '/software/#automations',
+    menu: [
+      { title: 'Отопление', detail: 'Тепло по потребности', icon: 'heating', href: '/ru/docs/automations/heating/' },
+      { title: 'Кондиционер', detail: 'Комфорт в жаркий день', icon: 'cooling', href: '/ru/docs/automations/air-conditioning/' },
+    ],
+  },
+] as const;
+---
+
+<div class="service-overview" data-service-carousel role="region"
+  aria-roledescription="карусель" aria-label="Щит и возможности автоматизации">
+  <div class="service-viewport" data-carousel-viewport tabindex="0" aria-label="Кадры автоматизации: используйте стрелки влево и вправо">
+    {slides.map((slide, index) => (
+      <figure class="service-slide" data-carousel-slide data-title={slide.title}
+        role="group" aria-roledescription="слайд" aria-label={`${index + 1} из ${slides.length}: ${slide.title}`}
+        hidden={index !== 0}>
+        <div class:list={['service-media', { 'service-media--scene': slide.menu.length > 0 }]}>
+          <div class="service-visual">
+            {slide.image ? (
+              <Image src={slide.image} alt={slide.alt} widths={[360, 480, 768, 1024]}
+                sizes="(max-width: 540px) 90vw, (max-width: 850px) 480px, min(44vw, 480px)"
+                format="webp" loading={index === 0 ? 'eager' : 'lazy'} fetchpriority={index === 0 ? 'high' : 'auto'} />
+            ) : <HomeAutomationScene compact />}
+            {slide.scene === 'home' && (
+              <svg class="service-effects" viewBox="0 0 1536 1024" fill="none" aria-hidden="true">
+                <path class="effect-leader" d="M278 164V100m902 125V100" />
+              </svg>
+            )}
+            {slide.scene === 'evening' && (
+              <svg class="service-effects" viewBox="0 0 1536 1024" fill="none" aria-hidden="true">
+                <path class="effect-leader" d="M699 136h180v100M217 483v280" />
+                <path class="effect-outline" d="m618 147 154-23m-145 38v359M1450 39l58-7v258" />
+                <path class="effect-outline effect-outline--colour" d="M46 495c106-24 205-13 308-3" />
+                <g class="effect-node"><circle cx="699" cy="136" r="14" /><circle cx="217" cy="483" r="14" /></g>
+                <g class="effect-core"><circle cx="699" cy="136" r="4" /><circle cx="217" cy="483" r="4" /></g>
+              </svg>
+            )}
+            {slide.scene === 'climate' && (
+              <svg class="service-effects" viewBox="0 0 1536 1024" fill="none" aria-hidden="true">
+                <path class="effect-leader" d="M493 129v210m777 289v200" />
+                <path class="effect-outline effect-outline--cool" d="m367 33 260 43v126l-260-56Z" />
+                <path class="effect-outline" d="m1108 525 324 20v160l-324-38Z" />
+                <g class="effect-node"><circle cx="493" cy="129" r="14" /><circle cx="1270" cy="628" r="14" /><circle cx="225" cy="338" r="23" /></g>
+                <g class="effect-core"><circle cx="493" cy="129" r="4" /><circle cx="1270" cy="628" r="4" /></g>
+              </svg>
+            )}
+            {slide.annotations.map((annotation) => (
+              <span class="service-annotation" aria-hidden="true"
+                style={`left: ${annotation.left}%; top: ${annotation.top}%;`}>{annotation.text}</span>
+            ))}
+          </div>
+          {slide.menu.length > 0 && (
+            <nav class="service-scene-menu" aria-label={`Возможности: ${slide.title}`}>
+              {slide.menu.map((item) => (
+                <a href={item.href}>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d={icons[item.icon]} /></svg>
+                  <span><strong>{item.title}</strong><small>{item.detail}</small></span>
+                  <span class="service-menu-arrow" aria-hidden="true">↗</span>
+                </a>
+              ))}
+            </nav>
+          )}
+        </div>
+        <figcaption>
+          <p>{slide.title}</p>
+          <a href={slide.href}>{slide.link}</a>
+        </figcaption>
+      </figure>
+    ))}
+  </div>
+  <div class="service-controls" data-carousel-controls hidden>
+    <button type="button" class="service-arrow" data-carousel-prev aria-label="Предыдущий кадр">←</button>
+    <div class="service-selectors" role="group" aria-label="Выбрать кадр">
+      {slides.map((slide, index) => (
+        <button type="button" data-carousel-select={index} aria-label={`Кадр ${index + 1}: ${slide.title}`}
+          aria-pressed={index === 0}>{String(index + 1).padStart(2, '0')}</button>
+      ))}
+    </div>
+    <button type="button" class="service-arrow" data-carousel-next aria-label="Следующий кадр">→</button>
+  </div>
+  <span class="service-status" data-carousel-status role="status" aria-live="polite" aria-atomic="true"></span>
+</div>
+
+<script>
+  for (const carousel of document.querySelectorAll<HTMLElement>('[data-service-carousel]')) {
+    const slides = Array.from(carousel.querySelectorAll<HTMLElement>('[data-carousel-slide]'));
+    const selectors = Array.from(carousel.querySelectorAll<HTMLButtonElement>('[data-carousel-select]'));
+    const viewport = carousel.querySelector<HTMLElement>('[data-carousel-viewport]');
+    const controls = carousel.querySelector<HTMLElement>('[data-carousel-controls]');
+    const previous = carousel.querySelector<HTMLButtonElement>('[data-carousel-prev]');
+    const next = carousel.querySelector<HTMLButtonElement>('[data-carousel-next]');
+    const status = carousel.querySelector<HTMLElement>('[data-carousel-status]');
+
+    if (!viewport || !controls || !previous || !next || !status || slides.length < 2) {
+      continue;
+    }
+
+    let activeIndex = 0;
+
+    /**
+     * Скрытый кадр исключается из навигации; фокус со ссылки возвращается к области просмотра.
+     */
+    const showSlide = (index: number) => {
+      const targetIndex = (index + slides.length) % slides.length;
+
+      if (targetIndex === activeIndex) {
+        return;
+      }
+
+      const focusWasInsideSlide = slides[activeIndex].contains(document.activeElement);
+
+      slides.forEach((slide, slideIndex) => {
+        slide.hidden = slideIndex !== targetIndex;
+      });
+      selectors.forEach((selector, selectorIndex) => {
+        selector.setAttribute('aria-pressed', String(selectorIndex === targetIndex));
+      });
+
+      activeIndex = targetIndex;
+      status.textContent = `${activeIndex + 1} из ${slides.length}: ${slides[activeIndex].dataset.title}`;
+
+      if (focusWasInsideSlide) {
+        viewport.focus({ preventScroll: true });
+      }
+    };
+
+    previous.addEventListener('click', () => {
+      showSlide(activeIndex - 1);
+    });
+    next.addEventListener('click', () => {
+      showSlide(activeIndex + 1);
+    });
+    selectors.forEach((selector, index) => {
+      selector.addEventListener('click', () => {
+        showSlide(index);
+      });
+    });
+    carousel.addEventListener('keydown', (event) => {
+      if (event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) {
+        return;
+      }
+
+      let targetIndex: number;
+
+      switch (event.key) {
+        case 'ArrowLeft':
+          targetIndex = activeIndex - 1;
+          break;
+        case 'ArrowRight':
+          targetIndex = activeIndex + 1;
+          break;
+        case 'Home':
+          targetIndex = 0;
+          break;
+        case 'End':
+          targetIndex = slides.length - 1;
+          break;
+        default:
+          return;
+      }
+
+      event.preventDefault();
+      showSlide(targetIndex);
+    });
+
+    controls.hidden = false;
+  }
+</script>
+
+<style>
+  .service-overview {
+    width: min(100%, 480px);
+    margin: 0 auto;
+  }
+
+  .service-slide {
+    margin: 0;
+  }
+
+  .service-slide[hidden],
+  .service-controls[hidden] {
+    display: none;
+  }
+
+  .service-media {
+    display: grid;
+    aspect-ratio: 12 / 11;
+    overflow: hidden;
+    border-radius: 20px;
+    background: var(--paper-strong);
+    container-type: inline-size;
+  }
+
+  .service-media--scene {
+    grid-template-rows: auto minmax(0, 1fr);
+  }
+
+  .service-visual {
+    position: relative;
+    min-width: 0;
+    min-height: 0;
+  }
+
+  .service-media--scene .service-visual {
+    aspect-ratio: 3 / 2;
+  }
+
+  .service-visual > img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .service-scene-menu {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+    padding: clamp(8px, 3.3cqi, 16px);
+    border-top: 1px solid #89734b18;
+  }
+
+  .service-scene-menu a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 44px;
+    padding: 10px;
+    border: 1px solid #89734b24;
+    border-radius: 12px;
+    background: #ffffff70;
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  .service-scene-menu a:hover,
+  .service-scene-menu a:focus-visible {
+    border-color: #89734b80;
+    background: #fffdf7;
+  }
+
+  .service-scene-menu svg {
+    flex: 0 0 21px;
+    width: 21px;
+    height: 21px;
+    color: #89734b;
+  }
+
+  .service-scene-menu strong {
+    display: block;
+    font-size: 13px;
+    line-height: 1.3;
+  }
+
+  .service-scene-menu small {
+    display: block;
+    margin-top: 5px;
+    color: var(--muted);
+    font-size: 11px;
+    line-height: 1.35;
+  }
+
+  .service-menu-arrow {
+    margin-left: auto;
+    color: #89734b;
+    font-size: 14px;
+  }
+
+  .service-effects {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+
+  .service-annotation {
+    position: absolute;
+    max-width: 42%;
+    padding: 7px 9px;
+    border: 1px solid #fff9e8d9;
+    border-radius: 9px;
+    background: #fffaf0df;
+    box-shadow: 0 3px 14px #332a201c;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    color: #3c372b;
+    font-size: clamp(10px, 2.5cqi, 12px);
+    font-weight: 650;
+    line-height: 1.35;
+    pointer-events: none;
+  }
+
+  .effect-leader {
+    stroke: #fff3da;
+    stroke-opacity: .8;
+    stroke-width: 1;
+    vector-effect: non-scaling-stroke;
+  }
+
+  .effect-outline {
+    stroke: #ffedce;
+    stroke-width: 1;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-opacity: .8;
+    vector-effect: non-scaling-stroke;
+    filter: drop-shadow(0 0 4px #ffdeb0);
+  }
+
+  .effect-outline--colour {
+    stroke: #ffcff9;
+    filter: drop-shadow(0 0 5px #f5a8fa);
+  }
+
+  .effect-outline--cool {
+    stroke: #e0f7f4;
+    filter: drop-shadow(0 0 4px #d0f1ed);
+  }
+
+  .effect-node circle {
+    stroke: #fff3da;
+    stroke-width: 1;
+    fill: #ffedce22;
+    vector-effect: non-scaling-stroke;
+  }
+
+  .effect-core {
+    fill: #fff5e6;
+  }
+
+  @container (max-width: 350px) {
+    .service-scene-menu a {
+      gap: 6px;
+      padding: 7px;
+    }
+
+    .service-scene-menu strong {
+      font-size: 11px;
+    }
+
+    .service-scene-menu svg {
+      flex-basis: 18px;
+      width: 18px;
+      height: 18px;
+    }
+
+    .service-scene-menu small,
+    .service-menu-arrow {
+      display: none;
+    }
+  }
+
+  .service-slide figcaption {
+    margin-top: 16px;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .service-slide p {
+    min-height: 42px;
+    margin: 0;
+    font-weight: 700;
+  }
+
+  .service-slide figcaption a {
+    display: inline-flex;
+    min-height: 44px;
+    align-items: center;
+    color: var(--muted);
+  }
+
+  .service-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-top: 8px;
+  }
+
+  .service-selectors {
+    display: flex;
+    gap: 4px;
+  }
+
+  .service-controls button {
+    display: grid;
+    place-items: center;
+    min-width: 36px;
+    min-height: 44px;
+    padding: 0 8px;
+    border: 0;
+    border-radius: 50%;
+    background: transparent;
+    color: var(--muted);
+    font: inherit;
+    font-size: 12px;
+    cursor: pointer;
+  }
+
+  .service-controls .service-arrow {
+    width: 44px;
+    border: 1px solid var(--line);
+    color: var(--ink);
+    font-size: 20px;
+  }
+
+  .service-controls button[aria-pressed='true'] {
+    color: var(--ink);
+    font-weight: 800;
+    text-decoration: underline;
+    text-decoration-color: var(--accent-dark);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 7px;
+  }
+
+  .service-controls button:hover {
+    background: var(--paper-strong);
+    color: var(--ink);
+  }
+
+  .service-overview :focus-visible {
+    outline: 2px solid var(--accent-dark);
+    outline-offset: 4px;
+  }
+
+  .service-status {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+</style>

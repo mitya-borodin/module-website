@@ -24,6 +24,7 @@ ESLint, Prettier, unit-test runner, Storybook и browser-test harness пока �
 | CSS, layout или responsive behavior | `yarn check` и `yarn build` | Visual verification конкретных viewport/state |
 | Публичный текст или MDX | `yarn check` и `yarn build` | Проверка ссылок, headings, claims и rendered page |
 | Интерактивная client logic, form или data flow | Static/build checks и tests публичного поведения | Browser/e2e evidence для поведения, не доказуемого unit test |
+| Docker/Nginx/Compose | Сборка image, `sh scripts/test-container.sh IMAGE`, Compose config | Проверка общего ingress, TLS и независимого пересоздания website |
 | Dependency, script или build contract | `yarn build` и проверка изменённой команды | CI/server-side evidence, если менялся CI contract |
 
 Для каждого завершённого изменения дополнительно выполняй проверку trailing whitespace,

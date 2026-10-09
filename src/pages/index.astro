@@ -1,16 +1,15 @@
 ---
-import { Image } from 'astro:assets';
 import SiteLayout from '../layouts/site-layout.astro';
 import ContactChannels from '../components/contact-channels.astro';
 import AutomationDocsLinks from '../components/automation-docs-links.astro';
-import HomeAutomationScene from '../components/home-automation-scene.astro';
+import ServiceOverview from '../components/service-overview.astro';
 import { automationGroups } from '../data/automation-catalog';
 import '../styles/commercial-content.css';
 
 const deliverables = [
   { title: 'Проект', text: 'Требования, подобранное оборудование, смета и чертёж щита под задачи вашего объекта.' },
   { title: 'Собранный щит', text: 'Закупленные компоненты и оборудование, собранное по согласованному проекту.' },
-  { title: 'ПО и автоматизации', text: 'Module и подготовленные сценарии для света, климата, воды и приводов.' },
+  { title: 'ПО и автоматизации', text: 'Ritmod и подготовленные сценарии для света, климата, воды и приводов.' },
   { title: 'Документация', text: 'Проект, баланс нагрузок и кабельный журнал для подключения и дальнейшей работы.' },
 ];
 
@@ -23,61 +22,38 @@ const process = [
 ---
 
 <SiteLayout
-  title="Module — проектирование и сборка систем автоматизации"
-  description="Автоматизация света, климата, воды и приводов. Проектируем систему под ваш объект, собираем щит и готовим сценарии на ПО Module."
+  title="Ritmod — проектирование и сборка систем автоматизации"
+  description="Проект, оборудование, собранный щит, ПО Ritmod и документация под задачи вашего объекта. Согласуем состав системы, проверим сценарии в лаборатории и передадим комплект."
 >
   <section class="section commercial-hero" id="top" aria-labelledby="hero-title">
-    <div class="shell overview-grid">
-      <div class="overview-copy">
-        <p class="eyebrow">Module / инженерная автоматизация</p>
-        <h1 id="hero-title">Проектируем и собираем системы <span>автоматизации</span></h1>
-        <p class="hero-lede">Свет встречает вас. Температура поддерживается. Шторы учитывают солнце.</p>
-        <p class="hero-explanation">Подберём оборудование для вашего объекта, соберём щит и подготовим нужные автоматизации.</p>
-      </div>
-      <HomeAutomationScene />
-      <div class="actions overview-actions">
-        <a class="button" href="#solutions">Что сможет ваша система ↓</a>
-        <a class="button button--secondary" href="#contacts">Обсудить проект ↗</a>
-      </div>
-    </div>
-  </section>
-
-  <section class="section dark-section" id="solutions" aria-labelledby="solutions-title">
     <div class="shell">
-      <div class="section-heading">
-        <div><p class="eyebrow">Узнайте свою задачу</p><h2 class="section-title" id="solutions-title">Что можно поручить автоматике.</h2></div>
-        <a class="text-link" href="/ru/docs/">Все возможности Module ↗</a>
-      </div>
-      <div class="visual-catalog home-catalog">
-        {automationGroups.map((group) => (
-          <article class="visual-card">
-            <div class="visual-card-media">
-              <Image src={group.automations[0].image} alt={group.automations[0].alt}
-                widths={[360, 640, 960]} sizes="(max-width: 650px) 92vw, (max-width: 1100px) 45vw, 30vw" format="webp" loading="lazy" />
-            </div>
-            <div class="visual-card-copy">
-              <p class="card-category">{group.title}</p>
-              <h3>{group.result}</h3>
-              <p>{group.description}</p>
-              <AutomationDocsLinks group={group.id} />
-            </div>
-          </article>
-        ))}
+      <div class="service-intro">
+        <div class="service-copy">
+          <p class="eyebrow">Ritmod / проектирование и сборка</p>
+          <h1 id="hero-title">Автоматизация объекта — <span>от проекта до готового щита.</span></h1>
+          <p class="hero-lede">Вы получаете проект, собранный щит, подготовленные автоматизации и документы для подключения.</p>
+          <p class="hero-explanation">Согласуем, как должны работать свет, климат и другие системы. Подберём оборудование и проверим сценарии в лаборатории.</p>
+          <div class="actions service-actions">
+            <a class="button" href="#contacts">Обсудить свой объект ↗</a>
+            <a class="button button--secondary" href="#result">Что входит в комплект ↓</a>
+          </div>
+        </div>
+        <ServiceOverview />
       </div>
     </div>
   </section>
 
-  <section class="section" id="result" aria-labelledby="result-title">
+  <section class="section dark-section" id="result" aria-labelledby="result-title">
     <div class="shell">
       <p class="eyebrow">Что вы получаете</p>
       <h2 class="section-title" id="result-title">Комплект для вас и вашего электрика.</h2>
-      <p class="lede">От согласованной задачи до оборудования, программы и понятных документов для подключения.</p>
+      <p class="lede">Состав комплекта согласуем под ваш объект: от отдельной задачи до нескольких инженерных систем.</p>
       <div class="delivery-grid">
         {deliverables.map((item, index) => (
           <article><span class="item-number">0{index + 1}</span><h3>{item.title}</h3><p>{item.text}</p></article>
         ))}
       </div>
-      <p class="boundary-note">После сборки проверяем согласованные сценарии в лаборатории. Часть пусконаладки автоматизирует само ПО Module. Монтаж, подключение и пусконаладку на объекте согласуем отдельно — до начала работ определяем, кто и за что отвечает.</p>
+      <p class="boundary-note">После сборки проверяем согласованные сценарии в лаборатории. Часть пусконаладки автоматизирует само ПО Ritmod. Монтаж, подключение и пусконаладку на объекте согласуем отдельно — до начала работ определяем, кто и за что отвечает.</p>
     </div>
   </section>
 
@@ -98,13 +74,32 @@ const process = [
     </div>
   </section>
 
+  <section class="section" id="solutions" aria-labelledby="solutions-title">
+    <div class="shell">
+      <div class="section-heading">
+        <div><p class="eyebrow">Задачи вашего объекта</p><h2 class="section-title" id="solutions-title">Что включим в проект.</h2></div>
+        <a class="text-link" href="/software/#automations">Все автоматизации Ritmod ↗</a>
+      </div>
+      <p class="lede">Расскажите, что хотите автоматизировать, — мы подберём оборудование и определим состав щита. Подробные сценарии доступны в описаниях.</p>
+      <div class="project-tasks">
+        {automationGroups.map((group) => (
+          <article>
+            <h3>{group.title}</h3>
+            <p>{group.result}.</p>
+            <AutomationDocsLinks group={group.id} />
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
   <section class="section software-section" id="foundations" aria-labelledby="software-title">
     <div class="shell information-grid">
-      <div><p class="eyebrow">Программная основа решения</p><h2 class="section-title" id="software-title">Оборудование действует.<br />Module связывает всё вместе.</h2></div>
+      <div><p class="eyebrow">Программная основа решения</p><h2 class="section-title" id="software-title">В основе комплекта —<br />ПО Ritmod.</h2></div>
       <div class="information-copy">
-        <p class="lede">Показания датчиков превращаются в действия: включить свет, подать тепло или открыть шторы.</p>
-        <p>Для типовых задач используем готовые автоматизации. Выбираем нужные функции и настраиваем их под оборудование и условия вашего проекта.</p>
-        <a class="button" href="/software/">Посмотреть, как работает Module ↗</a>
+        <p class="lede">Программа управляет светом, климатом, водой и приводами. Для вашего проекта подготавливаем нужные автоматизации.</p>
+        <p>У Ritmod есть отдельный каталог возможностей и управление из браузера. ПО можно приобрести и отдельно — после проверки задач и оборудования.</p>
+        <a class="button" href="/software/">Возможности ПО Ritmod ↗</a>
       </div>
     </div>
   </section>
@@ -113,9 +108,9 @@ const process = [
     <div class="shell contact-grid">
       <div>
         <p class="eyebrow">Контакты</p>
-        <h2 class="section-title" id="contacts">Что нужно автоматизировать?</h2>
+        <h2 class="section-title" id="contacts">Обсудим ваш объект.</h2>
         <p class="lede">Напишите или позвоните. Начать можно с описания задачи — готовый проект для обращения не нужен.</p>
-        <ContactChannels label="Связаться по поводу проекта" emailSubject="Проект автоматизации Module" />
+        <ContactChannels label="Связаться по поводу проекта" emailSubject="Проект автоматизации Ritmod" />
       </div>
       <div class="project-checklist">
         <h3>Для первого разговора</h3>
@@ -132,3 +127,92 @@ const process = [
     </div>
   </section>
 </SiteLayout>
+
+<style>
+  .commercial-hero {
+    padding-block: clamp(32px, 4vw, 56px);
+  }
+
+  .service-intro {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: center;
+    gap: clamp(32px, 4vw, 64px);
+  }
+
+  .service-intro h1 {
+    margin: 0;
+    font-size: clamp(36px, 3.8vw, 56px);
+    font-weight: 850;
+    line-height: 1.05;
+    letter-spacing: -0.05em;
+    text-wrap: balance;
+    overflow-wrap: break-word;
+  }
+
+  .service-intro h1 span {
+    color: var(--accent-dark);
+  }
+
+  .service-copy .hero-lede {
+    margin-top: 24px;
+  }
+
+  .service-actions {
+    gap: 12px;
+    margin-top: 24px;
+  }
+
+  .service-actions .button {
+    font-size: 13px;
+  }
+
+  @media (max-width: 850px) {
+    .service-intro {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+
+  #result {
+    --muted: #c8c8bd;
+    --line: #ffffff36;
+  }
+
+  .project-tasks {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 32px;
+    margin-top: 40px;
+  }
+
+  .project-tasks article {
+    min-width: 0;
+    padding-top: 24px;
+    border-top: 1px solid var(--line);
+  }
+
+  .project-tasks h3 {
+    margin: 0 0 12px;
+    font-size: 24px;
+    letter-spacing: -0.03em;
+  }
+
+  .project-tasks p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  @media (max-width: 850px) {
+    .project-tasks {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 650px) {
+    .project-tasks {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+</style>
