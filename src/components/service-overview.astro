@@ -1,7 +1,7 @@
 ---
 import { Image } from 'astro:assets';
-import HomeAutomationScene from './home-automation-scene.astro';
-import cabinet from '../assets/site/service-cabinet-wiren-board-v2.png';
+import arrival from '../assets/site/service-arrival-scene-v1.png';
+import cabinet from '../assets/site/service-cabinet-wiren-board-v4.png';
 import evening from '../assets/site/service-evening-scene-v1.png';
 import climate from '../assets/site/service-climate-scene-v1.png';
 
@@ -18,20 +18,20 @@ const slides = [
     image: cabinet,
     scene: 'cabinet',
     annotations: [],
-    alt: 'Щит автоматизации с открытой дверцей: контроллер и релейные модули Wiren Board, защитные устройства, клеммы и аккуратно проложенные провода.',
+    alt: 'Щит автоматизации. Сверху слева направо: вводной автомат 2P, УЗИП, реле напряжения, УЗО, УЗДП. Ниже групповые автоматы и Wiren Board: Ritmod на контроллере управляет автоматизациями; SSR — совместимыми приводами 24 В; реле — светом и насосами; диммер — яркостью и цветом LED-лент; аналоговые выходы 0–10 В — клапанами и заслонками с таким входом.',
     link: 'ПО Ritmod управляет оборудованием ↗',
     href: '/software/',
     menu: [],
   },
   {
     title: 'Дом встречает вас и подстраивается под день',
-    image: null,
+    image: arrival,
     scene: 'home',
     annotations: [
-      { text: 'Движение → свет', left: 4, top: 4 },
-      { text: 'Солнце → шторы', left: 57, top: 4 },
+      { text: 'Движение → свет', left: 34, top: 6 },
+      { text: 'Солнце → шторы', left: 61, top: 27 },
     ],
-    alt: '',
+    alt: 'Человек входит в дом: датчик движения связан с включённым светильником в прихожей, а шторы частично прикрывают солнечное окно гостиной.',
     link: 'Возможности ПО Ritmod ↗',
     href: '/software/',
     menu: [
@@ -83,14 +83,36 @@ const slides = [
         hidden={index !== 0}>
         <div class:list={['service-media', { 'service-media--scene': slide.menu.length > 0 }]}>
           <div class="service-visual">
-            {slide.image ? (
-              <Image src={slide.image} alt={slide.alt} widths={[360, 480, 768, 1024]}
-                sizes="(max-width: 540px) 90vw, (max-width: 850px) 480px, min(44vw, 480px)"
-                format="webp" loading={index === 0 ? 'eager' : 'lazy'} fetchpriority={index === 0 ? 'high' : 'auto'} />
-            ) : <HomeAutomationScene compact />}
+            <Image src={slide.image} alt={slide.alt} widths={[360, 480, 768, 1024]}
+              sizes="(max-width: 540px) 90vw, (max-width: 850px) 480px, min(44vw, 480px)"
+              format="webp" loading={index === 0 ? 'eager' : 'lazy'} fetchpriority={index === 0 ? 'high' : 'auto'} />
+            {slide.scene === 'cabinet' && (
+              <div class="cabinet-map" aria-hidden="true">
+                <svg class="service-effects cabinet-effects" viewBox="0 0 1254 1254" fill="none">
+                  <path class="cabinet-leader" d="M390 310H440V480H785V580M390 500H450V720H970V604M390 690H455V845H666M390 880H460V962H814V861M390 1050H1060V883H968" />
+                  <g class="cabinet-node"><circle cx="785" cy="580" r="15" /><circle cx="970" cy="604" r="15" /><circle cx="666" cy="845" r="15" /><circle cx="814" cy="861" r="15" /><circle cx="968" cy="883" r="15" /></g>
+                  <g class="cabinet-core"><circle cx="785" cy="580" r="5" /><circle cx="970" cy="604" r="5" /><circle cx="666" cy="845" r="5" /><circle cx="814" cy="861" r="5" /><circle cx="968" cy="883" r="5" /></g>
+                </svg>
+                <span class="service-annotation cabinet-label cabinet-label--controller"><strong>Ritmod</strong><small>Контроллер</small></span>
+                <span class="service-annotation cabinet-label cabinet-label--ssr"><strong>SSR</strong><small>Приводы 24 В</small></span>
+                <span class="service-annotation cabinet-label cabinet-label--relay"><strong>Реле</strong><small>Свет, насосы</small></span>
+                <span class="service-annotation cabinet-label cabinet-label--dimmer"><strong>Диммер</strong><small>Яркость, цвет</small></span>
+                <span class="service-annotation cabinet-label cabinet-label--analog"><strong>0–10 В</strong><small>Клапаны и заслонки</small></span>
+              </div>
+            )}
             {slide.scene === 'home' && (
               <svg class="service-effects" viewBox="0 0 1536 1024" fill="none" aria-hidden="true">
-                <path class="effect-leader" d="M278 164V100m902 125V100" />
+                <path class="effect-leader" d="M294 46h266v49M478 337h102V145M1000 98v200" />
+                <ellipse class="effect-outline" cx="294" cy="46" rx="46" ry="15" />
+                <path class="effect-outline" d="m903 113 201-30m-197 44v251m76-168 75-11-15-9m15 9-11 15" />
+                <g class="effect-node">
+                  <circle cx="478" cy="337" r="24" />
+                  <circle cx="1000" cy="98" r="14" />
+                </g>
+                <g class="effect-core">
+                  <circle cx="478" cy="337" r="4" />
+                  <circle cx="1000" cy="98" r="4" />
+                </g>
               </svg>
             )}
             {slide.scene === 'evening' && (
@@ -359,6 +381,75 @@ const slides = [
     pointer-events: none;
   }
 
+  .cabinet-map {
+    position: absolute;
+    inset-block: 0;
+    left: 50%;
+    aspect-ratio: 1;
+    transform: translateX(-50%);
+    pointer-events: none;
+  }
+
+  .cabinet-label {
+    left: 4%;
+    width: 28%;
+    padding: clamp(6px, 2cqi, 10px);
+    background: #fffaf0ed;
+  }
+
+  .cabinet-label strong,
+  .cabinet-label small {
+    display: block;
+  }
+
+  .cabinet-label strong {
+    font-size: clamp(11px, 3cqi, 14px);
+  }
+
+  .cabinet-label small {
+    margin-top: 3px;
+    font-size: clamp(9px, 2.5cqi, 12px);
+    font-weight: 450;
+  }
+
+  .cabinet-label--controller {
+    top: 18.5%;
+  }
+
+  .cabinet-label--ssr {
+    top: 33.5%;
+  }
+
+  .cabinet-label--relay {
+    top: 48.5%;
+  }
+
+  .cabinet-label--dimmer {
+    top: 63.5%;
+  }
+
+  .cabinet-label--analog {
+    top: 78.5%;
+  }
+
+  .cabinet-leader,
+  .cabinet-node circle {
+    stroke: #927b55;
+    stroke-width: 1.2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    vector-effect: non-scaling-stroke;
+    filter: drop-shadow(0 0 2px #fffaf0);
+  }
+
+  .cabinet-node circle {
+    fill: #fffaf0c9;
+  }
+
+  .cabinet-core {
+    fill: #927b55;
+  }
+
   .effect-leader {
     stroke: #fff3da;
     stroke-opacity: .8;
@@ -398,6 +489,21 @@ const slides = [
   }
 
   @container (max-width: 350px) {
+    .cabinet-label {
+      left: 1%;
+      width: 34%;
+      padding: 3px 5px;
+    }
+
+    .cabinet-label strong,
+    .cabinet-label small {
+      line-height: 1.2;
+    }
+
+    .cabinet-label small {
+      margin-top: 2px;
+    }
+
     .service-scene-menu a {
       gap: 6px;
       padding: 7px;

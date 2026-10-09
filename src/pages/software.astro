@@ -5,11 +5,11 @@ import ContactChannels from '../components/contact-channels.astro';
 import SoftwareApproaches from '../components/software-approaches.astro';
 import SoftwareAutomationScene from '../components/software-automation-scene.astro';
 import { automationGroups } from '../data/automation-catalog';
-import browserControl from '../assets/site/browser-control-concept-v1.png';
-import manualControl from '../assets/docs/lighting/sections/manual-choice-v1.png';
-import deviceMarkup from '../assets/site/service-cabinet-room-v1.png';
-import automationCreation from '../assets/docs/lighting/sections/choose-result-v1.png';
-import notifications from '../assets/site/notifications-concept-v1.png';
+import browserControl from '../assets/site/gui-dashboard-interior-v1.png';
+import manualControl from '../assets/site/gui-manual-interior-v1.png';
+import deviceMarkup from '../assets/site/gui-devices-interior-v1.png';
+import automationCreation from '../assets/site/gui-create-interior-v1.png';
+import notifications from '../assets/site/gui-notifications-interior-v1.png';
 import '../styles/commercial-content.css';
 
 const guiPreviewSlots = [
@@ -23,19 +23,19 @@ const guiPreviewSlots = [
     id: 'room', number: '02', label: 'Ручное управление', title: 'Вы выбираете, что происходит сейчас',
     description: 'Примеры ручного управления сценариями: выбрать режим под занятие, включить нужный свет или изменить доступные параметры.',
     replacement: 'Здесь покажем ручное управление сценариями в интерфейсе Ritmod.',
-    slides: [{ image: manualControl, alt: 'Иллюстрация разных режимов комнаты: приглушённый свет для кино и освещение для чтения.' }],
+    slides: [{ image: manualControl, alt: 'Иллюстрация: человек выбирает режим просмотра кино на телефоне в гостиной с приглушённым светом.' }],
   },
   {
     id: 'devices', number: '03', label: 'Разметка устройств', title: 'У каждого устройства — понятная роль',
     description: 'Названия, помещения и назначение устройств помогают связать оборудование объекта с его отображением в программе.',
     replacement: 'Здесь покажем разметку устройств на реальном примере.',
-    slides: [{ image: deviceMarkup, alt: 'Концептуальная иллюстрация: оборудование щита и помещение, которым оно управляет.' }],
+    slides: [{ image: deviceMarkup, alt: 'Иллюстрация: специалист с планшетом связывает настенный датчик с оборудованием щита и комнатой.' }],
   },
   {
     id: 'automations', number: '04', label: 'Создание автоматизаций', title: 'От задачи — к нужному поведению',
     description: 'На примере освещения покажем путь от выбора автоматизации и устройств до условий работы и включения.',
     replacement: 'Здесь покажем создание автоматизации по шагам.',
-    slides: [{ image: automationCreation, alt: 'Иллюстрация: специалист и заказчик обсуждают освещение на модели помещения.' }],
+    slides: [{ image: automationCreation, alt: 'Иллюстрация: специалист и заказчик обсуждают работу домашней автоматизации за ноутбуком.' }],
   },
   {
     id: 'notifications', number: '05', label: 'Уведомления и интерактив', title: 'Сообщение и следующий шаг',
@@ -94,6 +94,15 @@ const guiPreviewSlots = [
             <div class="visual-card-media">
               <Image src={item.image} alt={item.alt} widths={[360, 640, 960]}
                 sizes="(max-width: 650px) 92vw, (max-width: 1100px) 45vw, 30vw" format="webp" loading="lazy" />
+              <svg class="catalog-markers" viewBox="0 0 1536 1024" fill="none" aria-hidden="true">
+                {item.targets.map((target) => (
+                  <g>
+                    <circle class="catalog-marker" cx={target.x} cy={target.y} r="24" />
+                    <circle class="catalog-marker-core" cx={target.x} cy={target.y} r="5" />
+                  </g>
+                ))}
+              </svg>
+              <span class="catalog-action">{item.action}</span>
             </div>
             <div class="visual-card-copy">
               <p class="card-category">{item.title}</p>
@@ -449,7 +458,7 @@ const guiPreviewSlots = [
     display: block;
     width: 100%;
     height: auto;
-    aspect-ratio: 16 / 10;
+    aspect-ratio: 3 / 2;
     object-fit: contain;
   }
 

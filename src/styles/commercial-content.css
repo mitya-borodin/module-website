@@ -100,7 +100,8 @@
 }
 
 .visual-card-media {
-  padding: clamp(18px, 2vw, 28px);
+  position: relative;
+  overflow: hidden;
   background: var(--paper);
 }
 
@@ -108,8 +109,46 @@
   display: block;
   width: 100%;
   height: auto;
-  aspect-ratio: 2 / 1;
+  aspect-ratio: 3 / 2;
   object-fit: contain;
+}
+
+.catalog-markers {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.catalog-marker {
+  stroke: #fff3da;
+  stroke-width: 1.2;
+  fill: #ffeed222;
+  vector-effect: non-scaling-stroke;
+  filter: drop-shadow(0 0 4px #ffe4ad);
+}
+
+.catalog-marker-core {
+  fill: #fff8e7;
+}
+
+.catalog-action {
+  position: absolute;
+  left: 16px;
+  bottom: 16px;
+  max-width: calc(100% - 32px);
+  padding: 8px 11px;
+  border: 1px solid #fff9e8d9;
+  border-radius: 9px;
+  background: #fffaf0e8;
+  color: #3c372b;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  font-size: 12px;
+  font-weight: 650;
+  line-height: 1.35;
+  pointer-events: none;
 }
 
 .visual-card-copy {

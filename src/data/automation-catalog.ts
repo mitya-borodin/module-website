@@ -1,14 +1,14 @@
 import type { ImageMetadata } from 'astro';
-import lighting from '../assets/docs/lighting/sections/arrival-v2.png';
-import heating from '../assets/docs/heating/heating-concept-v1.png';
-import cooling from '../assets/docs/air-conditioning/air-conditioning-concept-v1.png';
-import water from '../assets/docs/leaks/leaks-concept-v1.png';
-import gas from '../assets/docs/gas-leaks/gas-concept-v1.png';
-import recirculation from '../assets/docs/recirculation/recirculation-concept-v1.png';
-import boiler from '../assets/docs/boiler-loading/boiler-loading-concept-v1.png';
-import curtains from '../assets/docs/curtains/curtains-concept-v1.png';
-import drives from '../assets/docs/positional-drive/sections/gates-garage-v1.png';
-import metering from '../assets/docs/resource-metering/resource-metering-concept-v1.png';
+import lighting from '../assets/site/service-arrival-scene-v1.png';
+import heating from '../assets/site/service-climate-scene-v1.png';
+import cooling from '../assets/site/commercial-cooling-v1.png';
+import water from '../assets/site/commercial-water-protection-v1.png';
+import gas from '../assets/site/commercial-gas-protection-v1.png';
+import recirculation from '../assets/site/commercial-recirculation-v1.png';
+import boiler from '../assets/site/commercial-boiler-loading-v1.png';
+import curtains from '../assets/site/service-evening-scene-v1.png';
+import drives from '../assets/site/commercial-drives-v1.png';
+import metering from '../assets/site/commercial-metering-v1.png';
 
 type Automation = {
   slug: string;
@@ -17,6 +17,8 @@ type Automation = {
   description: string;
   image: ImageMetadata;
   alt: string;
+  action: string;
+  targets: { x: number; y: number }[];
 };
 
 type AutomationGroup = {
@@ -34,7 +36,8 @@ export const automationGroups: AutomationGroup[] = [
     automations: [{
       slug: 'lighting', title: 'Освещение', result: 'Свет там, где он нужен',
       description: 'Свет встречает при входе, помогает во время занятий и гаснет после ухода. Для каждой зоны можно выбрать своё поведение и сохранить управление кнопкой.',
-      image: lighting, alt: 'Одна прихожая в двух состояниях: человек пришёл и свет включён; после ухода прихожая пуста и свет погас.',
+      image: lighting, alt: 'Человек входит в дом: датчик движения и включённый свет в прихожей.',
+      action: 'Движение → свет', targets: [{ x: 478, y: 337 }, { x: 294, y: 46 }],
     }],
   },
   {
@@ -43,11 +46,13 @@ export const automationGroups: AutomationGroup[] = [
     automations: [{
       slug: 'heating', title: 'Отопление', result: 'Тепло по потребности',
       description: 'Радиаторы, тёплые полы и другие приборы получают тепло по запросу. Термостаты, приводы, насосы, смесители и источники тепла работают сообща.',
-      image: heating, alt: 'Жилая комната с радиатором, тёплый пол, полотенцесушитель и котельная показаны как части одной системы отопления.',
+      image: heating, alt: 'Гостиная с радиатором под окном и настенным датчиком температуры.',
+      action: 'Запрос тепла → обогрев', targets: [{ x: 1270, y: 628 }, { x: 225, y: 338 }],
     }, {
       slug: 'air-conditioning', title: 'Кондиционирование', result: 'Комфорт и в жаркий день',
       description: 'Термостат управляет охлаждением по температуре в помещении. Та же автоматизация может выбирать обогрев или охлаждение с учётом температуры за окном.',
-      image: cooling, alt: 'Комфортная жилая комната с кондиционером и солнечным окном.',
+      image: cooling, alt: 'Прохладная гостиная с кондиционером и датчиком температуры в солнечный день.',
+      action: 'Температура → охлаждение', targets: [{ x: 1200, y: 113 }, { x: 1135, y: 338 }],
     }],
   },
   {
@@ -56,11 +61,13 @@ export const automationGroups: AutomationGroup[] = [
     automations: [{
       slug: 'leaks', title: 'Защита от протечек воды', result: 'Вода перекрывается по сигналу датчика',
       description: 'Когда вода попадает на датчик, автоматизация передаёт команду закрыть подачу. В описании — поведение при обнаружении и условия восстановления.',
-      image: water, alt: 'Места возможной протечки в доме и кран управления подачей воды.',
+      image: water, alt: 'Датчик воды у стиральной машины и кран с электроприводом на вводной трубе.',
+      action: 'Датчик → перекрытие воды', targets: [{ x: 1055, y: 833 }, { x: 362, y: 222 }],
     }, {
       slug: 'gas-leaks', title: 'Защита от утечки газа', result: 'Сигнал тревоги закрывает газовый клапан',
       description: 'Автоматизация передаёт клапану команду перекрытия. Подбор защитного оборудования и безопасное восстановление подачи требуют отдельного решения.',
-      image: gas, alt: 'Газовое оборудование, датчик и клапан перекрытия подачи.',
+      image: gas, alt: 'Газовый датчик на стене кухни и клапан на подающей трубе.',
+      action: 'Сигнал → закрытие клапана', targets: [{ x: 1200, y: 128 }, { x: 1230, y: 562 }],
     }],
   },
   {
@@ -69,11 +76,13 @@ export const automationGroups: AutomationGroup[] = [
     automations: [{
       slug: 'recirculation', title: 'Рециркуляция горячей воды', result: 'Горячая вода ближе к моменту использования',
       description: 'Движение или кнопка запускают насос, чтобы сократить ожидание у крана. После цикла предусмотрена пауза — постоянная работа насоса не требуется.',
-      image: recirculation, alt: 'Кран горячей воды связан с бойлером и насосом рециркуляции.',
+      image: recirculation, alt: 'Ванная с работающим краном, датчиком движения и насосом рециркуляции в технической нише.',
+      action: 'Запрос → циркуляция', targets: [{ x: 264, y: 347 }, { x: 463, y: 180 }],
     }, {
       slug: 'boiler-loading', title: 'Параллельная загрузка бойлера', result: 'Бойлер греется, вентиляция получает тепло',
       description: 'Бойлер нагревается через отдельную прямую насосную группу. При подходящей схеме его загрузка не прерывает подачу тепла в другие контуры.',
-      image: boiler, alt: 'Бойлер и подогрев вентиляции подключены к общему источнику тепла отдельными контурами.',
+      image: boiler, alt: 'Котельная: накопительный бойлер, источник тепла и установка подогрева вентиляции.',
+      action: 'Бойлер и вентиляция', targets: [{ x: 554, y: 426 }, { x: 1044, y: 507 }],
     }],
   },
   {
@@ -82,11 +91,13 @@ export const automationGroups: AutomationGroup[] = [
     automations: [{
       slug: 'curtains', title: 'Шторы', result: 'Солнце и приватность — в нужное время',
       description: 'Защита от яркого света, открытие для инсоляции и сохранение вида на закат. Выбирайте подходящие сценарии и сохраняйте ручное управление.',
-      image: curtains, alt: 'Одна комната с разным положением штор в зависимости от света за окном.',
+      image: curtains, alt: 'Открытые шторы сохраняют вид на закат из уютной гостиной.',
+      action: 'Закат → шторы открыты', targets: [{ x: 699, y: 136 }],
     }, {
       slug: 'positional-drive', title: 'Позиционный привод', result: 'Ворота, окна и краны выполняют команды',
       description: 'Открытие и закрытие подходящих механизмов: от крана и форточки до ворот и покрытия бассейна. Положение и защиту определяют возможности оборудования.',
-      image: drives, alt: 'Въездные и гаражные ворота с установленными механизмами открывания.',
+      image: drives, alt: 'Гараж и въездные ворота с закреплёнными приводами; человек держит пульт управления.',
+      action: 'Команда → движение привода', targets: [{ x: 807, y: 53 }, { x: 1274, y: 649 }],
     }],
   },
   {
@@ -95,7 +106,8 @@ export const automationGroups: AutomationGroup[] = [
     automations: [{
       slug: 'resource-metering', title: 'Учёт ресурсов', result: 'Потребление становится понятным',
       description: 'Импульсы счётчика превращаются в показания и расчётную скорость расхода. Можно видеть общий объём и замечать, есть ли потребление сейчас.',
-      image: metering, alt: 'Счётчики воды, электричества, газа и тепла в составе инженерных систем.',
+      image: metering, alt: 'Счётчики электричества, воды и газа в технической нише с независимыми линиями.',
+      action: 'Импульсы → объём и расход', targets: [{ x: 366, y: 213 }, { x: 655, y: 282 }, { x: 1112, y: 330 }],
     }],
   },
 ];
