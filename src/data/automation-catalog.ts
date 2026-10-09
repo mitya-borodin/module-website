@@ -1,5 +1,5 @@
 import type { ImageMetadata } from 'astro';
-import lighting from '../assets/site/service-arrival-scene-v1.png';
+import lighting from '../assets/site/commercial-lighting-night-v1.png';
 import heating from '../assets/site/service-climate-scene-v1.png';
 import cooling from '../assets/site/commercial-cooling-v1.png';
 import water from '../assets/site/commercial-water-protection-v1.png';
@@ -36,7 +36,7 @@ export const automationGroups: AutomationGroup[] = [
     automations: [{
       slug: 'lighting', title: 'Освещение', result: 'Свет там, где он нужен',
       description: 'Свет встречает при входе, помогает во время занятий и гаснет после ухода. Для каждой зоны можно выбрать своё поведение и сохранить управление кнопкой.',
-      image: lighting, alt: 'Человек входит в дом: датчик движения и включённый свет в прихожей.',
+      image: lighting, alt: 'Человек возвращается домой ночью: за окном темно, датчик движения включает тёплый свет в прихожей.',
       action: 'Движение → свет', targets: [{ x: 478, y: 337 }, { x: 294, y: 46 }],
     }],
   },

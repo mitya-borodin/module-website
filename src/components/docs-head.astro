@@ -1,0 +1,44 @@
+---
+import type { ImageMetadata } from 'astro';
+import Head from '@astrojs/starlight/components/Head.astro';
+import MobileGesturePolicy from './mobile-gesture-policy.astro';
+import { mobileViewport } from '../data/mobile-viewport';
+import SocialImageMeta from './social-image-meta.astro';
+import overview from '../assets/site/software-house-concept-v1.png';
+import lighting from '../assets/docs/lighting/lighting-concept-v1.png';
+import curtains from '../assets/docs/curtains/curtains-concept-v1.png';
+import cooling from '../assets/docs/air-conditioning/air-conditioning-concept-v1.png';
+import heating from '../assets/docs/heating/heating-concept-v1.png';
+import boiler from '../assets/docs/boiler-loading/boiler-loading-concept-v1.png';
+import recirculation from '../assets/docs/recirculation/recirculation-concept-v1.png';
+import water from '../assets/docs/leaks/leaks-concept-v1.png';
+import gas from '../assets/docs/gas-leaks/gas-concept-v1.png';
+import drives from '../assets/docs/positional-drive/position-drive-concept-v1.png';
+import metering from '../assets/docs/resource-metering/resource-metering-concept-v1.png';
+
+const images: Record<string, ImageMetadata> = {
+  '/ru/docs/automations/lighting/': lighting,
+  '/ru/docs/automations/curtains/': curtains,
+  '/ru/docs/automations/air-conditioning/': cooling,
+  '/ru/docs/automations/heating/': heating,
+  '/ru/docs/automations/boiler-loading/': boiler,
+  '/ru/docs/automations/recirculation/': recirculation,
+  '/ru/docs/automations/leaks/': water,
+  '/ru/docs/automations/gas-leaks/': gas,
+  '/ru/docs/automations/positional-drive/': drives,
+  '/ru/docs/automations/resource-metering/': metering,
+};
+for (const entry of Astro.locals.starlightRoute.head) {
+  if (entry.tag === 'meta' && entry.attrs?.name === 'viewport') {
+    entry.attrs.content = mobileViewport;
+  }
+}
+
+const image = images[Astro.url.pathname] ?? overview;
+const { title, description } = Astro.locals.starlightRoute.entry.data;
+const alt = description ?? `Иллюстрация возможностей Ritmod: ${title}.`;
+---
+
+<Head />
+<MobileGesturePolicy />
+<SocialImageMeta image={image} alt={alt} />

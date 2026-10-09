@@ -7,14 +7,15 @@ next: false
 
 import { Image } from 'astro:assets';
 import DocsScenarioImage from '../../../../../../components/docs-scenario-image.astro';
-import meteringConcept from '../../../../../../assets/docs/resource-metering/resource-metering-concept-v1.png';
-import waterImage from '../../../../../../assets/docs/resource-metering/sections/water-v2.png';
-import electricityImage from '../../../../../../assets/docs/resource-metering/sections/electricity-v1.png';
-import gasImage from '../../../../../../assets/docs/resource-metering/sections/gas-v1.png';
-import heatImage from '../../../../../../assets/docs/resource-metering/sections/heat-v2.png';
-import rateImage from '../../../../../../assets/docs/resource-metering/sections/consumption-rate-v1.png';
+import meteringConcept from '../../../../../../assets/docs/resource-metering/transparent/resource-metering-concept-v1.png';
+import waterImage from '../../../../../../assets/docs/resource-metering/sections/transparent/water-v2.png';
+import electricityImage from '../../../../../../assets/docs/resource-metering/sections/transparent/electricity-v1.png';
+import gasImage from '../../../../../../assets/docs/resource-metering/sections/transparent/gas-v1.png';
+import heatImage from '../../../../../../assets/docs/resource-metering/sections/transparent/heat-v2.png';
+import rateImage from '../../../../../../assets/docs/resource-metering/sections/transparent/consumption-rate-v1.png';
 
 <Image
+  class="docs-illustration"
   src={meteringConcept}
   alt="Дом в разрезе: вода используется в ванной, электричество — на кухне, газ и тепло — для отопления; рядом с оборудованием установлены приборы учёта."
   layout="constrained"

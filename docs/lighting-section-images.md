@@ -158,3 +158,31 @@ Scene: Triptych of THREE equal compact axonometric views of the SAME lounge with
 Section title for context only (do not render text): Какой результат нужен вам
 Scene: A warm architectural editorial scene of a homeowner and a practical installer/adviser seated or standing around a table, collaboratively considering a small physical cutaway house model. One person points at the model's hallway, the other looks thoughtfully. The table model has only three readable zones: entry, kitchen counter, cozy chair, with tiny plausible warm illuminated fixtures. Keep people and miniature clearly scaled; the miniature is visibly a tabletop physical model, not a full-size room. No paperwork full of settings, laptops, phone UI or engineering diagrams. Convey choosing desired everyday outcomes together before setup. Same matte architectural material treatment and quiet terracotta accents as reference.
 ```
+
+## Два новых сценария — 9 октября 2026 года
+
+Встроенный ImageGen, две отдельные генерации с `transparent_background: true`. Результаты сразу
+содержат прозрачность, без программного изменения сцен. Существующий DocsScenarioImage создаёт
+WebP/srcset и применяет скругление 16 px; внешний фон задаёт тема документации.
+
+| Сценарий | Референс | Новый исходник |
+| --- | --- | --- |
+| Комната без окон | [arrival-v2.png](../src/assets/docs/lighting/sections/transparent/arrival-v2.png) | [windowless-room-v1.png](../src/assets/docs/lighting/sections/transparent/windowless-room-v1.png) |
+| Тёплый вечер и световой будильник | [light-profiles-v1.png](../src/assets/docs/lighting/sections/transparent/light-profiles-v1.png) | [bedroom-dawn-v1.png](../src/assets/docs/lighting/sections/transparent/bedroom-dawn-v1.png) |
+
+Визуальная проверка: две одинаковые гардеробные без окон, пустая тёмная и освещённая при входе;
+три одинаковые спальни с вечерней, начальной утренней и более яркой нейтральной подсветкой.
+Детальная роль датчиков и расписание остаются в тексте, а не зашифрованы в маленьких обозначениях.
+Внутренние поверхности непрозрачны; фон между сценами прозрачный.
+
+### Финальный промпт комнаты без окон
+
+```text
+Create a new companion illustration for Russian lighting automation documentation, using the reference only for the refined axonometric cutaway architectural style, matte limestone walls, warm natural wood, believable people and soft realistic fixture light. Landscape 2:1. Exactly two equally sized side-by-side cutaway views of the SAME compact WINDOWLESS walk-in wardrobe/pantry, no windows anywhere, muted beige shelving with folded linens and baskets, clearly visible doorway in side wall, same camera and geometry. Left: empty dark room with door closed and ceiling fixture OFF, enough subtle ambient fill to understand shapes but obviously dark. Right: same room with door half open and a woman in muted terracotta casual clothes taking her FIRST step inward over the threshold, ceiling light already ON casting warm usable light. Her body and foot clearly enter the room, not exit. Tiny realistic reed contact on upper door frame, small vibration sensor on door, tiny flush presence sensor on inside jamb, unobtrusive, no graphical beams or diagrams. The image communicates light is ready at the threshold of a room with no natural daylight. Keep all solid architecture and interiors opaque, only the exterior empty canvas fully transparent alpha, no white/gray backdrop, no floor plane outside the separate architectural bases. Leave generous clear margin around both scenes and gap between them. No text, numbers, labels, logos, arrows, UI or badges.
+```
+
+### Финальный промпт спальни
+
+```text
+Create a new companion illustration for Russian lighting automation documentation, using the reference only for the refined axonometric cutaway architectural style, matte limestone walls, warm natural wood, believable human figure, clean sculptural architecture and realistic soft lighting. Landscape 2:1, exactly THREE equally sized side-by-side views of the SAME bedroom with the same bed, pale linen bedding, upholstered headboard, wall art and minimal wooden bedside table, same camera and scale. Warm-to-neutral tunable-white indirect LED strip concealed behind the headboard and along a horizontal wall cove is the ONLY active artificial light source; no hanging lamps, no colored RGB decorative light. Left scene EVENING: woman sits in bed reading in dim very warm amber light about 1800 Kelvin, calm low illumination. Middle scene START OF ARTIFICIAL DAWN: woman sleeping under bedding, low warm LED strip just lit, still dark outdoors behind a small curtained window. Right scene END OF ARTIFICIAL DAWN: woman sitting up waking, the same LED strip now brighter neutral white approximately 4000 Kelvin, bedroom comfortably brighter, window still predawn muted blue so the LED lighting clearly causes the brightness. Distinguish evening amber, early dawn low warm, later dawn brighter neutral white; don't make final scene harsh blue. Keep solid architecture and all room interiors opaque. Empty exterior canvas fully TRANSPARENT alpha, no colored background and no exterior floor plane. Generous margins and gaps between rooms. No lettering, numbers, clocks, labels, arrows, logos, settings or UI. Consistent architecture and viewpoint, warm understated materials matching the reference.
+```

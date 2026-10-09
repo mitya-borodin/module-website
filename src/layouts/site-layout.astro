@@ -1,5 +1,10 @@
 ---
 import '../styles/global.css';
+import MobileGesturePolicy from '../components/mobile-gesture-policy.astro';
+import { mobileViewport } from '../data/mobile-viewport';
+import SocialImageMeta from '../components/social-image-meta.astro';
+import cabinetPreview from '../assets/social/home-v1.jpg';
+import softwarePreview from '../assets/social/software-v1.jpg';
 
 interface Props {
   title: string;
@@ -9,18 +14,21 @@ interface Props {
 const { title, description } = Astro.props;
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
 const isSoftwarePage = Astro.url.pathname === '/software/';
+const previewImage = isSoftwarePage ? softwarePreview : cabinetPreview;
+const previewAlt = isSoftwarePage
+  ? 'Дом с управляемым освещением, шторами, климатом и водоснабжением — возможности ПО Ritmod.'
+  : 'Собранный щит автоматизации с контроллером и модулями Wiren Board для работы Ritmod.';
 const navigation = isSoftwarePage ? [
-  { href: '#automations', label: 'Автоматизации' },
   { href: '#operation', label: 'Как работает' },
+  { href: '#automations', label: 'Автоматизации' },
   { href: '#management', label: 'Управление' },
   { href: '#purchase', label: 'Как приобрести' },
-  { href: '#software-contact', label: 'Контакты' },
 ] : [
   { href: '/#result', label: 'Состав комплекта' },
   { href: '/#process', label: 'Как работаем' },
   { href: '/#solutions', label: 'Задачи объекта' },
-  { href: '/software/', label: 'ПО Ritmod' },
   { href: '/#contacts', label: 'Контакты' },
+  { href: '/software/', label: 'ПО Ritmod' },
 ];
 const contactHref = isSoftwarePage ? '#software-contact' : '/#contacts';
 const contactLabel = isSoftwarePage ? 'Обсудить ПО' : 'Обсудить проект';
@@ -30,10 +38,21 @@ const contactLabel = isSoftwarePage ? 'Обсудить ПО' : 'Обсудит�
 <html lang="ru">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content={mobileViewport} />
+    <MobileGesturePolicy />
     <meta name="description" content={description} />
     <meta name="robots" content="noindex,nofollow" />
     <link rel="canonical" href={canonicalUrl} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Ritmod" />
+    <meta property="og:locale" content="ru_RU" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <SocialImageMeta image={previewImage} alt={previewAlt} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title}</title>
   </head>
@@ -81,7 +100,6 @@ const contactLabel = isSoftwarePage ? 'Обсудить ПО' : 'Обсудит�
           <a href={isSoftwarePage ? '/#result' : '/software/'}>{isSoftwarePage ? 'Проектирование и сборка' : 'ПО Ritmod'}</a>
           <a href="/ru/docs/">Документация</a>
         </nav>
-        <small>Непубличная версия сайта · 29.09.2026</small>
       </div>
     </footer>
 

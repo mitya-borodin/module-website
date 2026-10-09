@@ -15,6 +15,10 @@ ESLint, Prettier, unit-test runner, Storybook и browser-test harness пока �
 сообщать об их успешном прохождении или считать форматирование, unit behavior и visual state
 автоматически проверенными.
 
+Для защиты мобильных жестов есть адресные проверки встроенным runner Node 24:
+`node --test src/scripts/install-mobile-gesture-guards.spec.mjs`. Новых зависимостей и общего
+test framework нет; охват и физическая проверка — в [владельце](mobile-browser-gestures.md).
+
 ## Verification Matrix
 
 | Изменённая поверхность | Минимальное evidence | Условное evidence |
@@ -31,6 +35,11 @@ ESLint, Prettier, unit-test runner, Storybook и browser-test harness пока �
 `git diff --check`, повторный `git status --short -uall` и scope audit. Если весь baseline ещё
 неотслеживаемый и обычный `git diff` не видит новый файл, проверяй его содержимое напрямую и не
 выдавай пустой diff за доказательство.
+
+При изменении CSS target или обновлении минификатора дополнительно проверять production CSS,
+включая inline-стили: адаптивные media queries должны сохранять совместимый `min-width`/`max-width`.
+Проверка только в современном браузере не выявляет поломку на старом Safari.
+[Дефект, решение и контроль результата](css-browser-compatibility.md).
 
 ## Unit Tests
 

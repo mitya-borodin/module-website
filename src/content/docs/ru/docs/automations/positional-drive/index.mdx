@@ -7,17 +7,18 @@ next: false
 
 import { Image } from 'astro:assets';
 import DocsScenarioImage from '../../../../../../components/docs-scenario-image.astro';
-import driveConcept from '../../../../../../assets/docs/positional-drive/position-drive-concept-v1.png';
-import waterValveImage from '../../../../../../assets/docs/positional-drive/sections/water-valve-v1.png';
-import irrigationImage from '../../../../../../assets/docs/positional-drive/sections/irrigation-v1.png';
-import gatesImage from '../../../../../../assets/docs/positional-drive/sections/gates-garage-v1.png';
-import poolImage from '../../../../../../assets/docs/positional-drive/sections/pool-cover-v3.png';
-import windowsImage from '../../../../../../assets/docs/positional-drive/sections/windows-vents-v3.png';
-import shuttersImage from '../../../../../../assets/docs/positional-drive/sections/shutters-blinds-v1.png';
-import screensImage from '../../../../../../assets/docs/positional-drive/sections/gazebo-screens-v1.png';
-import manualImage from '../../../../../../assets/docs/positional-drive/sections/manual-control-v2.png';
+import driveConcept from '../../../../../../assets/docs/positional-drive/transparent/position-drive-concept-v1.png';
+import waterValveImage from '../../../../../../assets/docs/positional-drive/sections/transparent/water-valve-v1.png';
+import irrigationImage from '../../../../../../assets/docs/positional-drive/sections/transparent/irrigation-v1.png';
+import gatesImage from '../../../../../../assets/docs/positional-drive/sections/transparent/gates-garage-v1.png';
+import poolImage from '../../../../../../assets/docs/positional-drive/sections/transparent/pool-cover-v3.png';
+import windowsImage from '../../../../../../assets/docs/positional-drive/sections/transparent/windows-vents-v3.png';
+import shuttersImage from '../../../../../../assets/docs/positional-drive/sections/transparent/shutters-blinds-v1.png';
+import screensImage from '../../../../../../assets/docs/positional-drive/sections/transparent/gazebo-screens-v1.png';
+import manualImage from '../../../../../../assets/docs/positional-drive/sections/transparent/manual-control-v2.png';
 
 <Image
+  class="docs-illustration"
   src={driveConcept}
   alt="Три применения привода на одном участке: кран в техническом помещении, въездные ворота и открывающаяся форточка теплицы."
   layout="constrained"

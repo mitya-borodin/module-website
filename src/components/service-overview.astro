@@ -12,6 +12,8 @@ const icons = {
   cooling: 'M12 2v20M3.3 7l17.4 10M3.3 17 20.7 7M8 4l4 3 4-3M8 20l4-3 4 3',
 };
 
+const cabinetLeaders = 'M390 310H440V480H785V580M390 500H450V720H970V604M390 690H455V845H666M390 880H460V962H814V861M390 1050H1060V883H968';
+
 const slides = [
   {
     title: 'Собранный щит под задачи объекта',
@@ -76,7 +78,7 @@ const slides = [
 
 <div class="service-overview" data-service-carousel role="region"
   aria-roledescription="карусель" aria-label="Щит и возможности автоматизации">
-  <div class="service-viewport" data-carousel-viewport tabindex="0" aria-label="Кадры автоматизации: используйте стрелки влево и вправо">
+  <div class="service-viewport" data-carousel-viewport tabindex="0" aria-label="Кадры автоматизации: листайте влево и вправо или используйте стрелки">
     {slides.map((slide, index) => (
       <figure class="service-slide" data-carousel-slide data-title={slide.title}
         role="group" aria-roledescription="слайд" aria-label={`${index + 1} из ${slides.length}: ${slide.title}`}
@@ -89,7 +91,8 @@ const slides = [
             {slide.scene === 'cabinet' && (
               <div class="cabinet-map" aria-hidden="true">
                 <svg class="service-effects cabinet-effects" viewBox="0 0 1254 1254" fill="none">
-                  <path class="cabinet-leader" d="M390 310H440V480H785V580M390 500H450V720H970V604M390 690H455V845H666M390 880H460V962H814V861M390 1050H1060V883H968" />
+                  <path class="cabinet-leader-halo" d={cabinetLeaders} />
+                  <path class="cabinet-leader" d={cabinetLeaders} />
                   <g class="cabinet-node"><circle cx="785" cy="580" r="15" /><circle cx="970" cy="604" r="15" /><circle cx="666" cy="845" r="15" /><circle cx="814" cy="861" r="15" /><circle cx="968" cy="883" r="15" /></g>
                   <g class="cabinet-core"><circle cx="785" cy="580" r="5" /><circle cx="970" cy="604" r="5" /><circle cx="666" cy="845" r="5" /><circle cx="814" cy="861" r="5" /><circle cx="968" cy="883" r="5" /></g>
                 </svg>
@@ -187,10 +190,33 @@ const slides = [
 
     let activeIndex = 0;
 
+    slides.forEach((slide, index) => {
+      slide.hidden = false;
+      slide.inert = index !== 0;
+      slide.setAttribute('aria-hidden', String(index !== 0));
+    });
+    viewport.dataset.ready = 'true';
+
+    const media = slides.map((slide) => slide.querySelector<HTMLElement>('.service-media')!);
+    const titles = slides.map((slide) => slide.querySelector<HTMLElement>('figcaption p')!);
+
+    /** Общие размеры карточек убирают скачок, не оставляя пустоты под ссылкой щита. */
+    const syncSlideSizes = () => {
+      carousel.style.removeProperty('--service-media-height');
+      carousel.style.removeProperty('--service-title-height');
+      const mediaHeight = Math.max(...media.map((item) => item.getBoundingClientRect().height));
+      const titleHeight = Math.max(...titles.map((item) => item.getBoundingClientRect().height));
+      carousel.style.setProperty('--service-media-height', `${mediaHeight}px`);
+      carousel.style.setProperty('--service-title-height', `${titleHeight}px`);
+    };
+
+    syncSlideSizes();
+    void document.fonts.ready.then(syncSlideSizes);
+
     /**
-     * Скрытый кадр исключается из навигации; фокус со ссылки возвращается к области просмотра.
+     * Все кадры остаются в ленте для нативного свайпа; вне активного кадра ссылки недоступны.
      */
-    const showSlide = (index: number) => {
+    const updateActiveSlide = (index: number) => {
       const targetIndex = (index + slides.length) % slides.length;
 
       if (targetIndex === activeIndex) {
@@ -200,7 +226,8 @@ const slides = [
       const focusWasInsideSlide = slides[activeIndex].contains(document.activeElement);
 
       slides.forEach((slide, slideIndex) => {
-        slide.hidden = slideIndex !== targetIndex;
+        slide.inert = slideIndex !== targetIndex;
+        slide.setAttribute('aria-hidden', String(slideIndex !== targetIndex));
       });
       selectors.forEach((selector, selectorIndex) => {
         selector.setAttribute('aria-pressed', String(selectorIndex === targetIndex));
@@ -213,6 +240,35 @@ const slides = [
         viewport.focus({ preventScroll: true });
       }
     };
+
+    const showSlide = (index: number) => {
+      updateActiveSlide(index);
+      viewport.scrollTo({ left: activeIndex * viewport.clientWidth, behavior: 'instant' });
+    };
+
+    /** Свайп меняет тот же активный кадр, номера и озвучиваемый статус, что и кнопки. */
+    viewport.addEventListener('scroll', () => {
+      if (viewport.clientWidth === 0) {
+        return;
+      }
+
+      const index = Math.round(viewport.scrollLeft / viewport.clientWidth);
+
+      updateActiveSlide(Math.max(0, Math.min(slides.length - 1, index)));
+    }, { passive: true });
+
+    /** После поворота телефона сохраняется выбранный кадр, а не прежнее смещение в пикселях. */
+    let viewportWidth = viewport.clientWidth;
+    const resizeObserver = new ResizeObserver(() => {
+      syncSlideSizes();
+      if (viewportWidth !== viewport.clientWidth) {
+        viewportWidth = viewport.clientWidth;
+        viewport.scrollTo({ left: activeIndex * viewportWidth, behavior: 'instant' });
+      }
+    });
+
+    resizeObserver.observe(viewport);
+    carousel.querySelectorAll('.service-scene-menu').forEach((menu) => resizeObserver.observe(menu));
 
     previous.addEventListener('click', () => {
       showSlide(activeIndex - 1);
@@ -263,6 +319,35 @@ const slides = [
     margin: 0 auto;
   }
 
+  @media (min-width: 851px) {
+    .service-overview {
+      /* Оставляем место для шапки, подписей и переключателей на невысоком экране. */
+      width: min(100%, clamp(340px, calc(100vh - 270px), 480px));
+    }
+  }
+
+  .service-viewport[data-ready] {
+    display: flex;
+    align-items: flex-start;
+    overflow-x: auto;
+    overflow-y: hidden;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    touch-action: pan-x pan-y;
+    scrollbar-width: none;
+  }
+
+  .service-viewport[data-ready]::-webkit-scrollbar {
+    display: none;
+  }
+
+  .service-viewport[data-ready] .service-slide {
+    flex: 0 0 100%;
+    min-width: 0;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+
   .service-slide {
     margin: 0;
   }
@@ -274,15 +359,23 @@ const slides = [
 
   .service-media {
     display: grid;
+    width: 100%;
     aspect-ratio: 12 / 11;
+    height: var(--service-media-height, auto);
     overflow: hidden;
     border-radius: 20px;
     background: var(--paper-strong);
     container-type: inline-size;
   }
 
+  .service-media:not(.service-media--scene) {
+    /* Продолжаем светлый фон исходника на всю высоту карточки щита. */
+    background: #fdfdfa;
+  }
+
   .service-media--scene {
-    grid-template-rows: auto minmax(0, 1fr);
+    aspect-ratio: auto;
+    grid-template-rows: auto auto;
   }
 
   .service-visual {
@@ -306,16 +399,16 @@ const slides = [
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 8px;
-    padding: clamp(8px, 3.3cqi, 16px);
+    padding: 8px;
     border-top: 1px solid #89734b18;
   }
 
   .service-scene-menu a {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 6px;
     min-height: 44px;
-    padding: 10px;
+    padding: 8px;
     border: 1px solid #89734b24;
     border-radius: 12px;
     background: #ffffff70;
@@ -330,10 +423,14 @@ const slides = [
   }
 
   .service-scene-menu svg {
-    flex: 0 0 21px;
-    width: 21px;
-    height: 21px;
+    flex: 0 0 18px;
+    width: 18px;
+    height: 18px;
     color: #89734b;
+  }
+
+  .service-scene-menu a > span:not(.service-menu-arrow) {
+    min-width: 0;
   }
 
   .service-scene-menu strong {
@@ -354,6 +451,33 @@ const slides = [
     margin-left: auto;
     color: #89734b;
     font-size: 14px;
+  }
+
+  @media (max-width: 540px) {
+    .service-scene-menu {
+      grid-template-columns: minmax(0, 1fr);
+      padding: 12px;
+    }
+
+    .service-scene-menu a {
+      gap: 12px;
+      padding: 12px;
+    }
+
+    .service-scene-menu svg {
+      flex-basis: 21px;
+      width: 21px;
+      height: 21px;
+    }
+
+    .service-scene-menu strong {
+      font-size: 16px;
+    }
+
+    .service-scene-menu small {
+      font-size: 13px;
+      line-height: 1.4;
+    }
   }
 
   .service-effects {
@@ -381,12 +505,19 @@ const slides = [
     pointer-events: none;
   }
 
+  /* Центрируем видимый щит с дверцей, учитывая неравные поля исходного растра. */
+  .service-media:not(.service-media--scene) .service-visual > img,
   .cabinet-map {
     position: absolute;
-    inset-block: 0;
+    top: 50%;
     left: 50%;
+    width: min(100%, var(--service-media-height, 91.666%));
+    height: auto;
     aspect-ratio: 1;
-    transform: translateX(-50%);
+    transform: translate(-50%, -52.1%);
+  }
+
+  .cabinet-map {
     pointer-events: none;
   }
 
@@ -432,22 +563,32 @@ const slides = [
     top: 78.5%;
   }
 
+  .cabinet-leader-halo,
   .cabinet-leader,
   .cabinet-node circle {
-    stroke: #927b55;
-    stroke-width: 1.2;
     stroke-linecap: round;
     stroke-linejoin: round;
     vector-effect: non-scaling-stroke;
-    filter: drop-shadow(0 0 2px #fffaf0);
+  }
+
+  .cabinet-leader-halo {
+    stroke: #fffaf0;
+    stroke-width: 4.5;
+  }
+
+  .cabinet-leader,
+  .cabinet-node circle {
+    stroke: #b33312;
+    stroke-width: 2;
   }
 
   .cabinet-node circle {
-    fill: #fffaf0c9;
+    fill: #fffaf0;
+    filter: drop-shadow(0 0 2px #fffaf0);
   }
 
   .cabinet-core {
-    fill: #927b55;
+    fill: #b33312;
   }
 
   .effect-leader {
@@ -503,26 +644,6 @@ const slides = [
     .cabinet-label small {
       margin-top: 2px;
     }
-
-    .service-scene-menu a {
-      gap: 6px;
-      padding: 7px;
-    }
-
-    .service-scene-menu strong {
-      font-size: 11px;
-    }
-
-    .service-scene-menu svg {
-      flex-basis: 18px;
-      width: 18px;
-      height: 18px;
-    }
-
-    .service-scene-menu small,
-    .service-menu-arrow {
-      display: none;
-    }
   }
 
   .service-slide figcaption {
@@ -533,6 +654,7 @@ const slides = [
 
   .service-slide p {
     min-height: 42px;
+    height: var(--service-title-height, auto);
     margin: 0;
     font-weight: 700;
   }
@@ -560,9 +682,12 @@ const slides = [
   .service-controls button {
     display: grid;
     place-items: center;
-    min-width: 36px;
+    flex: 0 0 44px;
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
     min-height: 44px;
-    padding: 0 8px;
+    padding: 0;
     border: 0;
     border-radius: 50%;
     background: transparent;
@@ -573,7 +698,6 @@ const slides = [
   }
 
   .service-controls .service-arrow {
-    width: 44px;
     border: 1px solid var(--line);
     color: var(--ink);
     font-size: 20px;
@@ -596,6 +720,13 @@ const slides = [
   .service-overview :focus-visible {
     outline: 2px solid var(--accent-dark);
     outline-offset: 4px;
+  }
+
+  @media (max-width: 360px) {
+    .service-controls,
+    .service-selectors {
+      gap: 0;
+    }
   }
 
   .service-status {

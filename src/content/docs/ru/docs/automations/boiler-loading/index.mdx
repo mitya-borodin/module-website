@@ -7,14 +7,15 @@ next: false
 
 import { Image } from 'astro:assets';
 import DocsScenarioImage from '../../../../../../components/docs-scenario-image.astro';
-import concept from '../../../../../../assets/docs/boiler-loading/boiler-loading-concept-v1.png';
-import heatExchanger from '../../../../../../assets/docs/boiler-loading/sections/heat-exchanger-v1.png';
-import parallelComfort from '../../../../../../assets/docs/boiler-loading/sections/parallel-comfort-v1.png';
-import ventilation from '../../../../../../assets/docs/boiler-loading/sections/ventilation-v1.png';
-import summerWater from '../../../../../../assets/docs/boiler-loading/sections/summer-water-v1.png';
-import loadingAndRecirculation from '../../../../../../assets/docs/boiler-loading/sections/loading-and-recirculation-v1.png';
+import concept from '../../../../../../assets/docs/boiler-loading/transparent/boiler-loading-concept-v1.png';
+import heatExchanger from '../../../../../../assets/docs/boiler-loading/sections/transparent/heat-exchanger-v1.png';
+import parallelComfort from '../../../../../../assets/docs/boiler-loading/sections/transparent/parallel-comfort-v1.png';
+import ventilation from '../../../../../../assets/docs/boiler-loading/sections/transparent/ventilation-v1.png';
+import summerWater from '../../../../../../assets/docs/boiler-loading/sections/transparent/summer-water-v1.png';
+import loadingAndRecirculation from '../../../../../../assets/docs/boiler-loading/sections/transparent/loading-and-recirculation-v1.png';
 
 <Image
+  class="docs-illustration"
   src={concept}
   alt="Бойлер в техническом помещении, человек у умывальника и гостиная с радиатором: горячая вода и тепло в доме от общей системы."
   layout="constrained"

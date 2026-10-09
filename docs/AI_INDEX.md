@@ -9,6 +9,10 @@
 | Главная страница и публичные формулировки | [`../src/pages/index.astro`](../src/pages/index.astro) | При изменении секций, навигации, CTA или продуктового текста |
 | Возможности ПО Ritmod | [`../src/pages/software.astro`](../src/pages/software.astro) | При изменении `/software/`, каталога макросов и границ совместимости |
 | Реализация визуальной подачи главной и ПО | [commercial-pages-visual-refresh.md](commercial-pages-visual-refresh.md) | Различие услуги и ПО, обложки, каталог, пять GUI-аспектов и проверки |
+| Интерьерная серия коммерческих изображений | [commercial-interior-images.md](commercial-interior-images.md) | Текущие исходники и промпты обложки ПО, каталога и пяти GUI-иллюстраций; документация сохраняет свой стиль |
+| Превью ссылок в соцсетях и мессенджерах | [social-link-previews.md](social-link-previews.md) | Open Graph, Twitter Card, изображения главной/ПО/документации и проверка после публикации |
+| Совместимость мобильного CSS и сборки | [css-browser-compatibility.md](css-browser-compatibility.md) | Если на iPhone остаётся настольное меню или несколько колонок; CSS target и проверка production media queries |
+| Мобильные жесты браузера | [mobile-browser-gestures.md](mobile-browser-gestures.md) | Подавление pull-to-refresh, истории и zoom; адаптация webapp, тесты и границы Safari |
 | Общая оболочка коммерческих страниц | [`../src/layouts/site-layout.astro`](../src/layouts/site-layout.astro) | Для metadata, навигации, footer и мобильного меню |
 | Глобальные стили и design tokens | [`../src/styles/global.css`](../src/styles/global.css) | При изменении визуального языка, доступности или адаптивности главной |
 | Публичная документация | [`../src/content/docs/ru/docs/index.mdx`](../src/content/docs/ru/docs/index.mdx) | При изменении `/ru/docs/` и его содержательных обещаний |
@@ -26,6 +30,8 @@
 | Изображения всех автоматизаций | [Общий визуальный стандарт](../../module-market-intelligence/internet-promotion/spec/automation-illustration-style.md) | Принятый стиль, эталоны, палитра сайта, общий промпт и визуальная приёмка |
 | История инструкций освещения | [`lighting-documentation-pilot.md`](lighting-documentation-pilot.md) и [архив](archive/2026-10-08-documentation/README.md) | Только для прежнего evidence и будущего восстановления уровня настройки |
 | Инструкции со скриншотами | [`illustrated-documentation-workflow.md`](illustrated-documentation-workflow.md) | Раскадровка, безопасная съёмка двух размеров, вставка и проверка; образец настройки сохранён в архиве |
+| Возврат из документации на сайт | [documentation-navigation.md](documentation-navigation.md) | Постоянные ссылки на главную и ПО, общая шапка Starlight и мобильные проверки |
+| Фон и края иллюстраций документации | [documentation-image-backgrounds.md](documentation-image-backgrounds.md) | Прозрачные копии 74 сцен, тема подложки, скругление и сохранение полноформатных интерьеров |
 | Стили документации | [`../src/styles/docs.css`](../src/styles/docs.css) | При изменении внешнего вида Starlight |
 | Astro, Starlight, маршруты и release metadata | [`../astro.config.mjs`](../astro.config.mjs) | При изменении сборки, локалей, sidebar, favicon или indexing boundary |
 | Docker, CI и подключение ritmod.ru | [deployment.md](deployment.md) | Для image, Compose, ingress contract, secrets и порядка первого запуска |

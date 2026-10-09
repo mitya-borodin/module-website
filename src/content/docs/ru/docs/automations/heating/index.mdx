@@ -7,19 +7,20 @@ next: false
 
 import { Image } from 'astro:assets';
 import DocsScenarioImage from '../../../../../../components/docs-scenario-image.astro';
-import heatingConcept from '../../../../../../assets/docs/heating/heating-concept-v1.png';
-import sensorsImage from '../../../../../../assets/docs/heating/sections/temperature-zones-v2.png';
-import waterImage from '../../../../../../assets/docs/heating/sections/water-emitters-v1.png';
-import servosImage from '../../../../../../assets/docs/heating/sections/thermoelectric-servos-v2.png';
-import pumpImage from '../../../../../../assets/docs/heating/sections/circulation-v1.png';
-import mixerImage from '../../../../../../assets/docs/heating/sections/mixing-v1.png';
-import generatorsImage from '../../../../../../assets/docs/heating/sections/heat-sources-v1.png';
-import electricImage from '../../../../../../assets/docs/heating/sections/electric-emitters-v1.png';
-import fansImage from '../../../../../../assets/docs/heating/sections/air-heating-v1.png';
-import modesImage from '../../../../../../assets/docs/heating/sections/daily-comfort-v1.png';
-import propertyImage from '../../../../../../assets/docs/heating/sections/whole-property-v1.png';
+import heatingConcept from '../../../../../../assets/docs/heating/transparent/heating-concept-v1.png';
+import sensorsImage from '../../../../../../assets/docs/heating/sections/transparent/temperature-zones-v2.png';
+import waterImage from '../../../../../../assets/docs/heating/sections/transparent/water-emitters-v1.png';
+import servosImage from '../../../../../../assets/docs/heating/sections/transparent/thermoelectric-servos-v2.png';
+import pumpImage from '../../../../../../assets/docs/heating/sections/transparent/circulation-v1.png';
+import mixerImage from '../../../../../../assets/docs/heating/sections/transparent/mixing-v1.png';
+import generatorsImage from '../../../../../../assets/docs/heating/sections/transparent/heat-sources-v1.png';
+import electricImage from '../../../../../../assets/docs/heating/sections/transparent/electric-emitters-v1.png';
+import fansImage from '../../../../../../assets/docs/heating/sections/transparent/air-heating-v1.png';
+import modesImage from '../../../../../../assets/docs/heating/sections/transparent/daily-comfort-v1.png';
+import propertyImage from '../../../../../../assets/docs/heating/sections/transparent/whole-property-v1.png';
 
 <Image
+  class="docs-illustration"
   src={heatingConcept}
   alt="Дом зимой в разрезе: радиатор согревает гостиную, под полом проложен отопительный контур, в ванной установлен полотенцесушитель, а рядом находится оборудование подачи тепла."
   layout="constrained"

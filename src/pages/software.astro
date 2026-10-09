@@ -7,40 +7,41 @@ import SoftwareAutomationScene from '../components/software-automation-scene.ast
 import { automationGroups } from '../data/automation-catalog';
 import browserControl from '../assets/site/gui-dashboard-interior-v1.png';
 import manualControl from '../assets/site/gui-manual-interior-v1.png';
-import deviceMarkup from '../assets/site/gui-devices-interior-v1.png';
-import automationCreation from '../assets/site/gui-create-interior-v1.png';
+import deviceMarkup from '../assets/site/gui-devices-interior-v2.png';
+import automationCreation from '../assets/site/gui-create-interior-v2.png';
 import notifications from '../assets/site/gui-notifications-interior-v1.png';
 import '../styles/commercial-content.css';
 
 const guiPreviewSlots = [
   {
+    sceneLabel: 'Свет, климат и шторы — на одном экране',
     id: 'overview', number: '01', label: 'Дашборд', title: 'Вся система перед глазами',
-    description: 'Общий обзор объекта: состояния систем, температура, показания и расход ресурсов.',
-    replacement: 'Здесь покажем реальный дашборд Ritmod.',
+    description: 'На одном экране видно, где включён свет, открыты ли шторы, какая температура в помещениях и работает ли отопление или охлаждение. Рядом — показания счётчиков и текущий расход ресурсов. Такой обзор помогает быстро понять, что происходит в доме, без перехода между отдельными разделами.',
     slides: [{ image: browserControl, alt: 'Концептуальная иллюстрация: обзор домашних систем на ноутбуке и телефоне.' }],
   },
   {
+    sceneLabel: 'Режим кино → мягкий свет',
     id: 'room', number: '02', label: 'Ручное управление', title: 'Вы выбираете, что происходит сейчас',
-    description: 'Примеры ручного управления сценариями: выбрать режим под занятие, включить нужный свет или изменить доступные параметры.',
-    replacement: 'Здесь покажем ручное управление сценариями в интерфейсе Ritmod.',
+    description: 'Выберите режим для кино, включите свет для чтения или задайте комфортную температуру. Светом, шторами и климатом можно управлять из браузера на телефоне или компьютере.',
     slides: [{ image: manualControl, alt: 'Иллюстрация: человек выбирает режим просмотра кино на телефоне в гостиной с приглушённым светом.' }],
   },
   {
+    sceneLabel: 'Датчик движения в прихожей',
+    sceneDetail: 'Задаём имя, помещение и назначение',
     id: 'devices', number: '03', label: 'Разметка устройств', title: 'У каждого устройства — понятная роль',
-    description: 'Названия, помещения и назначение устройств помогают связать оборудование объекта с его отображением в программе.',
-    replacement: 'Здесь покажем разметку устройств на реальном примере.',
-    slides: [{ image: deviceMarkup, alt: 'Иллюстрация: специалист с планшетом связывает настенный датчик с оборудованием щита и комнатой.' }],
+    description: 'Дайте устройствам и их каналам понятные имена, укажите помещение и назначение. Например, «Датчик движения в прихожей» или «Основной свет в кухне». Такая разметка помогает быстро находить нужное оборудование, выбирать его для автоматизаций и понимать, что проверять при обслуживании.',
+    slides: [{ image: deviceMarkup, alt: 'Иллюстрация разметки: специалист даёт имя датчику движения в прихожей; рядом щит с оборудованием Wiren Board в той же компоновке, что на главной.' }],
   },
   {
+    sceneLabel: 'Движение → включение света',
     id: 'automations', number: '04', label: 'Создание автоматизаций', title: 'От задачи — к нужному поведению',
-    description: 'На примере освещения покажем путь от выбора автоматизации и устройств до условий работы и включения.',
-    replacement: 'Здесь покажем создание автоматизации по шагам.',
-    slides: [{ image: automationCreation, alt: 'Иллюстрация: специалист и заказчик обсуждают работу домашней автоматизации за ноутбуком.' }],
+    description: 'Свет включается по движению, когда темно, и гаснет после заданной паузы без движения. Вы выбираете готовую автоматизацию, указываете датчики и светильники, задаёте условия работы. Для разных комнат можно использовать одну готовую логику со своими настройками.',
+    slides: [{ image: automationCreation, alt: 'Иллюстрация: специалист и заказчик вечером настраивают автоматизацию освещения за ноутбуком; за окнами сумерки, стол освещён тёплым светильником.' }],
   },
   {
+    sceneLabel: 'Сообщение → ваше действие',
     id: 'notifications', number: '05', label: 'Уведомления и интерактив', title: 'Сообщение и следующий шаг',
-    description: 'В этом блоке покажем сообщения системы и примеры взаимодействия с ними — от получения информации до ответа пользователя.',
-    replacement: 'Здесь появятся реальные примеры уведомлений и интерактива.',
+    description: 'Уведомления нужны, чтобы узнавать, что происходит в доме и где требуется ваше внимание. Интерактив добавляет обратную связь: сообщение может предложить ответить на вопрос или выбрать дальнейшее действие. Вы понимаете причину обращения и решаете, как поступить.',
     slides: [{ image: notifications, alt: 'Концептуальная иллюстрация: человек читает условное сообщение и нажимает кнопку на телефоне.' }],
   },
 ];
@@ -53,17 +54,19 @@ const guiPreviewSlots = [
   <section class="section product-hero" aria-labelledby="software-title">
     <div class="shell">
       <a class="back-link" href="/">← Проектирование и сборка систем</a>
-      <div class="product-intro">
-        <p class="eyebrow">Ritmod / программное обеспечение</p>
-        <h1 id="software-title">Ritmod управляет <span>системами вашего объекта.</span></h1>
-        <p class="hero-lede">Свет, климат, вода и приводы работают по вашим условиям — с готовыми автоматизациями в одной программе.</p>
-        <div class="actions product-actions">
-          <a class="button" href="#automations">Смотреть автоматизации ↓</a>
-          <a class="button button--secondary" href="#purchase">Приобрести ПО ↗</a>
+      <div class="product-hero-main">
+        <div class="product-intro">
+          <p class="eyebrow">Ritmod / программное обеспечение</p>
+          <h1 id="software-title">Ritmod управляет <span>системами вашего объекта.</span></h1>
+          <p class="hero-lede">Свет, климат, вода и приводы работают по вашим условиям — с готовыми автоматизациями в одной программе.</p>
+          <div class="actions product-actions">
+            <a class="button" href="#automations">Смотреть автоматизации ↓</a>
+            <a class="button button--secondary" href="#purchase">Приобрести ПО ↗</a>
+          </div>
         </div>
-      </div>
-      <div class="product-stage">
-        <SoftwareAutomationScene />
+        <div class="product-stage">
+          <SoftwareAutomationScene />
+        </div>
       </div>
       <div class="logic-explanation" id="operation" aria-labelledby="operation-title">
         <h2 id="operation-title">Как это работает: пример освещения</h2>
@@ -84,7 +87,7 @@ const guiPreviewSlots = [
         <div><p class="eyebrow">Возможности Ritmod</p><h2 class="section-title" id="automations-title">Что умеет Ritmod.</h2></div>
         <a class="text-link" href="/ru/docs/">Все разделы документации →</a>
       </div>
-      <p class="lede">Посмотрите, какие задачи можно поручить Ritmod. В каждом описании — поведение системы, варианты применения и условия, которые нужно учесть.</p>
+      <p class="lede">Посмотрите, какие задачи можно поручить Ritmod. В каждом разделе — как это работает, где пригодится и что для этого нужно.</p>
       <nav class="catalog-nav" aria-label="Разделы автоматизаций">
         {automationGroups.map((group) => <a href={`#${group.id}`}>{group.title}</a>)}
       </nav>
@@ -102,7 +105,7 @@ const guiPreviewSlots = [
                   </g>
                 ))}
               </svg>
-              <span class="catalog-action">{item.action}</span>
+              <span class="scene-action-label">{item.action}</span>
             </div>
             <div class="visual-card-copy">
               <p class="card-category">{item.title}</p>
@@ -122,7 +125,6 @@ const guiPreviewSlots = [
         <p class="eyebrow">Интерфейс Ritmod</p>
         <h2 class="section-title" id="interface-title">Управление и настройка в браузере.</h2>
         <p class="lede">От повседневного управления до подготовки системы: пять аспектов работы с Ritmod.</p>
-        <p class="gui-preview-note">Пока здесь иллюстрации. По мере готовности добавим реальные экраны и примеры действий в Ritmod.</p>
       </div>
       <nav class="gui-aspects" aria-label="Аспекты интерфейса Ritmod">
         {guiPreviewSlots.map((slot) => <a href={`#gui-${slot.id}`}>{slot.label}</a>)}
@@ -144,6 +146,10 @@ const guiPreviewSlots = [
                     <Image src={slide.image} alt={slide.alt} class="gui-preview-art"
                       widths={[480, 768, 1024, 1536]} sizes={index === 0 ? '(max-width: 850px) 94vw, 58vw' : '(max-width: 650px) 94vw, 46vw'}
                       format="webp" loading="lazy" />
+                    <span class="scene-action-label">
+                      {slot.sceneLabel}
+                      {slot.sceneDetail && <span class="scene-action-label-detail">{slot.sceneDetail}</span>}
+                    </span>
                   </div>
                 ))}
               </div>
@@ -156,7 +162,6 @@ const guiPreviewSlots = [
             <figcaption>
               <h3 id={`gui-${slot.id}-title`}>{slot.title}</h3>
               <p>{slot.description}</p>
-              <p class="gui-preview-replacement">{slot.replacement}</p>
             </figcaption>
           </figure>
         ))}
@@ -171,10 +176,19 @@ const guiPreviewSlots = [
       <div><p class="eyebrow">От результата к реализации</p><h2 class="section-title" id="compatibility-title">Подойдёт ли Ritmod вашей системе?</h2></div>
       <div class="information-copy">
         <p>Расскажите, что хотите автоматизировать. Если оборудование уже есть или выбрано, проверим, можно ли использовать его с Ritmod. Недостающее поможем подобрать.</p>
-        <ul>
-          <li>Согласуем, что система делает сама и как сохраняется ручное управление.</li>
-          <li>Определим поведение при неисправности и необходимые меры защиты.</li>
-          <li>Согласуем, как после подключения проверить сценарии на объекте.</li>
+        <ul class="compatibility-topics" role="list">
+          <li>
+            <h3>Автоматика и ручное управление</h3>
+            <p>Согласуем, что система делает сама и как вы управляете ею вручную.</p>
+          </li>
+          <li>
+            <h3>Работа при неисправности</h3>
+            <p>Определим, как система реагирует на сбои и какие меры защиты нужны.</p>
+          </li>
+          <li>
+            <h3>Проверка на объекте</h3>
+            <p>Согласуем, как после подключения проверить работу каждого сценария.</p>
+          </li>
         </ul>
         <p>Для ворот и дверей отдельно согласуем доступ и защиту от защемления. Команда открытия или закрытия сама по себе их не обеспечивает.</p>
       </div>
@@ -326,6 +340,42 @@ const guiPreviewSlots = [
     color: var(--signal);
   }
 
+  @media (min-width: 1101px) {
+    .product-hero-main {
+      display: grid;
+      grid-template-columns: minmax(0, 0.78fr) minmax(0, 1.22fr);
+      align-items: center;
+      gap: clamp(32px, 3.5vw, 56px);
+    }
+
+    .product-intro {
+      min-width: 0;
+      margin: 0;
+      text-align: left;
+    }
+
+    .product-intro h1 {
+      font-size: clamp(40px, 3.6vw, 54px);
+      line-height: 1.08;
+      text-wrap: pretty;
+    }
+
+    .product-intro .hero-lede {
+      margin-inline: 0;
+      font-size: clamp(18px, 1.5vw, 21px);
+      text-wrap: pretty;
+    }
+
+    .product-actions {
+      justify-content: flex-start;
+    }
+
+    .product-stage {
+      min-width: 0;
+      margin: 0;
+    }
+  }
+
   @media (max-width: 650px) {
     .product-intro {
       text-align: left;
@@ -350,6 +400,35 @@ const guiPreviewSlots = [
     }
   }
 
+  .compatibility-topics {
+    display: grid;
+    gap: 12px;
+    margin: 28px 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .compatibility-topics li {
+    margin: 0;
+    padding: clamp(18px, 2vw, 24px);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    background: var(--paper-strong);
+  }
+
+  .compatibility-topics h3 {
+    margin: 0 0 10px;
+    font-size: clamp(20px, 1.8vw, 24px);
+    line-height: 1.3;
+    letter-spacing: -0.02em;
+  }
+
+  .compatibility-topics p {
+    margin: 0;
+    font-size: 18px;
+    line-height: 1.55;
+  }
+
   .service-crosslink {
     margin: 40px 0 0;
     padding-top: 24px;
@@ -362,14 +441,6 @@ const guiPreviewSlots = [
     max-width: 920px;
   }
 
-  .gui-preview-note {
-    max-width: 760px;
-    margin: 24px 0 0;
-    padding-left: 16px;
-    border-left: 3px solid var(--accent-dark);
-    font-size: 14px;
-    line-height: 1.6;
-  }
 
   .gui-aspects,
   .gui-slide-links {
@@ -389,13 +460,17 @@ const guiPreviewSlots = [
   .gui-slides {
     display: flex;
     overflow-x: auto;
+    overscroll-behavior-x: contain;
     scroll-snap-type: x mandatory;
+    touch-action: pan-x pan-y;
   }
 
   .gui-slide {
+    position: relative;
     flex: 0 0 100%;
     min-width: 0;
     scroll-snap-align: start;
+    scroll-snap-stop: always;
   }
 
   .gui-slide-links {
@@ -462,6 +537,12 @@ const guiPreviewSlots = [
     object-fit: contain;
   }
 
+  .scene-action-label-detail {
+    display: block;
+    margin-top: 4px;
+    font-weight: 450;
+  }
+
   .gui-preview figcaption {
     padding: clamp(22px, 3vw, 40px);
   }
@@ -479,13 +560,6 @@ const guiPreviewSlots = [
     line-height: 1.6;
   }
 
-  .gui-preview figcaption > .gui-preview-replacement {
-    margin-top: 20px;
-    padding-top: 16px;
-    border-top: 1px solid var(--line);
-    color: var(--muted);
-    font-size: 13px;
-  }
 
   @media (max-width: 850px) {
     .gui-preview--overview {

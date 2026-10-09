@@ -7,14 +7,15 @@ next: false
 
 import { Image } from 'astro:assets';
 import DocsScenarioImage from '../../../../../../components/docs-scenario-image.astro';
-import leaksConcept from '../../../../../../assets/docs/leaks/leaks-concept-v1.png';
-import detectionImage from '../../../../../../assets/docs/leaks/sections/detection-v1.png';
-import shutoffImage from '../../../../../../assets/docs/leaks/sections/shutoff-v1.png';
-import recoveryImage from '../../../../../../assets/docs/leaks/sections/recovery-v1.png';
-import verificationImage from '../../../../../../assets/docs/leaks/sections/verification-v1.png';
+import leaksConcept from '../../../../../../assets/docs/leaks/transparent/leaks-concept-v1.png';
+import detectionImage from '../../../../../../assets/docs/leaks/sections/transparent/detection-v1.png';
+import shutoffImage from '../../../../../../assets/docs/leaks/sections/transparent/shutoff-v1.png';
+import recoveryImage from '../../../../../../assets/docs/leaks/sections/transparent/recovery-v1.png';
+import verificationImage from '../../../../../../assets/docs/leaks/sections/transparent/verification-v1.png';
 import chooseProtectionImage from '../../../../../../assets/docs/leaks/sections/choose-protection-v1.png';
 
 <Image
+  class="docs-illustration"
   src={leaksConcept}
   alt="Вода у стиральной машины достигает датчика на полу; рядом виден кран с электроприводом, а житель дома замечает протечку из сухого прохода."
   layout="constrained"

@@ -7,14 +7,15 @@ next: false
 
 import { Image } from 'astro:assets';
 import DocsScenarioImage from '../../../../../../components/docs-scenario-image.astro';
-import conditioningConcept from '../../../../../../assets/docs/air-conditioning/air-conditioning-concept-v1.png';
-import temperatureImage from '../../../../../../assets/docs/air-conditioning/sections/temperature-v1.png';
-import seasonalModesImage from '../../../../../../assets/docs/air-conditioning/sections/seasonal-modes-v1.png';
-import dailyProfilesImage from '../../../../../../assets/docs/air-conditioning/sections/daily-profiles-v1.png';
-import manualControlImage from '../../../../../../assets/docs/air-conditioning/sections/manual-control-v1.png';
-import chooseComfortImage from '../../../../../../assets/docs/air-conditioning/sections/choose-comfort-v1.png';
+import conditioningConcept from '../../../../../../assets/docs/air-conditioning/transparent/air-conditioning-concept-v1.png';
+import temperatureImage from '../../../../../../assets/docs/air-conditioning/sections/transparent/temperature-v1.png';
+import seasonalModesImage from '../../../../../../assets/docs/air-conditioning/sections/transparent/seasonal-modes-v1.png';
+import dailyProfilesImage from '../../../../../../assets/docs/air-conditioning/sections/transparent/daily-profiles-v1.png';
+import manualControlImage from '../../../../../../assets/docs/air-conditioning/sections/transparent/manual-control-v1.png';
+import chooseComfortImage from '../../../../../../assets/docs/air-conditioning/sections/transparent/choose-comfort-v1.png';
 
 <Image
+  class="docs-illustration"
   src={conditioningConcept}
   alt="Летний день: человек отдыхает в гостиной, другой работает в кабинете; совместимые кондиционеры помогают поддерживать комфорт в каждой комнате."
   layout="constrained"

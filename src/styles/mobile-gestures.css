@@ -1,0 +1,13 @@
+@media (any-pointer: coarse) {
+  html,
+  body {
+    overscroll-behavior: none;
+    touch-action: pan-x pan-y;
+  }
+
+  input,
+  textarea,
+  select {
+    font-size: max(1rem, 16px);
+  }
+}

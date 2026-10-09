@@ -7,14 +7,15 @@ next: false
 
 import { Image } from 'astro:assets';
 import DocsScenarioImage from '../../../../../../components/docs-scenario-image.astro';
-import recirculationConcept from '../../../../../../assets/docs/recirculation/recirculation-concept-v1.png';
-import approachImage from '../../../../../../assets/docs/recirculation/sections/approach-v1.png';
-import buttonImage from '../../../../../../assets/docs/recirculation/sections/button-request-v1.png';
-import cycleImage from '../../../../../../assets/docs/recirculation/sections/cycle-and-pause-v1.png';
-import nightImage from '../../../../../../assets/docs/recirculation/sections/night-passage-v1.png';
-import leakImage from '../../../../../../assets/docs/recirculation/sections/leak-stop-v1.png';
+import recirculationConcept from '../../../../../../assets/docs/recirculation/transparent/recirculation-concept-v1.png';
+import approachImage from '../../../../../../assets/docs/recirculation/sections/transparent/approach-v1.png';
+import buttonImage from '../../../../../../assets/docs/recirculation/sections/transparent/button-request-v1.png';
+import cycleImage from '../../../../../../assets/docs/recirculation/sections/transparent/cycle-and-pause-v1.png';
+import nightImage from '../../../../../../assets/docs/recirculation/sections/transparent/night-passage-v1.png';
+import leakImage from '../../../../../../assets/docs/recirculation/sections/transparent/leak-stop-v1.png';
 
 <Image
+  class="docs-illustration"
   src={recirculationConcept}
   alt="Человек пользуется водой в ванной; рядом показаны накопитель горячей воды, насос и проходящие к ванной трубы контура рециркуляции."
   layout="constrained"

@@ -5,6 +5,12 @@ export default defineConfig({
   site: 'https://ritmod.ru',
   output: 'static',
   trailingSlash: 'always',
+  vite: {
+    build: {
+      // Сохраняем совместимые media queries для Safari на старых iPhone.
+      cssTarget: 'safari15',
+    },
+  },
   redirects: {
     '/ru/docs/automations/lighting/prepare/': '/ru/docs/automations/lighting/',
     '/ru/docs/automations/lighting/setup/': '/ru/docs/automations/lighting/',
@@ -22,6 +28,8 @@ export default defineConfig({
       favicon: '/favicon.svg',
       customCss: ['./src/styles/docs.css'],
       components: {
+        Header: './src/components/docs-header.astro',
+        Head: './src/components/docs-head.astro',
         SiteTitle: './src/components/docs-site-title.astro',
         MobileMenuToggle: './src/components/docs-menu-toggle.astro',
       },
