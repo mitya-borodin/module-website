@@ -190,6 +190,12 @@
   font-size: 14px;
 }
 
+.visual-card .solution-guide-button {
+  width: 100%;
+  margin-top: 12px;
+  gap: 8px;
+}
+
 .dark-section .visual-card {
   border-color: var(--paper-strong);
 }

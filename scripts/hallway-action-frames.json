@@ -1,0 +1,2879 @@
+[
+  {
+    "name": "quiet-edit-mobile",
+    "parts": [
+      [
+        "quiet-edit-mobile.jpg",
+        390,
+        844
+      ]
+    ],
+    "marks": [
+      {
+        "x": 31,
+        "y": 153,
+        "width": 308,
+        "height": 22
+      }
+    ]
+  },
+  {
+    "name": "quiet-confirm-mobile",
+    "parts": [
+      [
+        "quiet-confirm-mobile.jpg",
+        390,
+        844
+      ]
+    ],
+    "marks": [
+      {
+        "x": 199,
+        "y": 798,
+        "width": 177,
+        "height": 40
+      }
+    ]
+  },
+  {
+    "name": "noise-edit-mobile",
+    "parts": [
+      [
+        "noise-edit-mobile.jpg",
+        390,
+        844
+      ]
+    ],
+    "marks": [
+      {
+        "x": 31,
+        "y": 153,
+        "width": 308,
+        "height": 22
+      }
+    ]
+  },
+  {
+    "name": "noise-confirm-mobile",
+    "parts": [
+      [
+        "noise-confirm-mobile.jpg",
+        390,
+        844
+      ]
+    ],
+    "marks": [
+      {
+        "x": 199,
+        "y": 798,
+        "width": 177,
+        "height": 40
+      }
+    ]
+  },
+  {
+    "name": "motion-group-mobile",
+    "parts": [
+      [
+        "motion-group-mobile.jpg",
+        390,
+        844
+      ]
+    ],
+    "marks": [
+      {
+        "x": 14,
+        "y": 270,
+        "width": 362,
+        "height": 118
+      }
+    ]
+  },
+  {
+    "name": "motion-group-tablet",
+    "parts": [
+      [
+        "motion-group-tablet.jpg",
+        800,
+        900
+      ]
+    ],
+    "marks": [
+      {
+        "x": 406,
+        "y": 133,
+        "width": 376,
+        "height": 118
+      }
+    ]
+  },
+  {
+    "name": "motion-group-desktop",
+    "parts": [
+      [
+        "motion-group-desktop.jpg",
+        800,
+        900
+      ]
+    ],
+    "marks": [
+      {
+        "x": 406,
+        "y": 133,
+        "width": 376,
+        "height": 118
+      }
+    ]
+  },
+  {
+    "name": "aggregation-choice-mobile",
+    "parts": [
+      [
+        "aggregation-choice-mobile.jpg",
+        390,
+        844
+      ]
+    ],
+    "marks": [
+      {
+        "x": 14,
+        "y": 140,
+        "width": 362,
+        "height": 84
+      }
+    ]
+  },
+  {
+    "name": "aggregation-confirm-mobile",
+    "parts": [
+      [
+        "aggregation-confirm-mobile.jpg",
+        390,
+        844
+      ]
+    ],
+    "marks": [
+      {
+        "x": 199,
+        "y": 798,
+        "width": 177,
+        "height": 40
+      }
+    ]
+  },
+  {
+    "name": "threshold-edit-mobile",
+    "parts": [
+      [
+        "threshold-edit-mobile.jpg",
+        390,
+        844
+      ]
+    ],
+    "marks": [
+      {
+        "x": 31,
+        "y": 153,
+        "width": 308,
+        "height": 22
+      }
+    ]
+  },
+  {
+    "name": "threshold-confirm-mobile",
+    "parts": [
+      [
+        "threshold-confirm-mobile.jpg",
+        390,
+        844
+      ]
+    ],
+    "marks": [
+      {
+        "x": 199,
+        "y": 798,
+        "width": 177,
+        "height": 40
+      }
+    ]
+  },
+  {
+    "name": "aggregation-choice-tablet",
+    "parts": [
+      [
+        "aggregation-choice-tablet.jpg",
+        800,
+        900
+      ]
+    ],
+    "marks": [
+      {
+        "x": 18,
+        "y": 133,
+        "width": 764,
+        "height": 72
+      }
+    ]
+  },
+  {
+    "name": "aggregation-choice-desktop",
+    "parts": [
+      [
+        "aggregation-choice-desktop.jpg",
+        800,
+        900
+      ]
+    ],
+    "marks": [
+      {
+        "x": 18,
+        "y": 133,
+        "width": 764,
+        "height": 72
+      }
+    ]
+  },
+  {
+    "name": "aggregation-confirm-tablet",
+    "parts": [
+      [
+        "aggregation-confirm-tablet.jpg",
+        800,
+        900
+      ]
+    ],
+    "marks": [
+      {
+        "x": 406,
+        "y": 846,
+        "width": 376,
+        "height": 44
+      }
+    ]
+  },
+  {
+    "name": "aggregation-confirm-desktop",
+    "parts": [
+      [
+        "aggregation-confirm-desktop.jpg",
+        800,
+        900
+      ]
+    ],
+    "marks": [
+      {
+        "x": 406,
+        "y": 846,
+        "width": 376,
+        "height": 44
+      }
+    ]
+  },
+  {
+    "name": "period-start-mode-mobile",
+    "parts": [
+      [
+        "period-start-mode-mobile.jpg",
+        390,
+        844
+      ]
+    ],
+    "marks": [
+      {
+        "x": 21,
+        "y": 200,
+        "width": 113.328125,
+        "height": 40
+      }
+    ]
+  },
+  {
+    "name": "period-start-mode-tablet",
+    "parts": [
+      [
+        "period-start-mode-tablet.jpg",
+        800,
+        900
+      ]
+    ],
+    "marks": [
+      {
+        "x": 18,
+        "y": 193,
+        "width": 252,
+        "height": 44
+      }
+    ]
+  },
+  {
+    "name": "period-start-mode-desktop",
+    "parts": [
+      [
+        "period-start-mode-desktop.jpg",
+        800,
+        900
+      ]
+    ],
+    "marks": [
+      {
+        "x": 18,
+        "y": 193,
+        "width": 252,
+        "height": 44
+      }
+    ]
+  },
+  {
+    "name": "period-start-edit-mobile",
+    "parts": [
+      [
+        "period-start-edit-mobile.jpg",
+        390,
+        844
+      ]
+    ],
+    "marks": [
+      {
+        "x": 21,
+        "y": 252,
+        "width": 348,
+        "height": 146
+      }
+    ]
+  },
+  {
+    "name": "period-start-edit-tablet",
+    "parts": [
+      [
+        "period-start-edit-tablet.jpg",
+        800,
+        900
+      ]
+    ],
+    "marks": [
+      {
+        "x": 18,
+        "y": 249,
+        "width": 764,
+        "height": 155
+      }
+    ]
+  },
+  {
+    "name": "period-start-edit-desktop",
+    "parts": [
+      [
+        "period-start-edit-desktop.jpg",
+        800,
+        900
+      ]
+    ],
+    "marks": [
+      {
+        "x": 18,
+        "y": 249,
+        "width": 764,
+        "height": 155
+      }
+    ]
+  },
+  {
+    "name": "period-start-confirm-mobile",
+    "parts": [
+      [
+        "period-start-confirm-mobile.jpg",
+        390,
+        844
+      ]
+    ],
+    "marks": [
+      {
+        "x": 199,
+        "y": 797.2109375,
+        "width": 170,
+        "height": 40.7890625
+      }
+    ]
+  },
+  {
+    "name": "period-start-confirm-tablet",
+    "parts": [
+      [
+        "period-start-confirm-tablet.jpg",
+        800,
+        900
+      ]
+    ],
+    "marks": [
+      {
+        "x": 406,
+        "y": 849.1015625,
+        "width": 376,
+        "height": 40.8984375
+      }
+    ]
+  },
+  {
+    "name": "period-start-confirm-desktop",
+    "parts": [
+      [
+        "period-start-confirm-desktop.jpg",
+        800,
+        900
+      ]
+    ],
+    "marks": [
+      {
+        "x": 406,
+        "y": 846.0546875,
+        "width": 376,
+        "height": 43.9453125
+      }
+    ]
+  },
+  {
+    "name": "period-end-mode-mobile",
+    "parts": [
+      [
+        "period-end-mode-mobile.jpg",
+        390,
+        844
+      ]
+    ],
+    "marks": [
+      {
+        "x": 21,
+        "y": 200,
+        "width": 113.328125,
+        "height": 40
+      }
+    ]
+  },
+  {
+    "name": "period-end-mode-tablet",
+    "parts": [
+      [
+        "period-end-mode-tablet.jpg",
+        800,
+        900
+      ]
+    ],
+    "marks": [
+      {
+        "x": 18,
+        "y": 193,
+        "width": 252,
+        "height": 44
+      }
+    ]
+  },
+  {
+    "name": "period-end-mode-desktop",
+    "parts": [
+      [
+        "period-end-mode-desktop.jpg",
+        800,
+        900
+      ]
+    ],
+    "marks": [
+      {
+        "x": 18,
+        "y": 193,
+        "width": 252,
+        "height": 44
+      }
+    ]
+  },
+  {
+    "name": "period-end-edit-mobile",
+    "parts": [
+      [
+        "period-end-edit-mobile.jpg",
+        390,
+        844
+      ]
+    ],
+    "marks": [
+      {
+        "x": 21,
+        "y": 252,
+        "width": 348,
+        "height": 146
+      }
+    ]
+  },
+  {
+    "name": "period-end-edit-tablet",
+    "parts": [
+      [
+        "period-end-edit-tablet.jpg",
+        800,
+        900
+      ]
+    ],
+    "marks": [
+      {
+        "x": 18,
+        "y": 249,
+        "width": 764,
+        "height": 155
+      }
+    ]
+  },
+  {
+    "name": "period-end-edit-desktop",
+    "parts": [
+      [
+        "period-end-edit-desktop.jpg",
+        800,
+        900
+      ]
+    ],
+    "marks": [
+      {
+        "x": 18,
+        "y": 249,
+        "width": 764,
+        "height": 155
+      }
+    ]
+  },
+  {
+    "name": "period-end-confirm-mobile",
+    "parts": [
+      [
+        "period-end-confirm-mobile.jpg",
+        390,
+        844
+      ]
+    ],
+    "marks": [
+      {
+        "x": 199,
+        "y": 794.890625,
+        "width": 170,
+        "height": 43.109375
+      }
+    ]
+  },
+  {
+    "name": "period-end-confirm-tablet",
+    "parts": [
+      [
+        "period-end-confirm-tablet.jpg",
+        800,
+        900
+      ]
+    ],
+    "marks": [
+      {
+        "x": 406,
+        "y": 846.8671875,
+        "width": 376,
+        "height": 43.1328125
+      }
+    ]
+  },
+  {
+    "name": "period-end-confirm-desktop",
+    "parts": [
+      [
+        "period-end-confirm-desktop.jpg",
+        800,
+        900
+      ]
+    ],
+    "marks": [
+      {
+        "x": 406,
+        "y": 846,
+        "width": 376,
+        "height": 44
+      }
+    ]
+  },
+  {
+    "name": "block-on-edit-mobile",
+    "parts": [
+      [
+        "block-on-edit-mobile.jpg",
+        390,
+        844
+      ]
+    ],
+    "marks": [
+      {
+        "x": 31,
+        "y": 157,
+        "width": 308,
+        "height": 22
+      }
+    ]
+  },
+  {
+    "name": "block-on-confirm-mobile",
+    "parts": [
+      [
+        "block-on-confirm-mobile.jpg",
+        390,
+        844
+      ]
+    ],
+    "marks": [
+      {
+        "x": 199,
+        "y": 798,
+        "width": 177,
+        "height": 40
+      }
+    ]
+  },
+  {
+    "name": "block-off-edit-mobile",
+    "parts": [
+      [
+        "block-off-edit-mobile.jpg",
+        390,
+        844
+      ]
+    ],
+    "marks": [
+      {
+        "x": 31,
+        "y": 157,
+        "width": 308,
+        "height": 22
+      }
+    ]
+  },
+  {
+    "name": "block-off-confirm-mobile",
+    "parts": [
+      [
+        "block-off-confirm-mobile.jpg",
+        390,
+        844
+      ]
+    ],
+    "marks": [
+      {
+        "x": 199,
+        "y": 798,
+        "width": 177,
+        "height": 40
+      }
+    ]
+  },
+  {
+    "name": "back-to-root-mobile",
+    "parts": [
+      [
+        "back-to-root-mobile.jpg",
+        390,
+        844
+      ]
+    ],
+    "marks": [
+      {
+        "x": 14,
+        "y": 106,
+        "width": 108,
+        "height": 30
+      }
+    ]
+  },
+  {
+    "name": "back-to-root-tablet",
+    "parts": [
+      [
+        "back-to-root-tablet.jpg",
+        800,
+        900
+      ]
+    ],
+    "marks": [
+      {
+        "x": 18,
+        "y": 99,
+        "width": 108,
+        "height": 30
+      }
+    ]
+  },
+  {
+    "name": "back-to-root-desktop",
+    "parts": [
+      [
+        "back-to-root-desktop.jpg",
+        800,
+        900
+      ]
+    ],
+    "marks": [
+      {
+        "x": 18,
+        "y": 99,
+        "width": 108,
+        "height": 30
+      }
+    ]
+  },
+  {
+    "name": "name-edit-mobile",
+    "parts": [
+      [
+        "name-edit-mobile.jpg",
+        390,
+        844
+      ]
+    ],
+    "marks": [
+      {
+        "x": 31,
+        "y": 113,
+        "width": 308,
+        "height": 22
+      }
+    ]
+  },
+  {
+    "name": "name-confirm-mobile",
+    "parts": [
+      [
+        "name-confirm-mobile.jpg",
+        390,
+        844
+      ]
+    ],
+    "marks": [
+      {
+        "x": 14,
+        "y": 790,
+        "width": 362,
+        "height": 40
+      }
+    ]
+  },
+  {
+    "name": "showcase-menu-desktop",
+    "parts": [
+      [
+        "showcase-menu-desktop.jpg",
+        299,
+        264
+      ]
+    ],
+    "marks": [
+      {
+        "x": 6,
+        "y": 198,
+        "width": 287,
+        "height": 52
+      }
+    ]
+  },
+  {
+    "name": "open-menu-tablet",
+    "parts": [
+      [
+        "open-menu-tablet.jpg",
+        1024,
+        144
+      ]
+    ],
+    "marks": [
+      {
+        "x": 884.5625,
+        "y": 10,
+        "width": 125.4375,
+        "height": 44
+      }
+    ]
+  },
+  {
+    "name": "showcase-menu-tablet",
+    "parts": [
+      [
+        "showcase-menu-tablet.jpg",
+        1024,
+        237
+      ]
+    ],
+    "marks": [
+      {
+        "x": 6,
+        "y": 179,
+        "width": 1012,
+        "height": 52
+      }
+    ]
+  },
+  {
+    "name": "showcase-menu-mobile",
+    "parts": [
+      [
+        "showcase-menu-mobile.jpg",
+        390,
+        225
+      ]
+    ],
+    "marks": [
+      {
+        "x": 6,
+        "y": 171,
+        "width": 378,
+        "height": 48
+      }
+    ]
+  },
+  {
+    "name": "open-menu-mobile",
+    "parts": [
+      [
+        "open-menu-mobile.jpg",
+        390,
+        144
+      ]
+    ],
+    "marks": [
+      {
+        "x": 264.984375,
+        "y": 12,
+        "width": 111.015625,
+        "height": 40
+      }
+    ]
+  },
+  {
+    "name": "showcase-search-edit-mobile",
+    "parts": [
+      [
+        "showcase-search-edit-mobile.jpg",
+        390,
+        844
+      ]
+    ],
+    "marks": [
+      {
+        "x": 27,
+        "y": 51,
+        "width": 316,
+        "height": 22
+      }
+    ]
+  },
+  {
+    "name": "showcase-search-apply-mobile",
+    "parts": [
+      [
+        "showcase-search-apply-mobile.jpg",
+        390,
+        844
+      ]
+    ],
+    "marks": [
+      {
+        "x": 14,
+        "y": 790,
+        "width": 362,
+        "height": 40
+      }
+    ]
+  },
+  {
+    "name": "showcase-search-edit-tablet",
+    "parts": [
+      [
+        "showcase-search-edit-tablet.jpg",
+        1024,
+        900
+      ]
+    ],
+    "marks": [
+      {
+        "x": 39,
+        "y": 68,
+        "width": 922,
+        "height": 28
+      }
+    ]
+  },
+  {
+    "name": "showcase-search-apply-tablet",
+    "parts": [
+      [
+        "showcase-search-apply-tablet.jpg",
+        1024,
+        900
+      ]
+    ],
+    "marks": [
+      {
+        "x": 22,
+        "y": 834.9921875,
+        "width": 980,
+        "height": 43.0078125
+      }
+    ]
+  },
+  {
+    "name": "showcase-search-mobile",
+    "parts": [
+      [
+        "showcase-search-mobile.jpg",
+        390,
+        272
+      ]
+    ],
+    "marks": [
+      {
+        "x": 14,
+        "y": 79,
+        "width": 362,
+        "height": 48
+      }
+    ]
+  },
+  {
+    "name": "showcase-card-mobile",
+    "parts": [
+      [
+        "showcase-card-mobile.jpg",
+        390,
+        272
+      ]
+    ],
+    "marks": [
+      {
+        "x": 14,
+        "y": 151,
+        "width": 362,
+        "height": 107
+      }
+    ]
+  },
+  {
+    "name": "showcase-search-tablet",
+    "parts": [
+      [
+        "showcase-search-tablet.jpg",
+        1024,
+        330
+      ]
+    ],
+    "marks": [
+      {
+        "x": 22,
+        "y": 87,
+        "width": 980,
+        "height": 48
+      }
+    ]
+  },
+  {
+    "name": "showcase-card-tablet",
+    "parts": [
+      [
+        "showcase-card-tablet.jpg",
+        1024,
+        330
+      ]
+    ],
+    "marks": [
+      {
+        "x": 322,
+        "y": 187,
+        "width": 380,
+        "height": 129
+      }
+    ]
+  },
+  {
+    "name": "showcase-search-desktop",
+    "parts": [
+      [
+        "../01-showcase-desktop.jpg",
+        1440,
+        310
+      ]
+    ],
+    "marks": [
+      {
+        "x": 314,
+        "y": 14,
+        "width": 1112,
+        "height": 48
+      }
+    ]
+  },
+  {
+    "name": "showcase-card-desktop",
+    "parts": [
+      [
+        "../01-showcase-desktop.jpg",
+        1440,
+        310
+      ]
+    ],
+    "marks": [
+      {
+        "x": 680,
+        "y": 94,
+        "width": 380,
+        "height": 174
+      }
+    ]
+  },
+  {
+    "name": "open-inputs-mobile",
+    "parts": [
+      [
+        "open-inputs-mobile.jpg",
+        390,
+        844
+      ]
+    ],
+    "marks": [
+      {
+        "x": 14,
+        "y": 360,
+        "width": 362,
+        "height": 124
+      }
+    ]
+  },
+  {
+    "name": "open-inputs-tablet",
+    "parts": [
+      [
+        "open-inputs-tablet.jpg",
+        800,
+        900
+      ]
+    ],
+    "marks": [
+      {
+        "x": 18,
+        "y": 388,
+        "width": 378,
+        "height": 124
+      }
+    ]
+  },
+  {
+    "name": "open-inputs-desktop",
+    "parts": [
+      [
+        "open-inputs-desktop.jpg",
+        800,
+        900
+      ]
+    ],
+    "marks": [
+      {
+        "x": 18,
+        "y": 388,
+        "width": 378,
+        "height": 124
+      }
+    ]
+  },
+  {
+    "name": "open-settings-mobile",
+    "parts": [
+      [
+        "open-settings-mobile.jpg",
+        390,
+        844
+      ]
+    ],
+    "marks": [
+      {
+        "x": 14,
+        "y": 360,
+        "width": 362,
+        "height": 124
+      }
+    ]
+  },
+  {
+    "name": "open-settings-tablet",
+    "parts": [
+      [
+        "open-settings-tablet.jpg",
+        800,
+        900
+      ]
+    ],
+    "marks": [
+      {
+        "x": 404,
+        "y": 388,
+        "width": 378,
+        "height": 124
+      }
+    ]
+  },
+  {
+    "name": "open-settings-desktop",
+    "parts": [
+      [
+        "open-settings-desktop.jpg",
+        800,
+        900
+      ]
+    ],
+    "marks": [
+      {
+        "x": 404,
+        "y": 388,
+        "width": 378,
+        "height": 124
+      }
+    ]
+  },
+  {
+    "name": "relay-list-mobile",
+    "parts": [
+      [
+        "relay-list-mobile.jpg",
+        390,
+        844
+      ]
+    ],
+    "marks": [
+      {
+        "x": 14,
+        "y": 243,
+        "width": 362,
+        "height": 207
+      }
+    ]
+  },
+  {
+    "name": "relay-list-tablet",
+    "parts": [
+      [
+        "relay-list-tablet.jpg",
+        800,
+        900
+      ]
+    ],
+    "marks": [
+      {
+        "x": 18,
+        "y": 218,
+        "width": 376,
+        "height": 270
+      }
+    ]
+  },
+  {
+    "name": "relay-list-desktop",
+    "parts": [
+      [
+        "relay-list-desktop.jpg",
+        800,
+        900
+      ]
+    ],
+    "marks": [
+      {
+        "x": 18,
+        "y": 218,
+        "width": 376,
+        "height": 270
+      }
+    ]
+  },
+  {
+    "name": "motion-list-mobile",
+    "parts": [
+      [
+        "motion-list-mobile.jpg",
+        390,
+        844
+      ]
+    ],
+    "marks": [
+      {
+        "x": 14,
+        "y": 243,
+        "width": 362,
+        "height": 207
+      }
+    ]
+  },
+  {
+    "name": "motion-list-tablet",
+    "parts": [
+      [
+        "motion-list-tablet.jpg",
+        800,
+        900
+      ]
+    ],
+    "marks": [
+      {
+        "x": 406,
+        "y": 218,
+        "width": 376,
+        "height": 270
+      }
+    ]
+  },
+  {
+    "name": "motion-list-desktop",
+    "parts": [
+      [
+        "motion-list-desktop.jpg",
+        800,
+        900
+      ]
+    ],
+    "marks": [
+      {
+        "x": 406,
+        "y": 218,
+        "width": 376,
+        "height": 270
+      }
+    ]
+  },
+  {
+    "name": "relay-device-mobile",
+    "parts": [
+      [
+        "relay-device-mobile.jpg",
+        390,
+        844
+      ]
+    ],
+    "marks": [
+      {
+        "x": 14,
+        "y": 194,
+        "width": 362,
+        "height": 359
+      }
+    ]
+  },
+  {
+    "name": "relay-device-tablet",
+    "parts": [
+      [
+        "relay-device-tablet.jpg",
+        1024,
+        900
+      ]
+    ],
+    "marks": [
+      {
+        "x": 322,
+        "y": 221,
+        "width": 380,
+        "height": 453
+      }
+    ]
+  },
+  {
+    "name": "relay-device-desktop",
+    "parts": [
+      [
+        "relay-device-desktop.jpg",
+        1440,
+        900
+      ]
+    ],
+    "marks": [
+      {
+        "x": 530,
+        "y": 221,
+        "width": 380,
+        "height": 507
+      }
+    ]
+  },
+  {
+    "name": "motion-device-mobile",
+    "parts": [
+      [
+        "motion-device-mobile.jpg",
+        390,
+        844
+      ]
+    ],
+    "marks": [
+      {
+        "x": 14,
+        "y": 224,
+        "width": 362,
+        "height": 395
+      }
+    ]
+  },
+  {
+    "name": "motion-device-tablet",
+    "parts": [
+      [
+        "motion-device-tablet.jpg",
+        1024,
+        900
+      ]
+    ],
+    "marks": [
+      {
+        "x": 322,
+        "y": 221,
+        "width": 380,
+        "height": 530
+      }
+    ]
+  },
+  {
+    "name": "motion-device-desktop",
+    "parts": [
+      [
+        "motion-device-desktop.jpg",
+        1440,
+        900
+      ]
+    ],
+    "marks": [
+      {
+        "x": 530,
+        "y": 221,
+        "width": 380,
+        "height": 592
+      }
+    ]
+  },
+  {
+    "name": "sensor-group-mobile",
+    "parts": [
+      [
+        "sensor-group-mobile.jpg",
+        390,
+        844
+      ]
+    ],
+    "marks": [
+      {
+        "x": 14,
+        "y": 508,
+        "width": 362,
+        "height": 118
+      }
+    ]
+  },
+  {
+    "name": "sensor-group-tablet",
+    "parts": [
+      [
+        "sensor-group-tablet.jpg",
+        800,
+        900
+      ]
+    ],
+    "marks": [
+      {
+        "x": 406,
+        "y": 530,
+        "width": 376,
+        "height": 118
+      }
+    ]
+  },
+  {
+    "name": "sensor-group-desktop",
+    "parts": [
+      [
+        "sensor-group-desktop.jpg",
+        800,
+        900
+      ]
+    ],
+    "marks": [
+      {
+        "x": 406,
+        "y": 526,
+        "width": 376,
+        "height": 118
+      }
+    ]
+  },
+  {
+    "name": "period-group-mobile",
+    "parts": [
+      [
+        "period-group-mobile.jpg",
+        390,
+        844
+      ]
+    ],
+    "marks": [
+      {
+        "x": 14,
+        "y": 328,
+        "width": 362,
+        "height": 118
+      }
+    ]
+  },
+  {
+    "name": "period-group-tablet",
+    "parts": [
+      [
+        "period-group-tablet.jpg",
+        800,
+        900
+      ]
+    ],
+    "marks": [
+      {
+        "x": 18,
+        "y": 256,
+        "width": 376,
+        "height": 118
+      }
+    ]
+  },
+  {
+    "name": "period-group-desktop",
+    "parts": [
+      [
+        "period-group-desktop.jpg",
+        800,
+        900
+      ]
+    ],
+    "marks": [
+      {
+        "x": 18,
+        "y": 256,
+        "width": 376,
+        "height": 118
+      }
+    ]
+  },
+  {
+    "name": "blocks-group-mobile",
+    "parts": [
+      [
+        "blocks-group-mobile.jpg",
+        390,
+        844
+      ]
+    ],
+    "marks": [
+      {
+        "x": 14,
+        "y": 248,
+        "width": 362,
+        "height": 118
+      }
+    ]
+  },
+  {
+    "name": "blocks-group-tablet",
+    "parts": [
+      [
+        "blocks-group-tablet.jpg",
+        800,
+        900
+      ]
+    ],
+    "marks": [
+      {
+        "x": 406,
+        "y": 108,
+        "width": 376,
+        "height": 118
+      }
+    ]
+  },
+  {
+    "name": "blocks-group-desktop",
+    "parts": [
+      [
+        "blocks-group-desktop.jpg",
+        800,
+        900
+      ]
+    ],
+    "marks": [
+      {
+        "x": 406,
+        "y": 108,
+        "width": 376,
+        "height": 118
+      }
+    ]
+  },
+  {
+    "name": "settings-save-mobile",
+    "parts": [
+      [
+        "settings-save-mobile.jpg",
+        390,
+        844
+      ]
+    ],
+    "marks": [
+      {
+        "x": 22,
+        "y": 780,
+        "width": 114,
+        "height": 42
+      }
+    ]
+  },
+  {
+    "name": "settings-save-tablet",
+    "parts": [
+      [
+        "settings-save-tablet.jpg",
+        800,
+        900
+      ]
+    ],
+    "marks": [
+      {
+        "x": 30,
+        "y": 820,
+        "width": 244,
+        "height": 46
+      }
+    ]
+  },
+  {
+    "name": "settings-save-desktop",
+    "parts": [
+      [
+        "settings-save-desktop.jpg",
+        800,
+        900
+      ]
+    ],
+    "marks": [
+      {
+        "x": 30,
+        "y": 820,
+        "width": 244,
+        "height": 46
+      }
+    ]
+  },
+  {
+    "name": "name-entry-tablet",
+    "parts": [
+      [
+        "name-entry-tablet.jpg",
+        800,
+        900
+      ]
+    ],
+    "marks": [
+      {
+        "x": 18,
+        "y": 180,
+        "width": 764,
+        "height": 86
+      }
+    ]
+  },
+  {
+    "name": "name-edit-tablet",
+    "parts": [
+      [
+        "name-edit-tablet.jpg",
+        800,
+        900
+      ]
+    ],
+    "marks": [
+      {
+        "x": 18,
+        "y": 108,
+        "width": 764,
+        "height": 48
+      }
+    ]
+  },
+  {
+    "name": "name-confirm-tablet",
+    "parts": [
+      [
+        "name-confirm-tablet.jpg",
+        800,
+        900
+      ]
+    ],
+    "marks": [
+      {
+        "x": 18,
+        "y": 834,
+        "width": 764,
+        "height": 46
+      }
+    ]
+  },
+  {
+    "name": "quiet-edit-tablet",
+    "parts": [
+      [
+        "quiet-edit-tablet.jpg",
+        800,
+        900
+      ]
+    ],
+    "marks": [
+      {
+        "x": 18,
+        "y": 133,
+        "width": 764,
+        "height": 48
+      }
+    ]
+  },
+  {
+    "name": "quiet-confirm-tablet",
+    "parts": [
+      [
+        "quiet-confirm-tablet.jpg",
+        800,
+        900
+      ]
+    ],
+    "marks": [
+      {
+        "x": 406,
+        "y": 846,
+        "width": 376,
+        "height": 44
+      }
+    ]
+  },
+  {
+    "name": "noise-edit-tablet",
+    "parts": [
+      [
+        "noise-edit-tablet.jpg",
+        800,
+        900
+      ]
+    ],
+    "marks": [
+      {
+        "x": 18,
+        "y": 133,
+        "width": 764,
+        "height": 48
+      }
+    ]
+  },
+  {
+    "name": "noise-confirm-tablet",
+    "parts": [
+      [
+        "noise-confirm-tablet.jpg",
+        800,
+        900
+      ]
+    ],
+    "marks": [
+      {
+        "x": 406,
+        "y": 846,
+        "width": 376,
+        "height": 44
+      }
+    ]
+  },
+  {
+    "name": "threshold-edit-tablet",
+    "parts": [
+      [
+        "threshold-edit-tablet.jpg",
+        800,
+        900
+      ]
+    ],
+    "marks": [
+      {
+        "x": 39,
+        "y": 143,
+        "width": 698,
+        "height": 28
+      }
+    ]
+  },
+  {
+    "name": "threshold-confirm-tablet",
+    "parts": [
+      [
+        "threshold-confirm-tablet.jpg",
+        800,
+        900
+      ]
+    ],
+    "marks": [
+      {
+        "x": 406,
+        "y": 846,
+        "width": 376,
+        "height": 44
+      }
+    ]
+  },
+  {
+    "name": "motion-back-settings-mobile",
+    "parts": [
+      [
+        "motion-back-settings-mobile.jpg",
+        390,
+        844
+      ]
+    ],
+    "marks": [
+      {
+        "x": 129.7734375,
+        "y": 106,
+        "width": 82,
+        "height": 30
+      }
+    ]
+  },
+  {
+    "name": "motion-back-settings-tablet",
+    "parts": [
+      [
+        "motion-back-settings-tablet.jpg",
+        800,
+        900
+      ]
+    ],
+    "marks": [
+      {
+        "x": 133.7734375,
+        "y": 99,
+        "width": 82,
+        "height": 30
+      }
+    ]
+  },
+  {
+    "name": "motion-back-settings-desktop",
+    "parts": [
+      [
+        "motion-back-settings-desktop.jpg",
+        800,
+        900
+      ]
+    ],
+    "marks": [
+      {
+        "x": 133.7734375,
+        "y": 99,
+        "width": 82,
+        "height": 30
+      }
+    ]
+  },
+  {
+    "name": "block-on-edit-tablet",
+    "parts": [
+      [
+        "block-on-edit-tablet.jpg",
+        800,
+        900
+      ]
+    ],
+    "marks": [
+      {
+        "x": 39,
+        "y": 143,
+        "width": 698,
+        "height": 28
+      }
+    ]
+  },
+  {
+    "name": "block-on-confirm-tablet",
+    "parts": [
+      [
+        "block-on-confirm-tablet.jpg",
+        800,
+        900
+      ]
+    ],
+    "marks": [
+      {
+        "x": 406,
+        "y": 846,
+        "width": 376,
+        "height": 44
+      }
+    ]
+  },
+  {
+    "name": "block-off-edit-tablet",
+    "parts": [
+      [
+        "block-off-edit-tablet.jpg",
+        800,
+        900
+      ]
+    ],
+    "marks": [
+      {
+        "x": 39,
+        "y": 143,
+        "width": 698,
+        "height": 28
+      }
+    ]
+  },
+  {
+    "name": "block-off-confirm-tablet",
+    "parts": [
+      [
+        "block-off-confirm-tablet.jpg",
+        800,
+        900
+      ]
+    ],
+    "marks": [
+      {
+        "x": 406,
+        "y": 846,
+        "width": 376,
+        "height": 44
+      }
+    ]
+  },
+  {
+    "name": "period-back-settings-mobile",
+    "parts": [
+      [
+        "period-back-settings-mobile.jpg",
+        390,
+        844
+      ]
+    ],
+    "marks": [
+      {
+        "x": 129.7734375,
+        "y": 110,
+        "width": 82,
+        "height": 30
+      }
+    ]
+  },
+  {
+    "name": "period-back-settings-tablet",
+    "parts": [
+      [
+        "period-back-settings-tablet.jpg",
+        800,
+        900
+      ]
+    ],
+    "marks": [
+      {
+        "x": 133.7734375,
+        "y": 99,
+        "width": 82,
+        "height": 30
+      }
+    ]
+  },
+  {
+    "name": "period-back-settings-desktop",
+    "parts": [
+      [
+        "period-back-settings-desktop.jpg",
+        800,
+        900
+      ]
+    ],
+    "marks": [
+      {
+        "x": 133.7734375,
+        "y": 99,
+        "width": 82,
+        "height": 30
+      }
+    ]
+  },
+  {
+    "name": "name-entry-mobile",
+    "parts": [
+      [
+        "../10-create-mobile-top.jpg",
+        390,
+        628
+      ]
+    ],
+    "marks": [
+      {
+        "x": 14,
+        "y": 190,
+        "width": 362,
+        "height": 77
+      }
+    ]
+  },
+  {
+    "name": "name-entry-desktop",
+    "parts": [
+      [
+        "../02-name-desktop.jpg",
+        800,
+        742
+      ]
+    ],
+    "marks": [
+      {
+        "x": 18,
+        "y": 168,
+        "width": 764,
+        "height": 80
+      }
+    ]
+  },
+  {
+    "name": "relay-channel-mobile",
+    "parts": [
+      [
+        "../03-relay-mobile.jpg",
+        390,
+        844
+      ]
+    ],
+    "marks": [
+      {
+        "x": 14,
+        "y": 310,
+        "width": 362,
+        "height": 197
+      }
+    ]
+  },
+  {
+    "name": "relay-channel-tablet",
+    "parts": [
+      [
+        "../03-relay-tablet.jpg",
+        800,
+        884
+      ]
+    ],
+    "marks": [
+      {
+        "x": 18,
+        "y": 320,
+        "width": 378,
+        "height": 253
+      }
+    ]
+  },
+  {
+    "name": "relay-channel-desktop",
+    "parts": [
+      [
+        "../03-relay-desktop.jpg",
+        800,
+        884
+      ]
+    ],
+    "marks": [
+      {
+        "x": 18,
+        "y": 320,
+        "width": 374,
+        "height": 253
+      }
+    ]
+  },
+  {
+    "name": "relay-save-mobile",
+    "parts": [
+      [
+        "../03-relay-mobile.jpg",
+        390,
+        844
+      ]
+    ],
+    "marks": [
+      {
+        "x": 24,
+        "y": 781,
+        "width": 110,
+        "height": 37
+      }
+    ]
+  },
+  {
+    "name": "relay-save-tablet",
+    "parts": [
+      [
+        "../03-relay-tablet.jpg",
+        800,
+        884
+      ]
+    ],
+    "marks": [
+      {
+        "x": 33,
+        "y": 807,
+        "width": 238,
+        "height": 40
+      }
+    ]
+  },
+  {
+    "name": "relay-save-desktop",
+    "parts": [
+      [
+        "../03-relay-desktop.jpg",
+        800,
+        884
+      ]
+    ],
+    "marks": [
+      {
+        "x": 33,
+        "y": 807,
+        "width": 238,
+        "height": 40
+      }
+    ]
+  },
+  {
+    "name": "motion-channel-mobile",
+    "parts": [
+      [
+        "../04-motion-mobile.jpg",
+        390,
+        844
+      ]
+    ],
+    "marks": [
+      {
+        "x": 14,
+        "y": 489,
+        "width": 362,
+        "height": 197
+      }
+    ]
+  },
+  {
+    "name": "motion-channel-tablet",
+    "parts": [
+      [
+        "../04-motion-tablet.jpg",
+        800,
+        884
+      ]
+    ],
+    "marks": [
+      {
+        "x": 404,
+        "y": 320,
+        "width": 378,
+        "height": 301
+      }
+    ]
+  },
+  {
+    "name": "motion-channel-desktop",
+    "parts": [
+      [
+        "../04-motion-desktop.jpg",
+        800,
+        884
+      ]
+    ],
+    "marks": [
+      {
+        "x": 408,
+        "y": 320,
+        "width": 374,
+        "height": 301
+      }
+    ]
+  },
+  {
+    "name": "motion-save-mobile",
+    "parts": [
+      [
+        "../04-motion-mobile.jpg",
+        390,
+        844
+      ]
+    ],
+    "marks": [
+      {
+        "x": 24,
+        "y": 781,
+        "width": 110,
+        "height": 37
+      }
+    ]
+  },
+  {
+    "name": "motion-save-tablet",
+    "parts": [
+      [
+        "../04-motion-tablet.jpg",
+        800,
+        884
+      ]
+    ],
+    "marks": [
+      {
+        "x": 33,
+        "y": 807,
+        "width": 238,
+        "height": 40
+      }
+    ]
+  },
+  {
+    "name": "motion-save-desktop",
+    "parts": [
+      [
+        "../04-motion-desktop.jpg",
+        800,
+        884
+      ]
+    ],
+    "marks": [
+      {
+        "x": 33,
+        "y": 807,
+        "width": 238,
+        "height": 40
+      }
+    ]
+  },
+  {
+    "name": "buttons-add-mobile",
+    "parts": [
+      [
+        "../05-buttons-mobile.jpg",
+        390,
+        370
+      ]
+    ],
+    "marks": [
+      {
+        "x": 14,
+        "y": 100,
+        "width": 362,
+        "height": 164
+      }
+    ]
+  },
+  {
+    "name": "buttons-add-tablet",
+    "parts": [
+      [
+        "../05-buttons-tablet.jpg",
+        800,
+        335
+      ]
+    ],
+    "marks": [
+      {
+        "x": 18,
+        "y": 92,
+        "width": 376,
+        "height": 218
+      }
+    ]
+  },
+  {
+    "name": "buttons-add-desktop",
+    "parts": [
+      [
+        "../05-buttons-desktop.jpg",
+        800,
+        335
+      ]
+    ],
+    "marks": [
+      {
+        "x": 18,
+        "y": 92,
+        "width": 376,
+        "height": 218
+      }
+    ]
+  },
+  {
+    "name": "quiet-entry-mobile",
+    "parts": [
+      [
+        "../06-delay-mobile.jpg",
+        390,
+        804
+      ]
+    ],
+    "marks": [
+      {
+        "x": 14,
+        "y": 508,
+        "width": 362,
+        "height": 136
+      }
+    ]
+  },
+  {
+    "name": "quiet-entry-tablet",
+    "parts": [
+      [
+        "../06-delay-tablet.jpg",
+        800,
+        900
+      ]
+    ],
+    "marks": [
+      {
+        "x": 406,
+        "y": 256,
+        "width": 376,
+        "height": 136
+      }
+    ]
+  },
+  {
+    "name": "quiet-entry-desktop",
+    "parts": [
+      [
+        "../06-delay-desktop.jpg",
+        800,
+        900
+      ]
+    ],
+    "marks": [
+      {
+        "x": 406,
+        "y": 256,
+        "width": 376,
+        "height": 136
+      }
+    ]
+  },
+  {
+    "name": "noise-entry-mobile",
+    "parts": [
+      [
+        "../06-delay-mobile.jpg",
+        390,
+        804
+      ]
+    ],
+    "marks": [
+      {
+        "x": 14,
+        "y": 656,
+        "width": 362,
+        "height": 136
+      }
+    ]
+  },
+  {
+    "name": "noise-entry-tablet",
+    "parts": [
+      [
+        "../06-delay-tablet.jpg",
+        800,
+        900
+      ]
+    ],
+    "marks": [
+      {
+        "x": 18,
+        "y": 404,
+        "width": 376,
+        "height": 136
+      }
+    ]
+  },
+  {
+    "name": "noise-entry-desktop",
+    "parts": [
+      [
+        "../06-delay-desktop.jpg",
+        800,
+        900
+      ]
+    ],
+    "marks": [
+      {
+        "x": 18,
+        "y": 404,
+        "width": 376,
+        "height": 136
+      }
+    ]
+  },
+  {
+    "name": "aggregation-entry-mobile",
+    "parts": [
+      [
+        "../07-threshold-mobile.jpg",
+        390,
+        844
+      ]
+    ],
+    "marks": [
+      {
+        "x": 14,
+        "y": 140,
+        "width": 362,
+        "height": 174
+      }
+    ]
+  },
+  {
+    "name": "aggregation-entry-tablet",
+    "parts": [
+      [
+        "../07-threshold-tablet.jpg",
+        800,
+        620
+      ]
+    ],
+    "marks": [
+      {
+        "x": 18,
+        "y": 118,
+        "width": 376,
+        "height": 174
+      }
+    ]
+  },
+  {
+    "name": "aggregation-entry-desktop",
+    "parts": [
+      [
+        "../07-threshold-desktop.jpg",
+        800,
+        620
+      ]
+    ],
+    "marks": [
+      {
+        "x": 18,
+        "y": 118,
+        "width": 376,
+        "height": 174
+      }
+    ]
+  },
+  {
+    "name": "threshold-entry-mobile",
+    "parts": [
+      [
+        "../07-threshold-mobile.jpg",
+        390,
+        844
+      ]
+    ],
+    "marks": [
+      {
+        "x": 14,
+        "y": 328,
+        "width": 362,
+        "height": 156
+      }
+    ]
+  },
+  {
+    "name": "threshold-entry-tablet",
+    "parts": [
+      [
+        "../07-threshold-tablet.jpg",
+        800,
+        620
+      ]
+    ],
+    "marks": [
+      {
+        "x": 406,
+        "y": 118,
+        "width": 376,
+        "height": 158
+      }
+    ]
+  },
+  {
+    "name": "threshold-entry-desktop",
+    "parts": [
+      [
+        "../07-threshold-desktop.jpg",
+        800,
+        620
+      ]
+    ],
+    "marks": [
+      {
+        "x": 406,
+        "y": 118,
+        "width": 376,
+        "height": 158
+      }
+    ]
+  },
+  {
+    "name": "period-enabled-mobile",
+    "parts": [
+      [
+        "../08-period-mobile.jpg",
+        390,
+        844
+      ]
+    ],
+    "marks": [
+      {
+        "x": 14,
+        "y": 144,
+        "width": 362,
+        "height": 136
+      }
+    ]
+  },
+  {
+    "name": "period-enabled-tablet",
+    "parts": [
+      [
+        "../08-period-tablet.jpg",
+        800,
+        620
+      ]
+    ],
+    "marks": [
+      {
+        "x": 18,
+        "y": 118,
+        "width": 376,
+        "height": 136
+      }
+    ]
+  },
+  {
+    "name": "period-enabled-desktop",
+    "parts": [
+      [
+        "../08-period-desktop.jpg",
+        800,
+        620
+      ]
+    ],
+    "marks": [
+      {
+        "x": 18,
+        "y": 118,
+        "width": 376,
+        "height": 136
+      }
+    ]
+  },
+  {
+    "name": "period-start-mobile",
+    "parts": [
+      [
+        "../08-period-mobile.jpg",
+        390,
+        844
+      ]
+    ],
+    "marks": [
+      {
+        "x": 14,
+        "y": 292,
+        "width": 362,
+        "height": 136
+      }
+    ]
+  },
+  {
+    "name": "period-start-tablet",
+    "parts": [
+      [
+        "../08-period-tablet.jpg",
+        800,
+        620
+      ]
+    ],
+    "marks": [
+      {
+        "x": 406,
+        "y": 118,
+        "width": 376,
+        "height": 136
+      }
+    ]
+  },
+  {
+    "name": "period-start-desktop",
+    "parts": [
+      [
+        "../08-period-desktop.jpg",
+        800,
+        620
+      ]
+    ],
+    "marks": [
+      {
+        "x": 406,
+        "y": 118,
+        "width": 376,
+        "height": 136
+      }
+    ]
+  },
+  {
+    "name": "period-end-mobile",
+    "parts": [
+      [
+        "../08-period-mobile.jpg",
+        390,
+        844
+      ]
+    ],
+    "marks": [
+      {
+        "x": 14,
+        "y": 440,
+        "width": 362,
+        "height": 136
+      }
+    ]
+  },
+  {
+    "name": "period-end-tablet",
+    "parts": [
+      [
+        "../08-period-tablet.jpg",
+        800,
+        620
+      ]
+    ],
+    "marks": [
+      {
+        "x": 18,
+        "y": 266,
+        "width": 376,
+        "height": 136
+      }
+    ]
+  },
+  {
+    "name": "period-end-desktop",
+    "parts": [
+      [
+        "../08-period-desktop.jpg",
+        800,
+        620
+      ]
+    ],
+    "marks": [
+      {
+        "x": 18,
+        "y": 266,
+        "width": 376,
+        "height": 136
+      }
+    ]
+  },
+  {
+    "name": "block-on-mobile",
+    "parts": [
+      [
+        "../09-blocks-mobile.jpg",
+        390,
+        844
+      ]
+    ],
+    "marks": [
+      {
+        "x": 14,
+        "y": 140,
+        "width": 362,
+        "height": 136
+      }
+    ]
+  },
+  {
+    "name": "block-on-tablet",
+    "parts": [
+      [
+        "../09-blocks-tablet.jpg",
+        800,
+        884
+      ]
+    ],
+    "marks": [
+      {
+        "x": 18,
+        "y": 118,
+        "width": 376,
+        "height": 136
+      }
+    ]
+  },
+  {
+    "name": "block-on-desktop",
+    "parts": [
+      [
+        "../09-blocks-desktop.jpg",
+        800,
+        884
+      ]
+    ],
+    "marks": [
+      {
+        "x": 18,
+        "y": 118,
+        "width": 376,
+        "height": 136
+      }
+    ]
+  },
+  {
+    "name": "block-off-mobile",
+    "parts": [
+      [
+        "../09-blocks-mobile.jpg",
+        390,
+        844
+      ]
+    ],
+    "marks": [
+      {
+        "x": 14,
+        "y": 288,
+        "width": 362,
+        "height": 136
+      }
+    ]
+  },
+  {
+    "name": "block-off-tablet",
+    "parts": [
+      [
+        "../09-blocks-tablet.jpg",
+        800,
+        884
+      ]
+    ],
+    "marks": [
+      {
+        "x": 406,
+        "y": 118,
+        "width": 376,
+        "height": 136
+      }
+    ]
+  },
+  {
+    "name": "block-off-desktop",
+    "parts": [
+      [
+        "../09-blocks-desktop.jpg",
+        800,
+        884
+      ]
+    ],
+    "marks": [
+      {
+        "x": 406,
+        "y": 118,
+        "width": 376,
+        "height": 136
+      }
+    ]
+  },
+  {
+    "name": "blocks-save-mobile",
+    "parts": [
+      [
+        "../09-blocks-mobile.jpg",
+        390,
+        844
+      ]
+    ],
+    "marks": [
+      {
+        "x": 25,
+        "y": 781,
+        "width": 108,
+        "height": 38
+      }
+    ]
+  },
+  {
+    "name": "blocks-save-tablet",
+    "parts": [
+      [
+        "../09-blocks-tablet.jpg",
+        800,
+        884
+      ]
+    ],
+    "marks": [
+      {
+        "x": 33,
+        "y": 807,
+        "width": 238,
+        "height": 40
+      }
+    ]
+  },
+  {
+    "name": "blocks-save-desktop",
+    "parts": [
+      [
+        "../09-blocks-desktop.jpg",
+        800,
+        884
+      ]
+    ],
+    "marks": [
+      {
+        "x": 33,
+        "y": 807,
+        "width": 238,
+        "height": 40
+      }
+    ]
+  },
+  {
+    "name": "state-check-mobile",
+    "parts": [
+      [
+        "../10-create-mobile-top.jpg",
+        390,
+        628
+      ]
+    ],
+    "marks": [
+      {
+        "x": 16,
+        "y": 573,
+        "width": 358,
+        "height": 44
+      }
+    ]
+  },
+  {
+    "name": "create-mobile",
+    "parts": [
+      [
+        "../10-create-mobile-top.jpg",
+        390,
+        628
+      ],
+      [
+        "../10-create-mobile-bottom.jpg",
+        390,
+        52
+      ]
+    ],
+    "marks": [
+      {
+        "x": 198,
+        "y": 680,
+        "width": 176,
+        "height": 36
+      }
+    ]
+  },
+  {
+    "name": "state-check-tablet",
+    "parts": [
+      [
+        "../10-create-tablet-top.jpg",
+        800,
+        600
+      ]
+    ],
+    "marks": [
+      {
+        "x": 20,
+        "y": 553,
+        "width": 760,
+        "height": 44
+      }
+    ]
+  },
+  {
+    "name": "create-tablet",
+    "parts": [
+      [
+        "../10-create-tablet-top.jpg",
+        800,
+        600
+      ],
+      [
+        "../10-create-tablet-bottom.jpg",
+        800,
+        61
+      ]
+    ],
+    "marks": [
+      {
+        "x": 406,
+        "y": 654,
+        "width": 374,
+        "height": 40
+      }
+    ]
+  },
+  {
+    "name": "state-check-desktop",
+    "parts": [
+      [
+        "../10-create-desktop-top.jpg",
+        800,
+        600
+      ]
+    ],
+    "marks": [
+      {
+        "x": 20,
+        "y": 553,
+        "width": 760,
+        "height": 44
+      }
+    ]
+  },
+  {
+    "name": "create-desktop",
+    "parts": [
+      [
+        "../10-create-desktop-top.jpg",
+        800,
+        600
+      ],
+      [
+        "../10-create-desktop-bottom.jpg",
+        800,
+        61
+      ]
+    ],
+    "marks": [
+      {
+        "x": 406,
+        "y": 654,
+        "width": 374,
+        "height": 40
+      }
+    ]
+  }
+]

@@ -111,7 +111,12 @@ const guiPreviewSlots = [
               <p class="card-category">{item.title}</p>
               <h3 id={`${item.slug}-title`}>{item.result}</h3>
               <p>{item.description}</p>
-              <a class="text-link" href={`/ru/docs/automations/${item.slug}/`}>Возможности и сценарии<span class="visually-hidden">: {item.title}</span><span aria-hidden="true"> →</span></a>
+              <div class="automation-docs-links">
+                <a class="text-link" href={`/ru/docs/automations/${item.slug}/`}>Возможности и сценарии<span class="visually-hidden">: {item.title}</span><span aria-hidden="true"> →</span></a>
+                {item.slug === 'lighting' && (
+                  <a class="button solution-guide-button" href="/ru/docs/solutions/hallway-lighting/">Свет в прихожей: сборка и настройка<span aria-hidden="true"> →</span></a>
+                )}
+              </div>
             </div>
           </article>
         )))}

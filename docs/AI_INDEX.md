@@ -18,6 +18,7 @@
 | Публичная документация | [`../src/content/docs/ru/docs/index.mdx`](../src/content/docs/ru/docs/index.mdx) | При изменении `/ru/docs/` и его содержательных обещаний |
 | Правило создания пользовательской документации | [Контентная стратегия](../../module-market-intelligence/internet-promotion/spec/content-strategy.md#постоянное-правило-пользовательской-документации) | Перед созданием, изменением или ревью инструкций: ценность и поведение → выбор результата → настройка |
 | Функциональное описание освещения | [`lighting-functional-description.md`](lighting-functional-description.md) | Текущая редакция, источники поведения, удаление прежних инструкций и проверки |
+| Инструкция сборки и настройки: прихожая | [hallway-lighting-solution.md](hallway-lighting-solution.md) | Страница без публичной входящей ссылки: понятная схема, роли приборов, соединения, GUI и пределы проверок; без цен и конкретного корпуса |
 | Шторы | [curtains-functional-description.md](curtains-functional-description.md) | Солнцезащита, приватность, кино днём и ночью, ручное управление, окно и границы готовности |
 | Кондиционирование | [air-conditioning-functional-description.md](air-conditioning-functional-description.md) | Поддержание температуры через термостаты, выбор охлаждения/обогрева по погоде, ручное управление и границы оборудования |
 | Отопление | [heating-functional-description.md](heating-functional-description.md) | Совместная работа термостатов, приводов, насосов, смесителей и источников; водяные/электрические приборы, бассейн, гараж, снеготаяние |

@@ -1,0 +1,393 @@
+---
+import circuit from '../assets/docs/solutions/hallway-lighting/hallway-circuit.svg?raw';
+
+const layers = [
+  { id: 'all', label: 'Всё', color: '#607269', hint: 'Провода скрыты в каналах. Сверяйте одинаковые номера на двух концах.' },
+  { id: 'mains', label: '230 В', color: '#a3633e', hint: '01–09, 55, W0–W2: ввод, свет и PE панели. Общие группы — на X1.' },
+  { id: 'power', label: '24 В', color: '#c74048', hint: '21–32 и 54: питание 24 В и связь с PE. Отдельные ветви F1 / F2 / F3.' },
+  { id: 'bus', label: 'RS-485', color: '#e3b42d', hint: '41–44 и W3.1/W3.2: C1 → K1 → S1. T1 и T2 — на концах пары.' },
+  { id: 'buttons', label: 'Кнопки', color: '#d96f78', hint: '51–53, W4 и W5: два отдельных входа. Возвраты B1/B2 объединены на X3.' },
+];
+---
+
+<hallway-circuit>
+  <div class="circuit-home">
+    <div class="circuit-frame" data-active-layer="all">
+      <div class="circuit-toolbar" data-controls hidden>
+        <div role="tablist" aria-label="Слои одной схемы">
+          {layers.map((layer, index) => (
+            <button
+              type="button"
+              role="tab"
+              id={`circuit-tab-${layer.id}`}
+              aria-selected={index === 0 ? 'true' : 'false'}
+              aria-controls="hallway-circuit-panel"
+              tabindex={index === 0 ? 0 : -1}
+              data-select-layer={layer.id}
+              style={`--layer-color: ${layer.color}`}
+            >
+              <span class="layer-dot" aria-hidden="true"></span>{layer.label}
+            </button>
+          ))}
+        </div>
+        <div class="circuit-actions">
+          <label><span class="zoom-label">Масштаб</span>
+            <select data-zoom aria-label="Масштаб схемы">
+              <option value="fit">Вписать</option>
+              <option value="100">100%</option>
+              <option value="150">150%</option>
+            </select>
+          </label>
+          <button
+            type="button"
+            data-clear-wire
+            aria-label="Сбросить выделение провода"
+            title="Сбросить выделение провода"
+            disabled
+          >×</button>
+          <button type="button" data-expand aria-expanded="false" aria-controls="circuit-dialog">Развернуть ↗</button>
+        </div>
+      </div>
+      <div id="hallway-circuit-panel" role="tabpanel" aria-labelledby="circuit-tab-all">
+        <p class="circuit-hint" aria-live="polite">
+          {layers.map((layer, index) => (
+            <span data-layer-hint={layer.id} aria-hidden={index !== 0 ? 'true' : 'false'}>{layer.hint}</span>
+          ))}
+        </p>
+        <div class="circuit-viewport" tabindex="0" role="region" aria-label="Схема сборки. При увеличении прокручивайте поле по горизонтали и вертикали.">
+          <div class="circuit-canvas" set:html={circuit}></div>
+        </div>
+      </div>
+      <p class="circuit-caption" data-wire-status aria-live="polite">Нажмите на провод или номер, чтобы выделить оба конца.</p>
+    </div>
+  </div>
+  <dialog id="circuit-dialog" aria-label="Увеличенная схема прихожей"></dialog>
+</hallway-circuit>
+
+<script>
+  class HallwayCircuit extends HTMLElement {
+    private resizeObserver?: ResizeObserver;
+
+    disconnectedCallback() {
+      this.resizeObserver?.disconnect();
+      delete this.dataset.ready;
+    }
+
+    connectedCallback() {
+      if (this.dataset.ready) {
+        return;
+      }
+      this.dataset.ready = 'true';
+      const frame = this.querySelector<HTMLElement>('.circuit-frame')!;
+      const home = this.querySelector<HTMLElement>('.circuit-home')!;
+      const dialog = this.querySelector<HTMLDialogElement>('dialog')!;
+      const panel = this.querySelector<HTMLElement>('[role="tabpanel"]')!;
+      const hints = [...this.querySelectorAll<HTMLElement>('[data-layer-hint]')];
+      const viewport = this.querySelector<HTMLElement>('.circuit-viewport')!;
+      const canvas = this.querySelector<HTMLElement>('.circuit-canvas')!;
+      const drawing = canvas.querySelector<SVGSVGElement>('svg')!;
+      const drawingSize = drawing.viewBox.baseVal;
+      const tabs = [...this.querySelectorAll<HTMLButtonElement>('[role="tab"]')];
+      const layers = [...drawing.querySelectorAll<SVGGElement>('[data-layer]')];
+      const conductors = [...drawing.querySelectorAll<SVGGElement>('[data-wire]')];
+      const clearWire = this.querySelector<HTMLButtonElement>('[data-clear-wire]')!;
+      const wireStatus = this.querySelector<HTMLElement>('[data-wire-status]')!;
+      const hitAreas = new Map<string, SVGGElement>();
+      let selectedWire: string | undefined;
+
+      /**
+       * Зоны клика находятся под всеми линиями и бирками, чтобы соседняя зона
+       * не перехватывала точное нажатие на провод или номер.
+       */
+      conductors.forEach((wire) => {
+        const id = wire.dataset.wire!;
+        wire.setAttribute('role', 'button');
+        wire.setAttribute('tabindex', '0');
+        wire.setAttribute('aria-label', `Провод ${id}: выделить оба конца`);
+        wire.setAttribute('aria-pressed', 'false');
+        const hitArea = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+        hitArea.dataset.wireHit = id;
+        hitArea.setAttribute('aria-hidden', 'true');
+        wire.querySelectorAll(':scope > path').forEach((path) => {
+          const hit = path.cloneNode(false) as SVGPathElement;
+          hit.setAttribute('class', 'circuit-wire-hit');
+          hit.setAttribute('stroke', 'transparent');
+          hit.setAttribute('stroke-width', '16');
+          hitArea.append(hit);
+        });
+        drawing.insertBefore(hitArea, conductors[0]);
+        hitAreas.set(id, hitArea);
+      });
+      drawing.setAttribute('role', 'group');
+
+      const updateWires = () => {
+        const activeLayer = frame.dataset.activeLayer;
+        layers.forEach((item) => {
+          const selected = Boolean(selectedWire && item.dataset.wire === selectedWire);
+          const visible = activeLayer === 'all' || item.dataset.layer === activeLayer || selected;
+          item.style.display = visible ? '' : 'none';
+          item.setAttribute('aria-hidden', String(!visible));
+          if (item.dataset.wire) {
+            item.classList.toggle('circuit-wire--selected', selected);
+            item.setAttribute('aria-pressed', String(selected));
+            item.setAttribute('tabindex', visible ? '0' : '-1');
+            hitAreas.get(item.dataset.wire)!.style.display = visible ? '' : 'none';
+          }
+        });
+      };
+      const selectWire = (id?: string) => {
+        selectedWire = id;
+        canvas.toggleAttribute('data-wire-selected', Boolean(id));
+        clearWire.disabled = !id;
+        wireStatus.textContent = id
+          ? `Провод ${id} · оба конца выделены. Повторный клик или × — сброс.`
+          : 'Нажмите на провод или номер, чтобы выделить оба конца.';
+        updateWires();
+      };
+      drawing.addEventListener('click', (event) => {
+        const target = event.target instanceof Element
+          ? event.target.closest<SVGGElement>('[data-wire], [data-wire-hit]')
+          : null;
+        const id = target?.dataset.wire ?? target?.dataset.wireHit;
+        selectWire(id === selectedWire ? undefined : id);
+      });
+      drawing.addEventListener('keydown', (event) => {
+        if (event.key !== 'Enter' && event.key !== ' ') {
+          return;
+        }
+        const target = event.target instanceof Element ? event.target.closest<SVGGElement>('[data-wire]') : null;
+        if (target) {
+          event.preventDefault();
+          const id = target.dataset.wire;
+          selectWire(id === selectedWire ? undefined : id);
+        }
+      });
+      clearWire.addEventListener('click', () => {
+        selectWire();
+        viewport.focus({ preventScroll: true });
+      });
+      frame.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && selectedWire && !dialog.open) {
+          event.preventDefault();
+          event.stopPropagation();
+          selectWire();
+        }
+      });
+      dialog.addEventListener('cancel', (event) => {
+        if (selectedWire) {
+          event.preventDefault();
+          selectWire();
+        }
+      });
+      const expand = this.querySelector<HTMLButtonElement>('[data-expand]')!;
+      const zoom = this.querySelector<HTMLSelectElement>('[data-zoom]')!;
+
+      const selectLayer = (tab: HTMLButtonElement) => {
+        const selected = tab.dataset.selectLayer!;
+        frame.dataset.activeLayer = selected;
+        tabs.forEach((item) => {
+          item.setAttribute('aria-selected', String(item === tab));
+          item.tabIndex = item === tab ? 0 : -1;
+        });
+        updateWires();
+        panel.setAttribute('aria-labelledby', tab.id);
+        hints.forEach((hint) => {
+          hint.setAttribute('aria-hidden', String(hint.dataset.layerHint !== selected));
+        });
+        frame.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+      };
+
+      tabs.forEach((tab, index) => {
+        tab.addEventListener('click', () => selectLayer(tab));
+        tab.addEventListener('keydown', (event) => {
+          let next = index;
+          if (event.key === 'ArrowRight') {
+            next = (index + 1) % tabs.length;
+          } else if (event.key === 'ArrowLeft') {
+            next = (index + tabs.length - 1) % tabs.length;
+          } else if (event.key === 'Home') {
+            next = 0;
+          } else if (event.key === 'End') {
+            next = tabs.length - 1;
+          } else {
+            return;
+          }
+
+          event.preventDefault();
+          tabs[next].focus();
+          selectLayer(tabs[next]);
+        });
+      });
+
+      zoom.addEventListener('change', () => {
+        canvas.style.width = zoom.value === 'fit' ? '' : `${drawingSize.width * Number(zoom.value) / 100}px`;
+        viewport.scrollTo(0, 0);
+      });
+      expand.addEventListener('click', () => {
+        if (dialog.open) {
+          dialog.close();
+        } else {
+          home.style.minHeight = `${frame.offsetHeight}px`;
+          dialog.append(frame);
+          expand.textContent = 'Свернуть ↙';
+          expand.setAttribute('aria-expanded', 'true');
+          dialog.showModal();
+          expand.focus();
+        }
+      });
+      dialog.addEventListener('close', () => {
+        home.append(frame);
+        home.style.minHeight = '';
+        expand.textContent = 'Развернуть ↗';
+        expand.setAttribute('aria-expanded', 'false');
+        expand.focus({ preventScroll: true });
+        frame.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+      });
+      const toolbar = this.querySelector<HTMLElement>('[data-controls]')!;
+      toolbar.hidden = false;
+      const fit = () => {
+        const width = Math.min(viewport.clientWidth, viewport.clientHeight * drawingSize.width / drawingSize.height);
+        canvas.style.setProperty('--circuit-fit-width', `${Math.floor(width)}px`);
+      };
+      this.resizeObserver = new ResizeObserver(fit);
+      this.resizeObserver.observe(viewport);
+      fit();
+    }
+  }
+
+  if (!customElements.get('hallway-circuit')) {
+    customElements.define('hallway-circuit', HallwayCircuit);
+  }
+</script>
+
+<style>
+  hallway-circuit { display: block; min-width: 0; margin: 1.25rem 0; }
+  .circuit-frame :global(*) { box-sizing: border-box; margin-block: 0; }
+  .circuit-home { min-width: 0; }
+  .circuit-frame {
+    display: grid;
+    grid-template-rows: auto minmax(0, 1fr) auto;
+    width: 100%;
+    min-width: 0;
+    height: min(52rem, calc(100dvh - var(--sl-nav-height) - var(--sl-mobile-toc-height) - 2rem));
+    overflow: hidden;
+    border: 1px solid var(--sl-color-gray-5);
+    border-radius: 0.75rem;
+    background: var(--sl-color-bg);
+    scroll-margin-top: 0.5rem;
+  }
+  .circuit-toolbar { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; min-width: 0; padding: 0.625rem; border-bottom: 1px solid var(--sl-color-gray-5); }
+  .circuit-toolbar[hidden] { display: none; }
+  [role='tablist'] { display: flex; flex-wrap: wrap; gap: 0.3rem; min-width: 0; }
+  button, select { color: var(--sl-color-white); background: var(--sl-color-bg); font: inherit; font-size: 0.875rem; border: 1px solid var(--sl-color-gray-5); border-radius: 0.4rem; padding: 0.5rem 0.65rem; cursor: pointer; }
+  button, select { min-height: 2.75rem; }
+  [role='tab'] { display: inline-flex; align-items: center; justify-content: center; gap: 0.375rem; white-space: nowrap; }
+  [role='tab'][aria-selected='true'] { background: var(--sl-color-text-accent); border-color: var(--sl-color-text-accent); color: var(--sl-color-bg); font-weight: 700; }
+  .layer-dot { display: inline-block; flex: none; width: 0.55rem; height: 0.55rem; border-radius: 50%; background: var(--layer-color); box-shadow: 0 0 0 1px #ffffff80; }
+  .circuit-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; min-width: 0; margin-inline-start: auto; }
+  label { display: flex; align-items: center; gap: 0.4rem; font-size: 0.8rem; }
+  [role='tabpanel'] { display: grid; grid-template-rows: auto minmax(0, 1fr); min-width: 0; min-height: 0; }
+  .circuit-hint { display: grid; margin: 0; padding: 0.5rem 0.75rem; font-size: 0.8rem; line-height: 1.4; }
+  .circuit-hint span { grid-area: 1 / 1; }
+  .circuit-hint [aria-hidden='true'] { visibility: hidden; }
+  .circuit-viewport { min-width: 0; min-height: 0; overflow: auto; overscroll-behavior: contain; background: white; }
+  .circuit-canvas { width: var(--circuit-fit-width, 100%); margin-inline: auto; }
+  .circuit-canvas :global(svg) { display: block; width: 100%; height: auto; max-width: none; }
+  .circuit-canvas :global([data-wire]), .circuit-canvas :global([data-wire-hit]) {
+    cursor: pointer;
+  }
+  .circuit-canvas :global(.circuit-wire-hit) {
+    pointer-events: stroke;
+  }
+  .circuit-canvas[data-wire-selected] :global([data-layer]) {
+    opacity: 0.13;
+  }
+  .circuit-canvas[data-wire-selected] :global([data-wire].circuit-wire--selected) {
+    opacity: 1;
+    filter: drop-shadow(0 0 2px #17261c66);
+  }
+  .circuit-canvas :global([data-wire].circuit-wire--selected > path) {
+    stroke-width: 6;
+  }
+  .circuit-canvas :global([data-wire].circuit-wire--selected rect) {
+    stroke-width: 2.5;
+  }
+  .circuit-canvas :global([data-wire]:focus) {
+    outline: none;
+  }
+  .circuit-canvas :global([data-wire]:focus-visible rect) {
+    stroke: #a43821;
+    stroke-width: 3;
+  }
+  [data-clear-wire] {
+    width: 2.75rem;
+    padding-inline: 0;
+    font-size: 1.25rem;
+  }
+  [data-clear-wire]:disabled {
+    opacity: 0.35;
+    cursor: default;
+  }
+  .circuit-caption { margin: 0; padding: 0.5rem 0.75rem; font-size: 0.75rem; line-height: 1.4; color: var(--sl-color-gray-2); }
+  button:focus-visible, select:focus-visible, .circuit-viewport:focus-visible { outline: 3px solid var(--sl-color-text-accent); outline-offset: 2px; }
+  dialog { margin: auto; width: calc(100vw - 1rem); max-width: 1800px; height: calc(100dvh - 1rem); max-height: none; padding: 0; border: 0; border-radius: 0.75rem; background: var(--sl-color-bg); color: var(--sl-color-text); overflow: hidden; }
+  dialog .circuit-frame { height: 100%; }
+  dialog::backdrop { background: #101c18ba; }
+  @media (max-width: 50rem) {
+    .circuit-toolbar { padding: 0.5rem; }
+    [role='tablist'] { flex: 1 1 100%; }
+    [role='tab'] { flex: 1 1 auto; padding-inline: 0.5rem; }
+    .circuit-actions { width: 100%; margin-inline-start: 0; justify-content: space-between; }
+    .zoom-label { display: none; }
+    dialog { width: calc(100vw - 0.5rem); height: calc(100dvh - 0.5rem); }
+  }
+  @media (max-width: 26rem) {
+    [role='tablist'] { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); }
+    [role='tab'] { grid-column: span 2; }
+    [role='tab']:nth-last-child(-n + 2) { grid-column: span 3; }
+    .circuit-actions {
+      flex-wrap: nowrap;
+      gap: 0.25rem;
+    }
+    .circuit-actions select {
+      width: 5.5rem;
+      padding-inline: 0.35rem;
+    }
+    [data-expand] {
+      padding-inline: 0.4rem;
+      font-size: 0.75rem;
+    }
+    .circuit-hint {
+      display: none;
+    }
+    [role='tabpanel'] {
+      grid-template-rows: minmax(0, 1fr);
+    }
+  }
+  @media (max-height: 32rem) {
+    .circuit-hint, .circuit-caption { display: none; }
+    [role='tabpanel'] { grid-template-rows: minmax(0, 1fr); }
+  }
+  @media print {
+    .circuit-frame { display: block; height: auto; overflow: visible; }
+    .circuit-toolbar { display: none; }
+    [role='tabpanel'] { display: block; }
+    .circuit-viewport { overflow: visible; }
+    .circuit-canvas { width: 100% !important; }
+    /* Печатная схема всегда содержит все проводники, независимо от выбора на экране. */
+    .circuit-canvas :global([data-layer]) {
+      display: inline !important;
+      opacity: 1 !important;
+      filter: none !important;
+    }
+    .circuit-canvas :global([data-wire].circuit-wire--selected > path) {
+      stroke-width: 4;
+    }
+    .circuit-canvas :global([data-wire].circuit-wire--selected rect) {
+      stroke-width: 1;
+    }
+    .circuit-caption {
+      display: none;
+    }
+  }
+</style>

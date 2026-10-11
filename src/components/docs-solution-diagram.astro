@@ -1,0 +1,52 @@
+---
+interface Props {
+  src: string;
+  width: number;
+  height: number;
+  alt: string;
+  caption: string;
+}
+
+const { src, width, height, alt, caption } = Astro.props;
+---
+
+<figure class="docs-solution-diagram">
+  <img src={src} width={width} height={height} alt={alt} loading="lazy" decoding="async" />
+  <figcaption>
+    {caption}
+    <a href={src} target="_blank" rel="noopener noreferrer" aria-label={`Открыть схему крупнее: ${alt}`}>
+      Открыть крупнее
+    </a>
+  </figcaption>
+</figure>
+
+<style>
+  .docs-solution-diagram {
+    margin: 1.25rem 0 1.5rem;
+  }
+
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin: 0;
+    background: white;
+  }
+
+  figcaption {
+    margin-top: 0.625rem;
+    color: var(--sl-color-gray-2);
+    font-size: 0.875rem;
+    line-height: 1.5;
+  }
+
+  a {
+    display: inline-block;
+    margin-inline-start: 0.4em;
+  }
+
+  a:focus-visible {
+    outline: 2px solid var(--sl-color-accent);
+    outline-offset: 4px;
+  }
+</style>
