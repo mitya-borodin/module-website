@@ -19,6 +19,10 @@ ESLint, Prettier, unit-test runner, Storybook и browser-test harness пока �
 `node --test src/scripts/install-mobile-gesture-guards.spec.mjs`. Новых зависимостей и общего
 test framework нет; охват и физическая проверка — в [владельце](mobile-browser-gestures.md).
 
+Для безопасного JSON-LD есть адресные тесты Node 24:
+`node --test src/utils/serialize-json-ld.spec.ts`. Они проверяют сохранность данных и
+экранирование HTML-границ; проверка итогового HTML описана в [structured-data.md](structured-data.md).
+
 ## Verification Matrix
 
 | Изменённая поверхность | Минимальное evidence | Условное evidence |

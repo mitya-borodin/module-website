@@ -3,7 +3,7 @@ import type { ImageMetadata } from 'astro';
 import Head from '@astrojs/starlight/components/Head.astro';
 import MobileGesturePolicy from './mobile-gesture-policy.astro';
 import { mobileViewport } from '../data/mobile-viewport';
-import SocialImageMeta from './social-image-meta.astro';
+import PageMetadata from './page-metadata.astro';
 import overview from '../assets/site/software-house-concept-v1.png';
 import lighting from '../assets/docs/lighting/lighting-concept-v1.png';
 import curtains from '../assets/docs/curtains/curtains-concept-v1.png';
@@ -15,8 +15,10 @@ import water from '../assets/docs/leaks/leaks-concept-v1.png';
 import gas from '../assets/docs/gas-leaks/gas-concept-v1.png';
 import drives from '../assets/docs/positional-drive/position-drive-concept-v1.png';
 import metering from '../assets/docs/resource-metering/resource-metering-concept-v1.png';
+import hallway from '../assets/docs/solutions/hallway-lighting/hallway-v1.png';
 
 const images: Record<string, ImageMetadata> = {
+  '/ru/docs/solutions/hallway-lighting/': hallway,
   '/ru/docs/automations/lighting/': lighting,
   '/ru/docs/automations/curtains/': curtains,
   '/ru/docs/automations/air-conditioning/': cooling,
@@ -34,11 +36,40 @@ for (const entry of Astro.locals.starlightRoute.head) {
   }
 }
 
+const isDocsPage = Astro.url.pathname.startsWith('/ru/docs/');
+const isDocsIndex = Astro.url.pathname === '/ru/docs/';
 const image = images[Astro.url.pathname] ?? overview;
 const { title, description } = Astro.locals.starlightRoute.entry.data;
-const alt = description ?? `Иллюстрация возможностей Ritmod: ${title}.`;
+const alt = `Иллюстрация: ${title}.`;
+
+if (isDocsPage) {
+  const socialOverrides = [
+    { property: 'og:type', content: isDocsIndex ? 'website' : 'article' },
+    { property: 'og:locale', content: 'ru_RU' },
+    { name: 'twitter:title', content: title },
+    { name: 'twitter:description', content: description ?? '' },
+  ];
+
+  for (const attrs of socialOverrides) {
+    Astro.locals.starlightRoute.head = Astro.locals.starlightRoute.head.filter((entry) => {
+      return entry.tag !== 'meta' || !(
+        (attrs.property && entry.attrs?.property === attrs.property) ||
+        (attrs.name && entry.attrs?.name === attrs.name)
+      );
+    });
+    Astro.locals.starlightRoute.head.push({ tag: 'meta', attrs });
+  }
+}
 ---
 
 <Head />
 <MobileGesturePolicy />
-<SocialImageMeta image={image} alt={alt} />
+{isDocsPage && (
+  <PageMetadata
+    title={title}
+    description={description ?? ''}
+    kind={isDocsIndex ? 'docs-index' : 'documentation'}
+    image={image}
+    alt={alt}
+  />
+)}

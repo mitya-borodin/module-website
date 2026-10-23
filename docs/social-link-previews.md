@@ -3,6 +3,24 @@
 Дата реализации и проверки: **9 октября 2026 года**. Владелец требования —
 [публичный web-контракт](../../module-market-intelligence/internet-promotion/spec/public-web-contract.md#превью-ссылок-ritmod-уточнение-9-октября-2026).
 
+## Текущая редакция: 15 октября 2026
+
+Исходные OG/Twitter опубликованной версии проверены в
+[HTTP-срезе](../../module-market-intelligence/internet-promotion/spec/public-web-contract.md#проверка-публичного-сайта-15-октября-2026).
+Новые изменения этого прохода подготовлены локально, deployment не выполнялся:
+
+- В документации явные `twitter:title` и `twitter:description` совпадают с OG.
+- `og:locale` нормализован в `ru_RU`; обзор документации имеет `og:type=website`, материалы — `article`.
+- Прихожая использует `hallway-v1.png` как источник JPEG-обложки, а не общий дом.
+- Общий [page-metadata.astro](../src/components/page-metadata.astro) готовит JPEG один раз для
+  [социальных тегов](../src/components/social-image-meta.astro) и [JSON-LD](structured-data.md).
+  Пропорции прежних обложек сохранены; это не изменение иллюстраций внутри страниц.
+- Не добавлены неподтверждённые `vk:image`, `linkedin:*` или `telegram:title/image`; официального
+  канала для Instant View в этой задаче не назначали. Базовые превью используют OG/Twitter.
+
+Сборка и HTML всех 14 страниц проверены; подробный охват — у [JSON-LD owner](structured-data.md#проверки-15-октября).
+Фактические карточки Telegram/VK/LinkedIn и обновление кеша этим не подтверждены.
+
 ## Проблема и результат
 
 Автор показал ссылку с названием и маленькой иконкой без изображения. Проверка `https://ritmod.ru/`
@@ -25,10 +43,11 @@
 ## Владельцы реализации
 
 - [site-layout.astro](../src/layouts/site-layout.astro): метаданные и выбор обложки главной/ПО.
-- [social-image-meta.astro](../src/components/social-image-meta.astro): JPEG через Astro,
+- [page-metadata.astro](../src/components/page-metadata.astro): подготовка JPEG через Astro и JSON-LD.
+- [social-image-meta.astro](../src/components/social-image-meta.astro): готовый
   абсолютный адрес, MIME, размеры и alt для Open Graph и Twitter Card.
 - [docs-head.astro](../src/components/docs-head.astro): расширение стандартного Starlight Head;
-  десять тематических обложек и резервная обзорная. Подключение — [astro.config.mjs](../astro.config.mjs).
+  одиннадцать тематических обложек, включая прихожую, и резервная обзорная. Подключение — [astro.config.mjs](../astro.config.mjs).
 - [home-v1.jpg](../src/assets/social/home-v1.jpg) и [software-v1.jpg](../src/assets/social/software-v1.jpg):
   широкие версии одобренных исходников `service-cabinet-wiren-board-v4.png` и `software-home-interior-v1.png`.
 

@@ -63,6 +63,18 @@ export default defineConfig({
           ],
         },
         {
+          label: 'Примеры реализации',
+          items: [
+            { label: 'Свет в прихожей', link: '/ru/docs/solutions/hallway-lighting/' },
+          ],
+        },
+        {
+          label: 'Для интегратора',
+          items: [
+            { label: 'Архитектура автоматизации', link: '/ru/docs/architecture/' },
+          ],
+        },
+        {
           label: 'Сайт',
           items: [
             { label: 'ПО Ritmod', link: '/software/' },

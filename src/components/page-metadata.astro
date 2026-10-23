@@ -1,0 +1,110 @@
+---
+import { getImage } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+import SocialImageMeta from './social-image-meta.astro';
+import { serializeJsonLd } from '../utils/serialize-json-ld';
+
+interface Props {
+  title: string;
+  description: string;
+  kind: 'service' | 'software' | 'docs-index' | 'documentation';
+  image: ImageMetadata;
+  alt: string;
+}
+
+const { title, description, kind, image, alt } = Astro.props;
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site).href;
+const homeUrl = new URL('/', Astro.site).href;
+const organizationId = `${homeUrl}#organization`;
+const websiteId = `${homeUrl}#website`;
+const pageId = `${canonicalUrl}#webpage`;
+const imageId = `${canonicalUrl}#primaryimage`;
+const entityId = `${canonicalUrl}#${kind}`;
+const width = 1200;
+const height = Math.round(width * image.height / image.width);
+const preview = await getImage({ src: image, width, height, format: 'jpg', quality: 85 });
+const imageUrl = new URL(preview.src, Astro.site).href;
+const isArticle = kind === 'documentation';
+const hasMainEntity = kind === 'service' || kind === 'software';
+const breadcrumbId = `${canonicalUrl}#breadcrumb`;
+const breadcrumbs = [
+  { name: 'Главная', item: homeUrl },
+  ...(isArticle ? [{ name: 'Документация', item: new URL('/ru/docs/', Astro.site).href }] : []),
+  ...(canonicalUrl !== homeUrl ? [{ name: title, item: canonicalUrl }] : []),
+];
+const hasBreadcrumbs = breadcrumbs.length > 1;
+
+const graph = [
+  {
+    '@type': 'Organization',
+    '@id': organizationId,
+    name: 'Ritmod',
+    url: homeUrl,
+  },
+  {
+    '@type': 'WebSite',
+    '@id': websiteId,
+    name: 'Ritmod',
+    url: homeUrl,
+    inLanguage: 'ru',
+    publisher: { '@id': organizationId },
+  },
+  {
+    '@type': 'ImageObject',
+    '@id': imageId,
+    url: imageUrl,
+    contentUrl: imageUrl,
+    width,
+    height,
+    caption: alt,
+  },
+  {
+    '@type': kind === 'docs-index' ? 'CollectionPage' : 'WebPage',
+    '@id': pageId,
+    url: canonicalUrl,
+    name: title,
+    description,
+    inLanguage: 'ru',
+    isPartOf: { '@id': websiteId },
+    primaryImageOfPage: { '@id': imageId },
+    ...(hasBreadcrumbs ? { breadcrumb: { '@id': breadcrumbId } } : {}),
+    ...(hasMainEntity || isArticle ? { mainEntity: { '@id': entityId } } : {}),
+  },
+  ...(hasBreadcrumbs ? [{
+    '@type': 'BreadcrumbList',
+    '@id': breadcrumbId,
+    itemListElement: breadcrumbs.map((item, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      ...item,
+    })),
+  }] : []),
+  ...(isArticle ? [{
+    '@type': 'TechArticle',
+    '@id': entityId,
+    headline: title,
+    description,
+    url: canonicalUrl,
+    inLanguage: 'ru',
+    image: { '@id': imageId },
+    mainEntityOfPage: { '@id': pageId },
+    publisher: { '@id': organizationId },
+  }] : []),
+  ...(hasMainEntity ? [{
+    '@type': kind === 'software' ? 'SoftwareApplication' : 'Service',
+    '@id': entityId,
+    name: kind === 'software' ? 'Ritmod' : title,
+    description,
+    url: canonicalUrl,
+    image: { '@id': imageId },
+    mainEntityOfPage: { '@id': pageId },
+    ...(kind === 'software'
+      ? { publisher: { '@id': organizationId } }
+      : { provider: { '@id': organizationId } }),
+  }] : []),
+];
+const structuredData = serializeJsonLd({ '@context': 'https://schema.org', '@graph': graph });
+---
+
+<SocialImageMeta imageUrl={imageUrl} width={width} height={height} alt={alt} />
+<script is:inline type="application/ld+json" set:html={structuredData} />

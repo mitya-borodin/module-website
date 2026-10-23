@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 543" role="img" aria-labelledby="diagram-title diagram-desc">
+<title id="diagram-title">Путь данных от оборудования к GUI и фоновым автоматизациям Ritmod</title>
+<desc id="diagram-desc">Слева показано физическое оборудование, справа программные компоненты. Наблюдения идут через MQTT broker к Ritmod и расходятся в GUI и фоновые автоматизации. Команды автоматизаций возвращаются через broker к исполнительным устройствам.</desc>
+<defs>
+  <marker id="obs" markerUnits="userSpaceOnUse" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M1 1 L9 5 L1 9 Z" fill="#72d1e7"/></marker>
+  <marker id="cmd" markerUnits="userSpaceOnUse" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M1 1 L9 5 L1 9 Z" fill="#ffbc7d"/></marker>
+  <marker id="config" markerUnits="userSpaceOnUse" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M1 1 L9 5 L1 9 Z" fill="#c3aeff"/></marker>
+  <marker id="store" markerUnits="userSpaceOnUse" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M1 1 L9 5 L1 9 Z" fill="#9db8c0"/></marker>
+</defs>
+<rect width="900" height="543" rx="24" fill="#111b22"/>
+<g transform="translate(0 -77)">
+<rect x="20" y="101" width="243" height="466" rx="22" fill="#1d312b" stroke="#6ea486" stroke-width="2"/>
+<rect x="280" y="101" width="600" height="466" rx="22" fill="#192b38" stroke="#638ead" stroke-width="2"/>
+<text x="42" y="133" text-anchor="start" fill="#a9e1b8" font-family="Arial, sans-serif" font-size="15" font-weight="600"><tspan x="42" dy="0">ОБОРУДОВАНИЕ</tspan></text>
+<text x="300" y="133" text-anchor="start" fill="#a7d7f0" font-family="Arial, sans-serif" font-size="15" font-weight="600"><tspan x="300" dy="0">ПРОГРАММНЫЙ КОНТУР</tspan></text>
+<path d="M142 226 V267" fill="none" stroke="#72d1e7" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#obs)"/>
+<path d="M238 296 H295" fill="none" stroke="#72d1e7" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#obs)"/>
+<path d="M295 330 H238" fill="none" stroke="#ffbc7d" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#cmd)"/>
+<path d="M430 296 H454" fill="none" stroke="#72d1e7" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#obs)"/>
+<path d="M630 285 H644 V211 H657" fill="none" stroke="#c3aeff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#config)" marker-start="url(#config)"/>
+<path d="M630 324 H644 V400 H657" fill="none" stroke="#72d1e7" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#obs)"/>
+<path d="M545 341 V455" fill="none" stroke="#9db8c0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#store)" stroke-dasharray="6 5"/>
+<path d="M751 448 V540 H367 V345" fill="none" stroke="#ffbc7d" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#cmd)"/>
+<path d="M142 347 V434" fill="none" stroke="#ffbc7d" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#cmd)"/>
+<rect x="42" y="155" width="196" height="71" rx="16" fill="#2a4739" stroke="#81bb91" stroke-width="2"/>
+<text x="140" y="184" text-anchor="middle" fill="#f3f7f5" font-family="Arial, sans-serif" font-size="18" font-weight="600"><tspan x="140" dy="0">Датчики и кнопки</tspan></text>
+<text x="140" y="207" text-anchor="middle" fill="#c6d9ce" font-family="Arial, sans-serif" font-size="13" font-weight="400"><tspan x="140" dy="0">входы объекта</tspan></text>
+<rect x="42" y="267" width="196" height="80" rx="16" fill="#2a4739" stroke="#81bb91" stroke-width="2"/>
+<text x="140" y="299" text-anchor="middle" fill="#f3f7f5" font-family="Arial, sans-serif" font-size="17" font-weight="600"><tspan x="140" dy="0">Контроллер / шлюз</tspan></text>
+<text x="140" y="322" text-anchor="middle" fill="#c6d9ce" font-family="Arial, sans-serif" font-size="13" font-weight="400"><tspan x="140" dy="0">ввод, вывод, Zigbee</tspan></text>
+<rect x="42" y="434" width="196" height="80" rx="16" fill="#2a4739" stroke="#81bb91" stroke-width="2"/>
+<text x="140" y="467" text-anchor="middle" fill="#f3f7f5" font-family="Arial, sans-serif" font-size="17" font-weight="600"><tspan x="140" dy="0">Исполнительные</tspan></text>
+<text x="140" y="489" text-anchor="middle" fill="#f3f7f5" font-family="Arial, sans-serif" font-size="17" font-weight="600"><tspan x="140" dy="0">устройства</tspan></text>
+<rect x="295" y="267" width="135" height="78" rx="16" fill="#284354" stroke="#76afd0" stroke-width="2"/>
+<text x="362" y="299" text-anchor="middle" fill="#f3f7f5" font-family="Arial, sans-serif" font-size="18" font-weight="600"><tspan x="362" dy="0">MQTT</tspan></text>
+<text x="362" y="322" text-anchor="middle" fill="#f3f7f5" font-family="Arial, sans-serif" font-size="17" font-weight="600"><tspan x="362" dy="0">broker</tspan></text>
+<rect x="455" y="267" width="175" height="74" rx="16" fill="#284354" stroke="#76afd0" stroke-width="2"/>
+<text x="542" y="296" text-anchor="middle" fill="#f3f7f5" font-family="Arial, sans-serif" font-size="17" font-weight="600"><tspan x="542" dy="0">Ritmod backend</tspan></text>
+<text x="542" y="319" text-anchor="middle" fill="#c4d8e3" font-family="Arial, sans-serif" font-size="13" font-weight="400"><tspan x="542" dy="0">разбор и состояние</tspan></text>
+<rect x="657" y="168" width="199" height="88" rx="16" fill="#393255" stroke="#aa9bdf" stroke-width="2"/>
+<text x="756" y="199" text-anchor="middle" fill="#f3f7f5" font-family="Arial, sans-serif" font-size="19" font-weight="600"><tspan x="756" dy="0">Web GUI</tspan></text>
+<text x="756" y="223" text-anchor="middle" fill="#ded6fa" font-family="Arial, sans-serif" font-size="13" font-weight="400"><tspan x="756" dy="0">GraphQL: чтение,</tspan></text>
+<text x="756" y="242" text-anchor="middle" fill="#ded6fa" font-family="Arial, sans-serif" font-size="13" font-weight="400"><tspan x="756" dy="0">настройка, команды</tspan></text>
+<rect x="657" y="356" width="199" height="92" rx="16" fill="#4b382c" stroke="#e6a36c" stroke-width="2"/>
+<text x="756" y="387" text-anchor="middle" fill="#f3f7f5" font-family="Arial, sans-serif" font-size="18" font-weight="600"><tspan x="756" dy="0">Автоматизации</tspan></text>
+<text x="756" y="411" text-anchor="middle" fill="#f0d2bc" font-family="Arial, sans-serif" font-size="13" font-weight="400"><tspan x="756" dy="0">внутри backend</tspan></text>
+<text x="756" y="429" text-anchor="middle" fill="#f0d2bc" font-family="Arial, sans-serif" font-size="13" font-weight="400"><tspan x="756" dy="0">фоновые расчёты</tspan></text>
+<rect x="455" y="455" width="175" height="72" rx="16" fill="#263640" stroke="#91adb6" stroke-width="2"/>
+<text x="542" y="485" text-anchor="middle" fill="#f3f7f5" font-family="Arial, sans-serif" font-size="18" font-weight="600"><tspan x="542" dy="0">Redis</tspan></text>
+<text x="542" y="507" text-anchor="middle" fill="#c7d4d7" font-family="Arial, sans-serif" font-size="13" font-weight="400"><tspan x="542" dy="0">данные и настройки</tspan></text>
+<text x="31" y="599" text-anchor="start" fill="#c6d3d6" font-family="Arial, sans-serif" font-size="13" font-weight="400"><tspan x="31" dy="0">Голубой — наблюдение   ·   Сиреневый — GUI   ·   Оранжевый — команда   ·   Пунктир — хранение</tspan></text>
+</g>
+</svg>

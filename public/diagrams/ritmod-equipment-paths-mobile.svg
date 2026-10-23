@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 1100" role="img" aria-labelledby="title description">
+<title id="title">Мобильная схема подключений устройств Ritmod</title>
+<desc id="description">Пять маршрутов в порядке: Wiren Board, Zigbee, Z-Wave, AV-ресивер, KNX. Каждая строка показывает физическое подключение, сервис, вход MQTT в Ritmod и статус. Wiren Board и Zigbee работают; Z-Wave, AV и KNX в разработке.</desc>
+<style>.service-text { fill: #f4f7f6; font-family: Arial, sans-serif; font-size: 13px; font-weight: 600; text-anchor: middle; }</style>
+<rect width="320" height="1100" rx="24" fill="#111b22"/>
+<g transform="translate(0 -60)">
+<g>
+<rect x="14" y="80" width="292" height="190" rx="18" fill="#17272d" stroke="#75b7d2" stroke-width="2"/>
+<rect x="26" y="90" width="268" height="45" rx="12" fill="#294638" stroke="#83bb91"/>
+<text x="160" y="109" text-anchor="middle" fill="#f4f7f6" font-family="Arial, sans-serif" font-size="14" font-weight="600">Wiren Board</text><text x="160" y="126" text-anchor="middle" fill="#c6d5d6" font-family="Arial, sans-serif" font-size="13">RS-485 / WBIO → контроллер</text>
+<path d="M160 135 V141" fill="none" stroke="#78cbe0" stroke-width="2"/>
+<path d="M156 141 L160 146 L164 141 Z" fill="#78cbe0"/>
+<rect x="26" y="149" width="268" height="45" rx="12" fill="#243d45" stroke="#75a7a9"/>
+<text class="service-text" x="160" y="176">Драйверы WB → MQTT</text>
+<path d="M160 194 V200" fill="none" stroke="#78cbe0" stroke-width="2"/>
+<path d="M156 200 L160 205 L164 200 Z" fill="#78cbe0"/>
+<rect x="26" y="208" width="268" height="48" rx="12" fill="#244657" stroke="#75b7d2"/>
+<text x="160" y="228" text-anchor="middle" fill="#f4f7f6" font-family="Arial, sans-serif" font-size="13" font-weight="600">MQTT → входной слой Ritmod</text><text x="160" y="245" text-anchor="middle" fill="#c6d5d6" font-family="Arial, sans-serif" font-size="12">работает</text>
+</g>
+<g transform="translate(0 615)">
+<rect x="14" y="285" width="292" height="190" rx="18" fill="#17272d" stroke="#ddba75" stroke-width="2" stroke-dasharray="7 5"/>
+<rect x="26" y="295" width="268" height="45" rx="12" fill="#294638" stroke="#83bb91"/>
+<text x="160" y="314" text-anchor="middle" fill="#f4f7f6" font-family="Arial, sans-serif" font-size="14" font-weight="600">KNX</text><text x="160" y="331" text-anchor="middle" fill="#c6d5d6" font-family="Arial, sans-serif" font-size="13">KNX TP → WBE2-I-KNX</text>
+<path d="M160 340 V346" fill="none" stroke="#ddba75" stroke-width="2"/>
+<path d="M156 346 L160 351 L164 346 Z" fill="#ddba75"/>
+<rect x="26" y="354" width="268" height="45" rx="12" fill="#243d45" stroke="#75a7a9"/>
+<text class="service-text" x="160" y="381">knxd → wb-mqtt-knx → MQTT</text>
+<path d="M160 399 V405" fill="none" stroke="#ddba75" stroke-width="2"/>
+<path d="M156 405 L160 410 L164 405 Z" fill="#ddba75"/>
+<rect x="26" y="413" width="268" height="48" rx="12" fill="#423b2d" stroke="#ddba75"/>
+<text x="160" y="433" text-anchor="middle" fill="#f4f7f6" font-family="Arial, sans-serif" font-size="13" font-weight="600">MQTT → входной слой Ritmod</text><text x="160" y="450" text-anchor="middle" fill="#c6d5d6" font-family="Arial, sans-serif" font-size="12">в разработке</text>
+</g>
+<g transform="translate(0 -205)">
+<rect x="14" y="490" width="292" height="190" rx="18" fill="#17272d" stroke="#75b7d2" stroke-width="2"/>
+<rect x="26" y="500" width="268" height="45" rx="12" fill="#294638" stroke="#83bb91"/>
+<text x="160" y="519" text-anchor="middle" fill="#f4f7f6" font-family="Arial, sans-serif" font-size="14" font-weight="600">Zigbee</text><text x="160" y="536" text-anchor="middle" fill="#c6d5d6" font-family="Arial, sans-serif" font-size="13">радиоканал → координатор WB</text>
+<path d="M160 545 V551" fill="none" stroke="#78cbe0" stroke-width="2"/>
+<path d="M156 551 L160 556 L164 551 Z" fill="#78cbe0"/>
+<rect x="26" y="559" width="268" height="45" rx="12" fill="#243d45" stroke="#75a7a9"/>
+<text class="service-text" x="160" y="578">Координатор WB → Zigbee2MQTT</text><text class="service-text" x="160" y="595">→ MQTT</text>
+<path d="M160 604 V610" fill="none" stroke="#78cbe0" stroke-width="2"/>
+<path d="M156 610 L160 615 L164 610 Z" fill="#78cbe0"/>
+<rect x="26" y="618" width="268" height="48" rx="12" fill="#244657" stroke="#75b7d2"/>
+<text x="160" y="638" text-anchor="middle" fill="#f4f7f6" font-family="Arial, sans-serif" font-size="13" font-weight="600">MQTT → входной слой Ritmod</text><text x="160" y="655" text-anchor="middle" fill="#c6d5d6" font-family="Arial, sans-serif" font-size="12">работает</text>
+</g>
+<g transform="translate(0 -205)">
+<rect x="14" y="695" width="292" height="190" rx="18" fill="#17272d" stroke="#ddba75" stroke-width="2" stroke-dasharray="7 5"/>
+<rect x="26" y="705" width="268" height="45" rx="12" fill="#294638" stroke="#83bb91"/>
+<text x="160" y="724" text-anchor="middle" fill="#f4f7f6" font-family="Arial, sans-serif" font-size="14" font-weight="600">Z-Wave</text><text x="160" y="741" text-anchor="middle" fill="#c6d5d6" font-family="Arial, sans-serif" font-size="13">радиоканал → контроллер WB</text>
+<path d="M160 750 V756" fill="none" stroke="#ddba75" stroke-width="2"/>
+<path d="M156 756 L160 761 L164 756 Z" fill="#ddba75"/>
+<rect x="26" y="764" width="268" height="45" rx="12" fill="#243d45" stroke="#75a7a9"/>
+<text class="service-text" x="160" y="783">Контроллер → Z-Way</text><text class="service-text" x="160" y="800">→ WBMQTTNative → MQTT</text>
+<path d="M160 809 V815" fill="none" stroke="#ddba75" stroke-width="2"/>
+<path d="M156 815 L160 820 L164 815 Z" fill="#ddba75"/>
+<rect x="26" y="823" width="268" height="48" rx="12" fill="#423b2d" stroke="#ddba75"/>
+<text x="160" y="843" text-anchor="middle" fill="#f4f7f6" font-family="Arial, sans-serif" font-size="13" font-weight="600">MQTT → входной слой Ritmod</text><text x="160" y="860" text-anchor="middle" fill="#c6d5d6" font-family="Arial, sans-serif" font-size="12">в разработке</text>
+</g>
+<g transform="translate(0 -205)">
+<rect x="14" y="900" width="292" height="190" rx="18" fill="#17272d" stroke="#dfa7b5" stroke-width="2" stroke-dasharray="7 5"/>
+<rect x="26" y="910" width="268" height="45" rx="12" fill="#294638" stroke="#83bb91"/>
+<text x="160" y="929" text-anchor="middle" fill="#f4f7f6" font-family="Arial, sans-serif" font-size="14" font-weight="600">AV-ресивер</text><text x="160" y="946" text-anchor="middle" fill="#c6d5d6" font-family="Arial, sans-serif" font-size="13">Ethernet → локальная сеть</text>
+<path d="M160 955 V961" fill="none" stroke="#dfa7b5" stroke-width="2"/>
+<path d="M156 961 L160 966 L164 961 Z" fill="#dfa7b5"/>
+<rect x="26" y="969" width="268" height="45" rx="12" fill="#47333d" stroke="#dfa7b5" stroke-dasharray="7 5"/>
+<text class="service-text" x="160" y="988">Локальная сеть → AV-драйвер</text><text class="service-text" x="160" y="1005">Ritmod → MQTT</text>
+<path d="M160 1014 V1020" fill="none" stroke="#dfa7b5" stroke-width="2"/>
+<path d="M156 1020 L160 1025 L164 1020 Z" fill="#dfa7b5"/>
+<rect x="26" y="1028" width="268" height="48" rx="12" fill="#47333d" stroke="#dfa7b5"/>
+<text x="160" y="1048" text-anchor="middle" fill="#f4f7f6" font-family="Arial, sans-serif" font-size="13" font-weight="600">MQTT → входной слой Ritmod</text><text x="160" y="1065" text-anchor="middle" fill="#e3c9d0" font-family="Arial, sans-serif" font-size="12">в разработке</text>
+</g>
+<text x="18" y="1119" fill="#c7d4d7" font-family="Arial, sans-serif" font-size="12">Работают: Wiren Board и Zigbee.</text>
+<text x="18" y="1139" fill="#c7d4d7" font-family="Arial, sans-serif" font-size="12">Пунктирная — Z-Wave, AV и KNX в разработке.</text>
+</g>
+</svg>

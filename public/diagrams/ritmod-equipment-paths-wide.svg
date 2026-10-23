@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 680" role="img" aria-labelledby="title description">
+<title id="title">Пути подключения устройств к Ritmod</title>
+<desc id="description">Пять маршрутов в порядке: Wiren Board, Zigbee, Z-Wave, AV-ресивер, KNX. Каждая строка показывает физическое подключение, сервис, вход MQTT в Ritmod и статус. Wiren Board и Zigbee работают; Z-Wave, AV и KNX в разработке.</desc>
+<style>.service-text { fill: #f4f7f6; font-family: Arial, sans-serif; font-size: 14px; font-weight: 600; text-anchor: middle; }</style>
+<defs>
+<marker id="arrow-current" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" refX="11" refY="6" orient="auto"><path d="M1 1 L11 6 L1 11 Z" fill="#78cbe0"/></marker>
+<marker id="arrow-verify" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" refX="11" refY="6" orient="auto"><path d="M1 1 L11 6 L1 11 Z" fill="#ddba75"/></marker>
+<marker id="arrow-target" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" refX="11" refY="6" orient="auto"><path d="M1 1 L11 6 L1 11 Z" fill="#dfa7b5"/></marker>
+</defs>
+<rect width="900" height="680" rx="24" fill="#111b22"/>
+<g transform="translate(0 -80)">
+<text x="28" y="116" fill="#a9e1b8" font-family="Arial, sans-serif" font-size="14" font-weight="600">ТИП / ПОДКЛЮЧЕНИЕ</text>
+<text x="287" y="116" fill="#9dd0d1" font-family="Arial, sans-serif" font-size="14" font-weight="600">СЕРВИС</text>
+<text x="598" y="116" fill="#a7d7f0" font-family="Arial, sans-serif" font-size="14" font-weight="600">RITMOD / СТАТУС</text>
+<g>
+<rect x="24" y="132" width="226" height="84" rx="15" fill="#294638" stroke="#83bb91" stroke-width="2"/>
+<text x="137" y="164" text-anchor="middle" fill="#f4f7f6" font-family="Arial, sans-serif" font-size="16" font-weight="600">Wiren Board</text><text x="137" y="189" text-anchor="middle" fill="#c6d5d6" font-family="Arial, sans-serif" font-size="13">RS-485 / WBIO → контроллер</text>
+<path d="M250 174 H281" fill="none" stroke="#78cbe0" stroke-width="3" marker-end="url(#arrow-current)"/>
+<rect x="283" y="132" width="280" height="84" rx="15" fill="#243d45" stroke="#75a7a9" stroke-width="2"/>
+<text class="service-text" x="423" y="179">Драйверы WB → MQTT</text>
+<path d="M563 174 H596" fill="none" stroke="#78cbe0" stroke-width="3" marker-end="url(#arrow-current)"/>
+<rect x="598" y="132" width="278" height="84" rx="15" fill="#244657" stroke="#75b7d2" stroke-width="2"/>
+<text x="737" y="164" text-anchor="middle" fill="#f4f7f6" font-family="Arial, sans-serif" font-size="15" font-weight="600">MQTT → входной слой Ritmod</text><text x="737" y="189" text-anchor="middle" fill="#c6d5d6" font-family="Arial, sans-serif" font-size="13">работает</text>
+</g>
+<g transform="translate(0 333)">
+<rect x="24" y="243" width="226" height="84" rx="15" fill="#294638" stroke="#83bb91" stroke-width="2"/>
+<text x="137" y="275" text-anchor="middle" fill="#f4f7f6" font-family="Arial, sans-serif" font-size="16" font-weight="600">KNX</text><text x="137" y="300" text-anchor="middle" fill="#c6d5d6" font-family="Arial, sans-serif" font-size="13">KNX TP → WBE2-I-KNX</text>
+<path d="M250 285 H281" fill="none" stroke="#ddba75" stroke-width="3" stroke-dasharray="7 5" marker-end="url(#arrow-verify)"/>
+<rect x="283" y="243" width="280" height="84" rx="15" fill="#243d45" stroke="#75a7a9" stroke-width="2"/>
+<text class="service-text" x="423" y="290">knxd → wb-mqtt-knx → MQTT</text>
+<path d="M563 285 H596" fill="none" stroke="#ddba75" stroke-width="3" stroke-dasharray="7 5" marker-end="url(#arrow-verify)"/>
+<rect x="598" y="243" width="278" height="84" rx="15" fill="#423b2d" stroke="#ddba75" stroke-width="2" stroke-dasharray="7 5"/>
+<text x="737" y="275" text-anchor="middle" fill="#f4f7f6" font-family="Arial, sans-serif" font-size="15" font-weight="600">MQTT → входной слой Ritmod</text><text x="737" y="300" text-anchor="middle" fill="#c6d5d6" font-family="Arial, sans-serif" font-size="13">в разработке</text>
+</g>
+<g transform="translate(0 -111)">
+<rect x="24" y="354" width="226" height="84" rx="15" fill="#294638" stroke="#83bb91" stroke-width="2"/>
+<text x="137" y="386" text-anchor="middle" fill="#f4f7f6" font-family="Arial, sans-serif" font-size="16" font-weight="600">Zigbee</text><text x="137" y="411" text-anchor="middle" fill="#c6d5d6" font-family="Arial, sans-serif" font-size="13">радиоканал → координатор WB</text>
+<path d="M250 396 H281" fill="none" stroke="#78cbe0" stroke-width="3" marker-end="url(#arrow-current)"/>
+<rect x="283" y="354" width="280" height="84" rx="15" fill="#243d45" stroke="#75a7a9" stroke-width="2"/>
+<text class="service-text" x="423" y="386">Координатор WB → Zigbee2MQTT</text><text class="service-text" x="423" y="411">→ MQTT</text>
+<path d="M563 396 H596" fill="none" stroke="#78cbe0" stroke-width="3" marker-end="url(#arrow-current)"/>
+<rect x="598" y="354" width="278" height="84" rx="15" fill="#244657" stroke="#75b7d2" stroke-width="2"/>
+<text x="737" y="386" text-anchor="middle" fill="#f4f7f6" font-family="Arial, sans-serif" font-size="15" font-weight="600">MQTT → входной слой Ritmod</text><text x="737" y="411" text-anchor="middle" fill="#c6d5d6" font-family="Arial, sans-serif" font-size="13">работает</text>
+</g>
+<g transform="translate(0 -111)">
+<rect x="24" y="465" width="226" height="84" rx="15" fill="#294638" stroke="#83bb91" stroke-width="2"/>
+<text x="137" y="497" text-anchor="middle" fill="#f4f7f6" font-family="Arial, sans-serif" font-size="16" font-weight="600">Z-Wave</text><text x="137" y="522" text-anchor="middle" fill="#c6d5d6" font-family="Arial, sans-serif" font-size="13">радиоканал → контроллер WB</text>
+<path d="M250 507 H281" fill="none" stroke="#ddba75" stroke-width="3" stroke-dasharray="7 5" marker-end="url(#arrow-verify)"/>
+<rect x="283" y="465" width="280" height="84" rx="15" fill="#243d45" stroke="#75a7a9" stroke-width="2"/>
+<text class="service-text" x="423" y="497">Контроллер → Z-Way</text><text class="service-text" x="423" y="522">→ WBMQTTNative → MQTT</text>
+<path d="M563 507 H596" fill="none" stroke="#ddba75" stroke-width="3" stroke-dasharray="7 5" marker-end="url(#arrow-verify)"/>
+<rect x="598" y="465" width="278" height="84" rx="15" fill="#423b2d" stroke="#ddba75" stroke-width="2" stroke-dasharray="7 5"/>
+<text x="737" y="497" text-anchor="middle" fill="#f4f7f6" font-family="Arial, sans-serif" font-size="15" font-weight="600">MQTT → входной слой Ritmod</text><text x="737" y="522" text-anchor="middle" fill="#c6d5d6" font-family="Arial, sans-serif" font-size="13">в разработке</text>
+</g>
+<g transform="translate(0 -111)">
+<rect x="24" y="576" width="226" height="84" rx="15" fill="#294638" stroke="#83bb91" stroke-width="2"/>
+<text x="137" y="608" text-anchor="middle" fill="#f4f7f6" font-family="Arial, sans-serif" font-size="16" font-weight="600">AV-ресивер</text><text x="137" y="633" text-anchor="middle" fill="#c6d5d6" font-family="Arial, sans-serif" font-size="13">Ethernet → локальная сеть</text>
+<path d="M250 618 H281" fill="none" stroke="#dfa7b5" stroke-width="3" stroke-dasharray="7 5" marker-end="url(#arrow-target)"/>
+<rect x="283" y="576" width="280" height="84" rx="15" fill="#47333d" stroke="#dfa7b5" stroke-width="2" stroke-dasharray="7 5"/>
+<text class="service-text" x="423" y="608">Локальная сеть → AV-драйвер</text><text class="service-text" x="423" y="633">Ritmod → MQTT</text>
+<path d="M563 618 H596" fill="none" stroke="#dfa7b5" stroke-width="3" stroke-dasharray="7 5" marker-end="url(#arrow-target)"/>
+<rect x="598" y="576" width="278" height="84" rx="15" fill="#47333d" stroke="#dfa7b5" stroke-width="2" stroke-dasharray="7 5"/>
+<text x="737" y="608" text-anchor="middle" fill="#f4f7f6" font-family="Arial, sans-serif" font-size="15" font-weight="600">MQTT → входной слой Ritmod</text><text x="737" y="633" text-anchor="middle" fill="#e3c9d0" font-family="Arial, sans-serif" font-size="13">в разработке</text>
+</g>
+<text x="24" y="711" fill="#c7d4d7" font-family="Arial, sans-serif" font-size="13">Сплошная стрелка — работают: Wiren Board и Zigbee.</text>
+<text x="24" y="735" fill="#c7d4d7" font-family="Arial, sans-serif" font-size="13">Пунктир — Z-Wave, AV и KNX в разработке.</text>
+</g>
+</svg>

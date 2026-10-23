@@ -2,7 +2,7 @@
 import '../styles/global.css';
 import MobileGesturePolicy from '../components/mobile-gesture-policy.astro';
 import { mobileViewport } from '../data/mobile-viewport';
-import SocialImageMeta from '../components/social-image-meta.astro';
+import PageMetadata from '../components/page-metadata.astro';
 import cabinetPreview from '../assets/social/home-v1.jpg';
 import softwarePreview from '../assets/social/software-v1.jpg';
 
@@ -52,7 +52,13 @@ const contactLabel = isSoftwarePage ? 'Обсудить ПО' : 'Обсудит�
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <SocialImageMeta image={previewImage} alt={previewAlt} />
+    <PageMetadata
+      title={title}
+      description={description}
+      kind={isSoftwarePage ? 'software' : 'service'}
+      image={previewImage}
+      alt={previewAlt}
+    />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title}</title>
   </head>
