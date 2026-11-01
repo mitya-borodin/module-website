@@ -72,6 +72,7 @@ export default defineConfig({
           label: 'Для интегратора',
           items: [
             { label: 'Архитектура автоматизации', link: '/ru/docs/architecture/' },
+            { label: 'Движок исполнения', link: '/ru/docs/architecture/runtime-engine/' },
           ],
         },
         {
